@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
-		D0DCDB58281814500065E7C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB57281814500065E7C5 /* ViewController.swift */; };
-		D0DCDB5B281814500065E7C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0DCDB59281814500065E7C5 /* Main.storyboard */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
 		D0DCDB60281814500065E7C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0DCDB5F281814500065E7C5 /* Assets.xcassets */; };
 		D0DCDB63281814500065E7C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0DCDB61281814500065E7C5 /* LaunchScreen.storyboard */; };
 		D0DCDB6E281814510065E7C5 /* VkClient_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB6D281814510065E7C5 /* VkClient_2Tests.swift */; };
 		D0DCDB78281814510065E7C5 /* VkClient_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB77281814510065E7C5 /* VkClient_2UITests.swift */; };
 		D0DCDB7A281814510065E7C5 /* VkClient_2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB79281814510065E7C5 /* VkClient_2UITestsLaunchTests.swift */; };
+		D0DCDB87281814990065E7C5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D0DCDB86281814990065E7C5 /* .gitignore */; };
+		D0DCDB93281816490065E7C5 /* VkLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB92281816490065E7C5 /* VkLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,6 @@
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D0DCDB57281814500065E7C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D0DCDB5A281814500065E7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0DCDB5D281814500065E7C5 /* VkClient_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VkClient_2.xcdatamodel; sourceTree = "<group>"; };
 		D0DCDB5F281814500065E7C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0DCDB62281814500065E7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +49,8 @@
 		D0DCDB73281814510065E7C5 /* VkClient-2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VkClient-2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB77281814510065E7C5 /* VkClient_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkClient_2UITests.swift; sourceTree = "<group>"; };
 		D0DCDB79281814510065E7C5 /* VkClient_2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkClient_2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D0DCDB86281814990065E7C5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D0DCDB92281816490065E7C5 /* VkLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +101,11 @@
 		D0DCDB52281814500065E7C5 /* VkClient-2 */ = {
 			isa = PBXGroup;
 			children = (
-				D0DCDB53281814500065E7C5 /* AppDelegate.swift */,
-				D0DCDB55281814500065E7C5 /* SceneDelegate.swift */,
-				D0DCDB57281814500065E7C5 /* ViewController.swift */,
-				D0DCDB59281814500065E7C5 /* Main.storyboard */,
-				D0DCDB5F281814500065E7C5 /* Assets.xcassets */,
-				D0DCDB61281814500065E7C5 /* LaunchScreen.storyboard */,
-				D0DCDB64281814500065E7C5 /* Info.plist */,
-				D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */,
+				D0DCDB88281814C00065E7C5 /* App */,
+				D0DCDB8B281815030065E7C5 /* Core */,
+				D0DCDB8A281814F70065E7C5 /* Resources */,
+				D0DCDB89281814EE0065E7C5 /* Environments */,
+				D0DCDB86281814990065E7C5 /* .gitignore */,
 			);
 			path = "VkClient-2";
 			sourceTree = "<group>";
@@ -128,6 +125,89 @@
 				D0DCDB79281814510065E7C5 /* VkClient_2UITestsLaunchTests.swift */,
 			);
 			path = "VkClient-2UITests";
+			sourceTree = "<group>";
+		};
+		D0DCDB88281814C00065E7C5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB8F2818152E0065E7C5 /* BusinessLogic */,
+				D0DCDB8E281815220065E7C5 /* Entity */,
+				D0DCDB8D2818151B0065E7C5 /* Assembly */,
+				D0DCDB8C281815150065E7C5 /* Flows */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D0DCDB89281814EE0065E7C5 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB64281814500065E7C5 /* Info.plist */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		D0DCDB8A281814F70065E7C5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */,
+				D0DCDB5F281814500065E7C5 /* Assets.xcassets */,
+				D0DCDB61281814500065E7C5 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D0DCDB8B281815030065E7C5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB53281814500065E7C5 /* AppDelegate.swift */,
+				D0DCDB55281814500065E7C5 /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D0DCDB8C281815150065E7C5 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB90281815EF0065E7C5 /* VkLoginScreen */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		D0DCDB8D2818151B0065E7C5 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		D0DCDB8E281815220065E7C5 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D0DCDB8F2818152E0065E7C5 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		D0DCDB90281815EF0065E7C5 /* VkLoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB91281816050065E7C5 /* VkLoginViewController */,
+			);
+			path = VkLoginScreen;
+			sourceTree = "<group>";
+		};
+		D0DCDB91281816050065E7C5 /* VkLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0DCDB92281816490065E7C5 /* VkLoginViewController.swift */,
+			);
+			path = VkLoginViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +314,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DCDB87281814990065E7C5 /* .gitignore in Resources */,
 				D0DCDB63281814500065E7C5 /* LaunchScreen.storyboard in Resources */,
 				D0DCDB60281814500065E7C5 /* Assets.xcassets in Resources */,
-				D0DCDB5B281814500065E7C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +342,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */,
-				D0DCDB58281814500065E7C5 /* ViewController.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
 				D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */,
+				D0DCDB93281816490065E7C5 /* VkLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +381,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D0DCDB59281814500065E7C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0DCDB5A281814500065E7C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D0DCDB61281814500065E7C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -443,12 +515,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LSA8V5M5Q4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "VkClient-2/Info.plist";
+				INFOPLIST_FILE = "VkClient-2/Environments/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +531,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -471,12 +544,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LSA8V5M5Q4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "VkClient-2/Info.plist";
+				INFOPLIST_FILE = "VkClient-2/Environments/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +560,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
