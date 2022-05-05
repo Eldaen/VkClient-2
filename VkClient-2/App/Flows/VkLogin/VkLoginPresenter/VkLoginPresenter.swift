@@ -18,6 +18,10 @@ final class VkLoginPresenter {
 
 // MARK: - VkLoginViewInputProtocol
 extension VkLoginPresenter: VkLoginViewOutputProtocol {
+	func authorize() {
+		router?.pushRealApp()
+	}
+	
 	func setupWKView(with view: VkLoginView) {
 		interactor?.loadScreen(with: view)
 	}

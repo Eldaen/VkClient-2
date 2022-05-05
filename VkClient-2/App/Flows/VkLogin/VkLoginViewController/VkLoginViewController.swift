@@ -61,12 +61,10 @@ extension VkLoginViewController: WKNavigationDelegate {
 		
 		// Сохраняем данные авторизации, если она успешна и всё нужное есть
 		if let token = params["access_token"], let userId = params["user_id"], let id = Int(userId)
-		//		   let nextController = nextController
 		{
-			
 			SessionManager.instance.loginUser(with: token, userId: id)
 			//			appModeManager?.setDemoMode(false, nextController: nextController)
-			//			self.navigationController?.pushViewController(nextController, animated: true)
+			output?.authorize()
 		}
 		decisionHandler(.cancel)
 	}

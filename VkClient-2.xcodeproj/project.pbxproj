@@ -15,6 +15,10 @@
 		D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327012823DA08007E5140 /* VkLoginService.swift */; };
 		D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327032823E1FD007E5140 /* VkLoginRouter.swift */; };
 		D0B327072823E936007E5140 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327062823E936007E5140 /* SessionManager.swift */; };
+		D0B3270D2823F4B3007E5140 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3270C2823F4B3007E5140 /* TabBarController.swift */; };
+		D0B327122823F75E007E5140 /* MyGroupsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327112823F75E007E5140 /* MyGroupsBuilder.swift */; };
+		D0B327142823F792007E5140 /* FriendsListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327132823F792007E5140 /* FriendsListBuilder.swift */; };
+		D0B327162823F7AA007E5140 /* NewsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327152823F7AA007E5140 /* NewsBuilder.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -53,6 +57,10 @@
 		D0B327012823DA08007E5140 /* VkLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginService.swift; sourceTree = "<group>"; };
 		D0B327032823E1FD007E5140 /* VkLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginRouter.swift; sourceTree = "<group>"; };
 		D0B327062823E936007E5140 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		D0B3270C2823F4B3007E5140 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D0B327112823F75E007E5140 /* MyGroupsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsBuilder.swift; sourceTree = "<group>"; };
+		D0B327132823F792007E5140 /* FriendsListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListBuilder.swift; sourceTree = "<group>"; };
+		D0B327152823F7AA007E5140 /* NewsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsBuilder.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +158,38 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		D0B3270B2823F4A7007E5140 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3270C2823F4B3007E5140 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		D0B3270E2823F741007E5140 /* MyGroupsBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327112823F75E007E5140 /* MyGroupsBuilder.swift */,
+			);
+			path = MyGroupsBuilder;
+			sourceTree = "<group>";
+		};
+		D0B3270F2823F74A007E5140 /* FriendsListBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327132823F792007E5140 /* FriendsListBuilder.swift */,
+			);
+			path = FriendsListBuilder;
+			sourceTree = "<group>";
+		};
+		D0B327102823F750007E5140 /* NewsBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327152823F7AA007E5140 /* NewsBuilder.swift */,
+			);
+			path = NewsBuilder;
+			sourceTree = "<group>";
+		};
 		D0DCDB47281814500065E7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +280,7 @@
 		D0DCDB8C281815150065E7C5 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				D0B3270B2823F4A7007E5140 /* TabBar */,
 				D0DCDB90281815EF0065E7C5 /* VkLogin */,
 			);
 			path = Flows;
@@ -248,6 +289,9 @@
 		D0DCDB8D2818151B0065E7C5 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327102823F750007E5140 /* NewsBuilder */,
+				D0B3270F2823F74A007E5140 /* FriendsListBuilder */,
+				D0B3270E2823F741007E5140 /* MyGroupsBuilder */,
 				D0B326DE2818225B007E5140 /* VkLoginBuilder */,
 			);
 			path = Assembly;
@@ -421,16 +465,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B327162823F7AA007E5140 /* NewsBuilder.swift in Sources */,
 				D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */,
 				D0B326E428183607007E5140 /* VkLoginPresenter.swift in Sources */,
 				D0B327072823E936007E5140 /* SessionManager.swift in Sources */,
+				D0B327122823F75E007E5140 /* MyGroupsBuilder.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
 				D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */,
 				D0DCDB93281816490065E7C5 /* VkLoginViewController.swift in Sources */,
 				D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */,
+				D0B327142823F792007E5140 /* FriendsListBuilder.swift in Sources */,
 				D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */,
 				D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */,
 				D0B326FF2823B73C007E5140 /* VkLoginView.swift in Sources */,
+				D0B3270D2823F4B3007E5140 /* TabBarController.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
 			);
