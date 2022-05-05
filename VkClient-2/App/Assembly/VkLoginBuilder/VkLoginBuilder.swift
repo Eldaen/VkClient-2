@@ -19,6 +19,7 @@ final class VkLoginBuilder {
 		let presenter = VkLoginPresenter()
 		let interactor = VkLoginInteractor()
 		
+		router.viewController = viewController
 		viewController.output = presenter
 		presenter.interactor = interactor
 		presenter.view = viewController

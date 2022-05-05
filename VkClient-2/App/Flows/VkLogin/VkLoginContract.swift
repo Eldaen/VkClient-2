@@ -23,6 +23,9 @@ protocol VkLoginViewOutputProtocol: AnyObject {
 	/// Настраивает экран авторизации
 	/// - Parameter view: UIView авторизации
 	func setupWKView(with view: VkLoginView)
+	
+	/// Перейти на основной Таб бар контроллер приложения
+	func authorize()
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
@@ -44,7 +47,13 @@ protocol VkLoginInteractorOutputProtocol: AnyObject {
 // MARK: Router Input (Presenter -> Router)
 /// Входящий протокол роутера авторизации
 protocol VkLoginRouterInputProtocol: AnyObject {
+	var viewController: UIViewController? { get set }
 	
+	/// Перейти к основной версии программы
+	func pushRealApp()
+	
+	/// Перейти к демо версии программы
+	func pushDemoApp()
 }
 
 // MARK: - Service Input (Interactor -> Service)
