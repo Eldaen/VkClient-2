@@ -11,6 +11,10 @@
 		D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B326E1281832D3007E5140 /* VkLoginBuilder.swift */; };
 		D0B326E428183607007E5140 /* VkLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B326E328183607007E5140 /* VkLoginPresenter.swift */; };
 		D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B326E52818369C007E5140 /* VkLoginInteractor.swift */; };
+		D0B326FF2823B73C007E5140 /* VkLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B326FE2823B73C007E5140 /* VkLoginView.swift */; };
+		D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327012823DA08007E5140 /* VkLoginService.swift */; };
+		D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327032823E1FD007E5140 /* VkLoginRouter.swift */; };
+		D0B327072823E936007E5140 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327062823E936007E5140 /* SessionManager.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -45,6 +49,10 @@
 		D0B326E1281832D3007E5140 /* VkLoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginBuilder.swift; sourceTree = "<group>"; };
 		D0B326E328183607007E5140 /* VkLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginPresenter.swift; sourceTree = "<group>"; };
 		D0B326E52818369C007E5140 /* VkLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginInteractor.swift; sourceTree = "<group>"; };
+		D0B326FE2823B73C007E5140 /* VkLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginView.swift; sourceTree = "<group>"; };
+		D0B327012823DA08007E5140 /* VkLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginService.swift; sourceTree = "<group>"; };
+		D0B327032823E1FD007E5140 /* VkLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkLoginRouter.swift; sourceTree = "<group>"; };
+		D0B327062823E936007E5140 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +113,7 @@
 		D0B326DD28182220007E5140 /* VkLoginRouter */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327032823E1FD007E5140 /* VkLoginRouter.swift */,
 			);
 			path = VkLoginRouter;
 			sourceTree = "<group>";
@@ -115,6 +124,30 @@
 				D0B326E1281832D3007E5140 /* VkLoginBuilder.swift */,
 			);
 			path = VkLoginBuilder;
+			sourceTree = "<group>";
+		};
+		D0B326FD2823B726007E5140 /* VkLoginView */ = {
+			isa = PBXGroup;
+			children = (
+				D0B326FE2823B73C007E5140 /* VkLoginView.swift */,
+			);
+			path = VkLoginView;
+			sourceTree = "<group>";
+		};
+		D0B327002823D9EF007E5140 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327012823DA08007E5140 /* VkLoginService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D0B327052823E929007E5140 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327062823E936007E5140 /* SessionManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D0DCDB47281814500065E7C5 = {
@@ -230,6 +263,8 @@
 		D0DCDB8F2818152E0065E7C5 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327052823E929007E5140 /* Managers */,
+				D0B327002823D9EF007E5140 /* Services */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -249,6 +284,7 @@
 		D0DCDB91281816050065E7C5 /* VkLoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D0B326FD2823B726007E5140 /* VkLoginView */,
 				D0DCDB92281816490065E7C5 /* VkLoginViewController.swift */,
 			);
 			path = VkLoginViewController;
@@ -387,10 +423,14 @@
 			files = (
 				D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */,
 				D0B326E428183607007E5140 /* VkLoginPresenter.swift in Sources */,
+				D0B327072823E936007E5140 /* SessionManager.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
 				D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */,
 				D0DCDB93281816490065E7C5 /* VkLoginViewController.swift in Sources */,
+				D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */,
 				D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */,
+				D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */,
+				D0B326FF2823B73C007E5140 /* VkLoginView.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
 			);
@@ -569,7 +609,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -598,7 +638,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

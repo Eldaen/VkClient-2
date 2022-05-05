@@ -10,11 +10,17 @@ import Foundation
 // MARK: - VkLoginPresenter
 final class VkLoginPresenter {
 	
+	// MARK: - Properties
+	var router: VkLoginRouterInputProtocol?
+	var interactor: VkLoginInteractorInputProtocol?
+	weak var view: VkLoginViewInputProtocol?
 }
 
 // MARK: - VkLoginViewInputProtocol
-extension VkLoginPresenter: VkLoginViewInputProtocol {
-	
+extension VkLoginPresenter: VkLoginViewOutputProtocol {
+	func setupWKView(with view: VkLoginView) {
+		interactor?.loadScreen(with: view)
+	}
 }
 
 // MARK: - VkLoginInteractorOutputProtocol

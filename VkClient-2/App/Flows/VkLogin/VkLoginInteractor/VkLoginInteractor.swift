@@ -9,10 +9,14 @@ import Foundation
 
 // MARK: - VkLoginInteractor
 final class VkLoginInteractor {
-	
+	var service: VkLoginService?
 }
 
 // MARK: - VkLoginInteractorInputProtocol
 extension VkLoginInteractor: VkLoginInteractorInputProtocol {
-	
+	func loadScreen(with view: VkLoginView) {
+		service?.loadView { request in
+			view.webView.load(request)
+		}
+	}
 }
