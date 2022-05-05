@@ -13,3 +13,8 @@ final class VkLoginViewController: UIViewController {
 		print("hello VkClient-2")
 	}
 }
+
+// MARK: - VkLoginViewInputProtocol
+extension VkLoginViewController: VkLoginViewOutputProtocol {
+	
+}
