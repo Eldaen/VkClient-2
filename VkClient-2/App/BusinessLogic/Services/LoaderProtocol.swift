@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Loader протокол
 /// Протокол лоадера данных
-protocol Loader {
+protocol LoaderProtocol {
 	
 	/// Переменная, хранящая в себе Networkmanager, он у нас один и других не будет, так что без протокола
 	var networkManager: NetworkManagerProtocol { get set }
@@ -35,7 +35,7 @@ protocol Loader {
 }
 
 // MARK: - Common methods
-extension Loader {
+extension LoaderProtocol {
 	
 	/// Проверяет свежесть данных
 	/// - Parameter key: Ключ, по которому проверяем

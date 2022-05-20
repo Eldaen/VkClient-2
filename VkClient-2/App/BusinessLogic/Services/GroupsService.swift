@@ -8,7 +8,7 @@
 import UIKit.UIImage
 
 /// Протокол загрузки данных групп
-protocol GroupsLoader: Loader {
+protocol GroupsLoader: LoaderProtocol {
 	
 	/// Загружает список групп пользователя
 	func loadGroups(completion: @escaping ([GroupModel]) -> Void)
