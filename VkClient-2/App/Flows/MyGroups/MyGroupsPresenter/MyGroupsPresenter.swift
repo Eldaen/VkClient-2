@@ -5,7 +5,7 @@
 //  Created by Денис Сизов on 20.05.2022.
 //
 
-import UIKit
+import UIKit.UIImage
 
 // MARK: - MyGroupsPresenter
 final class MyGroupsPresenter {
@@ -78,7 +78,7 @@ extension MyGroupsPresenter: MyGroupsInteractorOutputProtocol {
 		view?.deleteGroupFromView(at: indexPath)
 	}
 	
-	func showGroupsLeavingError(_ error: Error) {
+	func showGroupLeavingError(_ error: Error) {
 		view?.showGroupsLeavingErrorText("Не удалось выйти из группы")
 	}
 }

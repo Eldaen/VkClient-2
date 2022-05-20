@@ -102,11 +102,23 @@ extension MyGroupsViewController: MyGroupsViewInputProtocol {
 	}
 	
 	func showGroupsLoadingErrorText(_ text: String) {
-		//TODO: Сделать отображение ошибки
+		let alert = UIAlertController(title: "Ошибка",
+									  message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "Повторить", style: .cancel) {[weak self] _ in
+			self?.output?.fetchGroups()
+		}
+		alert.addAction(action)
+		
+		present(alert, animated: true, completion: nil)
 	}
 	
 	func showGroupsLeavingErrorText(_ text: String) {
-		//TODO: Сделать отображение ошибки
+		let alert = UIAlertController(title: "Ошибка",
+									  message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(action)
+		
+		present(alert, animated: true, completion: nil)
 	}
 	
 	func deleteGroupFromView(at indexPath: IndexPath) {

@@ -40,6 +40,12 @@
 		D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275D28379713007E5140 /* ApiBoolResponse.swift */; };
 		D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275F2837ABA2007E5140 /* MyGroupsRouter.swift */; };
 		D0B327632837AC11007E5140 /* SearchGroupsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */; };
+		D0B3276A2837C8FF007E5140 /* SearchGroupsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327692837C8FF007E5140 /* SearchGroupsContract.swift */; };
+		D0B3276C2837CD80007E5140 /* SearchGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3276B2837CD80007E5140 /* SearchGroupsViewController.swift */; };
+		D0B3276E2837CDF7007E5140 /* SearchGroupsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3276D2837CDF7007E5140 /* SearchGroupsPresenter.swift */; };
+		D0B327702837CE60007E5140 /* SearchGroupsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3276F2837CE60007E5140 /* SearchGroupsInteractor.swift */; };
+		D0B327722837CF12007E5140 /* SearchGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327712837CF12007E5140 /* SearchGroupsRouter.swift */; };
+		D0B327752837CFAD007E5140 /* SearchGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327742837CFAD007E5140 /* SearchGroupsView.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -103,6 +109,12 @@
 		D0B3275D28379713007E5140 /* ApiBoolResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBoolResponse.swift; sourceTree = "<group>"; };
 		D0B3275F2837ABA2007E5140 /* MyGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsRouter.swift; sourceTree = "<group>"; };
 		D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsBuilder.swift; sourceTree = "<group>"; };
+		D0B327692837C8FF007E5140 /* SearchGroupsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsContract.swift; sourceTree = "<group>"; };
+		D0B3276B2837CD80007E5140 /* SearchGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsViewController.swift; sourceTree = "<group>"; };
+		D0B3276D2837CDF7007E5140 /* SearchGroupsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsPresenter.swift; sourceTree = "<group>"; };
+		D0B3276F2837CE60007E5140 /* SearchGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsInteractor.swift; sourceTree = "<group>"; };
+		D0B327712837CF12007E5140 /* SearchGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsRouter.swift; sourceTree = "<group>"; };
+		D0B327742837CFAD007E5140 /* SearchGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsView.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +346,59 @@
 			path = SearchGroups;
 			sourceTree = "<group>";
 		};
+		D0B327642837C708007E5140 /* SearchGroups */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327682837C746007E5140 /* SearchGroupsInteractor */,
+				D0B327672837C73A007E5140 /* SearchGroupsPresenter */,
+				D0B327662837C71E007E5140 /* SearchGroupsViewController */,
+				D0B327652837C716007E5140 /* SearchGroupsRouter */,
+				D0B327692837C8FF007E5140 /* SearchGroupsContract.swift */,
+			);
+			path = SearchGroups;
+			sourceTree = "<group>";
+		};
+		D0B327652837C716007E5140 /* SearchGroupsRouter */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327712837CF12007E5140 /* SearchGroupsRouter.swift */,
+			);
+			path = SearchGroupsRouter;
+			sourceTree = "<group>";
+		};
+		D0B327662837C71E007E5140 /* SearchGroupsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327732837CF9F007E5140 /* SearchGroupsView */,
+				D0B3276B2837CD80007E5140 /* SearchGroupsViewController.swift */,
+			);
+			path = SearchGroupsViewController;
+			sourceTree = "<group>";
+		};
+		D0B327672837C73A007E5140 /* SearchGroupsPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3276D2837CDF7007E5140 /* SearchGroupsPresenter.swift */,
+			);
+			path = SearchGroupsPresenter;
+			sourceTree = "<group>";
+		};
+		D0B327682837C746007E5140 /* SearchGroupsInteractor */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3276F2837CE60007E5140 /* SearchGroupsInteractor.swift */,
+			);
+			path = SearchGroupsInteractor;
+			sourceTree = "<group>";
+		};
+		D0B327732837CF9F007E5140 /* SearchGroupsView */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327742837CFAD007E5140 /* SearchGroupsView.swift */,
+			);
+			path = SearchGroupsView;
+			sourceTree = "<group>";
+		};
 		D0DCDB47281814500065E7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +490,7 @@
 		D0DCDB8C281815150065E7C5 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327642837C708007E5140 /* SearchGroups */,
 				D0B32717282403E8007E5140 /* MyGroups */,
 				D0B3270B2823F4A7007E5140 /* TabBar */,
 				D0DCDB90281815EF0065E7C5 /* VkLogin */,
@@ -628,21 +694,25 @@
 				D0B3274F28378955007E5140 /* ImageSizes.swift in Sources */,
 				D0B327122823F75E007E5140 /* MyGroupsBuilder.swift in Sources */,
 				D0B3272528240820007E5140 /* MyGroupsCell.swift in Sources */,
+				D0B3276E2837CDF7007E5140 /* SearchGroupsPresenter.swift in Sources */,
 				D0B327442836F18C007E5140 /* MyGroupsPresenter.swift in Sources */,
 				D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */,
 				D0B3272028240547007E5140 /* MyGroupsViewController.swift in Sources */,
 				D0B32751283789A2007E5140 /* UserImagesMainResponse.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
+				D0B327702837CE60007E5140 /* SearchGroupsInteractor.swift in Sources */,
 				D0B32753283789C1007E5140 /* UserImagesResponse.swift in Sources */,
 				D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */,
 				D0B327422836EC1D007E5140 /* GroupModel.swift in Sources */,
 				D0DCDB93281816490065E7C5 /* VkLoginViewController.swift in Sources */,
 				D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */,
+				D0B327752837CFAD007E5140 /* SearchGroupsView.swift in Sources */,
 				D0B327142823F792007E5140 /* FriendsListBuilder.swift in Sources */,
 				D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */,
 				D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */,
 				D0B327632837AC11007E5140 /* SearchGroupsBuilder.swift in Sources */,
 				D0B326FF2823B73C007E5140 /* VkLoginView.swift in Sources */,
+				D0B3276A2837C8FF007E5140 /* SearchGroupsContract.swift in Sources */,
 				D0B3274028366C3E007E5140 /* Extension+UITableView.swift in Sources */,
 				D0B3274628378456007E5140 /* MyGroupsInteractor.swift in Sources */,
 				D0B3275C283796B6007E5140 /* GroupsMyMainResponse.swift in Sources */,
@@ -651,6 +721,8 @@
 				D0B327572837901F007E5140 /* ImageCacheManager.swift in Sources */,
 				D0B3275528378BFE007E5140 /* NetworkManager.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,
+				D0B327722837CF12007E5140 /* SearchGroupsRouter.swift in Sources */,
+				D0B3276C2837CD80007E5140 /* SearchGroupsViewController.swift in Sources */,
 				D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
 			);

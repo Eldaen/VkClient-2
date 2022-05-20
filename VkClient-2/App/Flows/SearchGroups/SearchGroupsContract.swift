@@ -1,17 +1,17 @@
 //
-//  MyGroupsContract.swift
+//  SearchGroupsContract.swift
 //  VkClient-2
 //
-//  Created by Денис Сизов on 05.05.2022.
+//  Created by Денис Сизов on 20.05.2022.
 //
 
 import UIKit
 
 // MARK: View Input (View -> Presenter)
-/// Входящий протокол контроллера отображения списка групп пользователя
-protocol MyGroupsViewInputProtocol: AnyObject {
+/// Входящий протокол контроллера отображения списка найденных групп
+protocol SearchGroupsViewInputProtocol: AnyObject {
 	
-	/// Массив групп пользователя
+	/// Массив найденных
 	var groups: [GroupModel] { get set }
 	
 	/// Массив групп пользователей после поиска
@@ -24,36 +24,29 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 	/// - Parameter error: Ошибка загрузки
 	func showGroupsLoadingErrorText(_ text: String)
 	
-	/// Показывает ошибку выхода из группы
+	/// Показывает ошибку вступления в группу
 	/// - Parameter error: Ошибка загрузки
-	func showGroupsLeavingErrorText(_ text: String)
-	
-	/// Удаляет из таблицы ячейку группы, из которой вышли
-	/// - Parameter indexPath: idexPath ячейки, которую нужно удалить
-	func deleteGroupFromView(at indexPath: IndexPath)
+	func showGroupJoiningErrorText(_ text: String)
 }
 
 // MARK: View Output (Presenter -> View)
-/// Исходящий протокол контроллера отображения списка групп пользователя
-protocol MyGroupsViewOutputProtocol: AnyObject {
+/// Исходящий протокол контроллера отображения найденных групп
+protocol SearchGroupsViewOutputProtocol: AnyObject {
 	
-	/// Загружает список групп пользователя
+	/// Загружает список найденных
 	func fetchGroups()
 	
-	/// Выходит из выбранной группы
+	/// Вступает в выбранную группу
 	/// - Parameters:
 	///   - id: id группы
 	///   - index: idexPath группы в таблице
-	func leaveGroup(id: Int, index: IndexPath)
+	func joinGroup(id: Int, index: IndexPath)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
 	///   - url: Строка с url картинки, которую нужно загрузить
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
-	
-	/// Переход на экран поиска групп
-	func navigateToSearchGroups()
 	
 	/// Фильтрует группы по указанному запросу
 	/// - Parameter query: Текс запроса
@@ -64,11 +57,17 @@ protocol MyGroupsViewOutputProtocol: AnyObject {
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
-/// Входящий протокол интерактора списка групп пользователя
-protocol MyGroupsInteractorInputProtocol: AnyObject {
+/// Входящий протокол интерактора списка найденных групп
+protocol SearchGroupsInteractorInputProtocol: AnyObject {
 	
 	/// Загружает список групп пользователя
 	func fetchGroups(_ completion: @escaping (Result<[GroupModel], Error>) -> Void)
+	
+	/// Вступает в выбранную группу
+	/// - Parameters:
+	///   - id: id группы
+	///   - index: idexPath группы в таблице
+	func joinGroup(id: Int, index: IndexPath)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
@@ -76,35 +75,24 @@ protocol MyGroupsInteractorInputProtocol: AnyObject {
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
 	
-	/// Выходит из выбранной группы
-	/// - Parameters:
-	///   - id: id группы
-	///   - index: idexPath группы в таблице
-	func leaveGroup(id: Int, index: IndexPath)
-	
 	/// Фильтрует группы по указанному запросу
 	/// - Parameter query: Текс запроса
 	func search(for query: String, in groups: [GroupModel], completion: @escaping ([GroupModel]) -> Void)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
-/// Исходящий протокол интерактора списка групп пользователя
-protocol MyGroupsInteractorOutputProtocol: AnyObject {
-	
-	/// Заканчивает выход из группы и вызывает удаление ячейки из таблицы
-	/// - Parameter at: indexPatch ячейки группы, которую покинули
-	func removeGroup(at indexPath: IndexPath)
-	
+/// Исходящий протокол интерактора списка найденных групп
+protocol SearchGroupsInteractorOutputProtocol: AnyObject {
 	/// Показывает ошибку выхода из группы
 	/// - Parameter error: Ошибка загрузки
-	func showGroupLeavingError(_ error: Error)
+	func showGroupJoiningError(_ error: Error)
 }
 
 // MARK: Router Input (Presenter -> Router)
-/// Входящий протокол роутера списка групп пользователя
-protocol MyGroupsRouterInputProtocol: AnyObject {
+/// Входящий протокол роутера списка найденных групп
+protocol SearchGroupsRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
 
 	/// Переход на экран поиска групп
-	func navigateToSearchGroups()
+	func navigateToMyGroups()
 }
