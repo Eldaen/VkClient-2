@@ -17,12 +17,14 @@ final class MyGroupsBuilder {
 		let cache = ImageCacheManager()
 		let service = GroupsService(networkManager: networkManager, cache: cache)
 		let viewController = MyGroupsViewController()
-		let presenter = MyGroupsPresenter()
 		let interactor = MyGroupsInteractor(groupsService: service)
+		let router = MyGroupsRouter()
+		let presenter = MyGroupsPresenter(router: router, interactor: interactor, view: viewController)
 		
 		viewController.output = presenter
 		presenter.interactor = interactor
 		presenter.view = viewController
+		router.viewController = viewController
 		
 		return viewController
 	}

@@ -38,6 +38,8 @@
 		D0B3275A28379698007E5140 /* GroupsMyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275928379698007E5140 /* GroupsMyResponse.swift */; };
 		D0B3275C283796B6007E5140 /* GroupsMyMainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275B283796B6007E5140 /* GroupsMyMainResponse.swift */; };
 		D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275D28379713007E5140 /* ApiBoolResponse.swift */; };
+		D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275F2837ABA2007E5140 /* MyGroupsRouter.swift */; };
+		D0B327632837AC11007E5140 /* SearchGroupsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -99,6 +101,8 @@
 		D0B3275928379698007E5140 /* GroupsMyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsMyResponse.swift; sourceTree = "<group>"; };
 		D0B3275B283796B6007E5140 /* GroupsMyMainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsMyMainResponse.swift; sourceTree = "<group>"; };
 		D0B3275D28379713007E5140 /* ApiBoolResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBoolResponse.swift; sourceTree = "<group>"; };
+		D0B3275F2837ABA2007E5140 /* MyGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsRouter.swift; sourceTree = "<group>"; };
+		D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsBuilder.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 		D0B3271B28240448007E5140 /* MyGroupsRouter */ = {
 			isa = PBXGroup;
 			children = (
+				D0B3275F2837ABA2007E5140 /* MyGroupsRouter.swift */,
 			);
 			path = MyGroupsRouter;
 			sourceTree = "<group>";
@@ -319,6 +324,14 @@
 				D0B3275B283796B6007E5140 /* GroupsMyMainResponse.swift */,
 			);
 			path = ApiGetGroups;
+			sourceTree = "<group>";
+		};
+		D0B327612837AC00007E5140 /* SearchGroups */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */,
+			);
+			path = SearchGroups;
 			sourceTree = "<group>";
 		};
 		D0DCDB47281814500065E7C5 = {
@@ -422,6 +435,7 @@
 		D0DCDB8D2818151B0065E7C5 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327612837AC00007E5140 /* SearchGroups */,
 				D0B327102823F750007E5140 /* NewsBuilder */,
 				D0B3270F2823F74A007E5140 /* FriendsListBuilder */,
 				D0B3270E2823F741007E5140 /* MyGroupsBuilder */,
@@ -627,6 +641,7 @@
 				D0B327142823F792007E5140 /* FriendsListBuilder.swift in Sources */,
 				D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */,
 				D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */,
+				D0B327632837AC11007E5140 /* SearchGroupsBuilder.swift in Sources */,
 				D0B326FF2823B73C007E5140 /* VkLoginView.swift in Sources */,
 				D0B3274028366C3E007E5140 /* Extension+UITableView.swift in Sources */,
 				D0B3274628378456007E5140 /* MyGroupsInteractor.swift in Sources */,
@@ -636,6 +651,7 @@
 				D0B327572837901F007E5140 /* ImageCacheManager.swift in Sources */,
 				D0B3275528378BFE007E5140 /* NetworkManager.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,
+				D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

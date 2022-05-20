@@ -22,9 +22,6 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 // MARK: View Output (Presenter -> View)
 /// Исходящий протокол контроллера отображения списка групп пользователя
 protocol MyGroupsViewOutputProtocol: AnyObject {
-	var router: MyGroupsRouterInputProtocol? { get set }
-	var interactor: MyGroupsInteractorInputProtocol? { get set }
-	var view: MyGroupsViewInputProtocol? { get set }
 	
 	/// Загружает список групп пользователя
 	func fetchGroups()
@@ -34,6 +31,9 @@ protocol MyGroupsViewOutputProtocol: AnyObject {
 	///   - url: Строка с url картинки, которую нужно загрузить
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
+	
+	/// Переход на экран поиска групп
+	func navigateToSearchGroups()
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
@@ -60,6 +60,9 @@ protocol MyGroupsInteractorOutputProtocol: AnyObject {
 /// Входящий протокол роутера списка групп пользователя
 protocol MyGroupsRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
+
+	/// Переход на экран поиска групп
+	func navigateToSearchGroups()
 }
 
 // MARK: - Service Input (Interactor -> Service)

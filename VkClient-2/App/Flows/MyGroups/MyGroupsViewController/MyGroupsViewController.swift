@@ -85,13 +85,13 @@ private extension MyGroupsViewController {
 	func configureNavigation() {
 		self.title = "Мои группы"
 		
-//		let add = UIBarButtonItem(
-//			barButtonSystemItem: .add,
-//			target: self,
-//			action: #selector(addGroup)
-//		)
-		//add.tintColor = .black
-		//navigationItem.rightBarButtonItem = add
+		let add = UIBarButtonItem(
+			barButtonSystemItem: .add,
+			target: self,
+			action: #selector(addGroup)
+		)
+		add.tintColor = .black
+		navigationItem.rightBarButtonItem = add
 	}
 	
 	// Конфигурируем ячейку
@@ -107,5 +107,10 @@ private extension MyGroupsViewController {
 	
 	func configureSearchbar() {
 		myGroupsView.searchBar.delegate = self
+	}
+	
+	/// Запускает переход на экран со всеми группами
+	@objc func addGroup() {
+		output?.navigateToSearchGroups()
 	}
 }
