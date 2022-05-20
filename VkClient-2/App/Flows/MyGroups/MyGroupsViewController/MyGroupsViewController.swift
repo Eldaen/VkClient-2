@@ -19,13 +19,8 @@ final class MyGroupsViewController: UIViewController {
 	var myGroupsView: MyGroupsView {
 		return self.view as! MyGroupsView
 	}
-	
-	/// Массив групп пользователя
-	var groups = [GroupModel]() {
-		didSet {
-			myGroupsView.tableView.reloadData()
-		}
-	}
+
+	var groups = [GroupModel]()
 	
 	// MARK: - LifeCycle
 	
@@ -64,7 +59,32 @@ extension MyGroupsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension MyGroupsViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			guard let cell = tableView.cellForRow(at: indexPath) as? MyGroupsCell,
+				  let id = cell.id else {
+				return
+			}
+			output?.leaveGroup(id: id, index: indexPath)
+			
+//			output?.leaveGroup(id: id, index: indexPath.row) { [weak self] result in
+//				if result == true {
+//					self?.myGroupsView.tableView.deleteRows(at: [indexPath], with: .fade)
+//					self?.viewModel.fetchGroups { }
+//				} else {
+//					self?.showLeavingError()
+//				}
+//			}
+		}
+	}
 	
+	func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+		return "Покинуть"
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		myGroupsView.tableView.deselectRow(at: indexPath, animated: true)
+	}
 }
 
 extension MyGroupsViewController: UISearchBarDelegate {
@@ -73,8 +93,20 @@ extension MyGroupsViewController: UISearchBarDelegate {
 
 // MARK: - MyGroupsViewInputProtocol
 extension MyGroupsViewController: MyGroupsViewInputProtocol {
-	func showGroupsLoadingError(_ error: Error) {
+	func reloadTableView() {
+		myGroupsView.tableView.reloadData()
+	}
+	
+	func showGroupsLoadingErrorText(_ text: String) {
 		//TODO: Сделать отображение ошибки
+	}
+	
+	func showGroupsLeavingErrorText(_ text: String) {
+		//TODO: Сделать отображение ошибки
+	}
+	
+	func deleteGroupFromView(at indexPath: IndexPath) {
+		myGroupsView.tableView.deleteRows(at: [indexPath], with: .fade)
 	}
 }
 

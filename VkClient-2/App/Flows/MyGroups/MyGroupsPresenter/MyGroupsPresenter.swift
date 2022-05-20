@@ -14,7 +14,7 @@ final class MyGroupsPresenter {
 	
 	var router: MyGroupsRouterInputProtocol
 	var interactor: MyGroupsInteractorInputProtocol
-	var view: MyGroupsViewInputProtocol
+	weak var view: MyGroupsViewInputProtocol?
 	
 	// MARK: - Init
 	
@@ -31,13 +31,18 @@ final class MyGroupsPresenter {
 
 // MARK: - MyGroupsViewOutputProtocol
 extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
+	func leaveGroup(id: Int, index: IndexPath) {
+		interactor.leaveGroup(id: id, index: index)
+	}
+	
 	func fetchGroups() {
 		interactor.fetchGroups() { [weak self] result in
 			switch result {
 			case .success (let groups):
-				self?.view.groups = groups
-			case .failure(let error):
-				self?.view.showGroupsLoadingError(error)
+				self?.view?.groups = groups
+				self?.view?.reloadTableView()
+			case .failure:
+				self?.view?.showGroupsLoadingErrorText("Не удалось загрузить группы")
 			}
 		}
 	}
@@ -50,5 +55,17 @@ extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
 	
 	func navigateToSearchGroups() {
 		router.navigateToSearchGroups()
+	}
+}
+
+// MARK: - MyGroupsInteractorOutputProtocol
+extension MyGroupsPresenter: MyGroupsInteractorOutputProtocol {
+	func removeGroup(at indexPath: IndexPath) {
+		view?.groups.remove(at: indexPath.row)
+		view?.deleteGroupFromView(at: indexPath)
+	}
+	
+	func showGroupsLeavingError(_ error: Error) {
+		view?.showGroupsLeavingErrorText("Не удалось выйти из группы")
 	}
 }

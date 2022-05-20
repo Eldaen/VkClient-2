@@ -25,6 +25,7 @@ final class MyGroupsBuilder {
 		presenter.interactor = interactor
 		presenter.view = viewController
 		router.viewController = viewController
+		interactor.output = presenter
 		
 		return viewController
 	}

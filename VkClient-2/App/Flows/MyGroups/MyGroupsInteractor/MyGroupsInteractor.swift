@@ -12,6 +12,9 @@ final class MyGroupsInteractor {
 	
 	// MARK: - Properties
 	
+	/// Cсылка на презентер
+	weak var output: MyGroupsInteractorOutputProtocol?
+	
 	/// Cервис по работе с группами
 	private var groupsLoader: GroupsLoader
 	
@@ -24,6 +27,22 @@ final class MyGroupsInteractor {
 
 // MARK: - MyGroupsInteractorInputProtocol
 extension MyGroupsInteractor: MyGroupsInteractorInputProtocol {
+	func leaveGroup(id: Int, index: IndexPath) {
+		groupsLoader.leaveGroup(id: id) { [weak self] result in
+			switch result {
+			case .success(let resultCode):
+				if resultCode == 1 {
+					self?.output?.removeGroup(at: index)
+				} else {
+					debugPrint("Group leaving code was \(resultCode)")
+				}
+			case .failure(let error):
+				self?.output?.showGroupsLeavingError(error)
+				debugPrint(error.localizedDescription)
+			}
+		}
+	}
+	
 	func fetchGroups(_ completion: @escaping (Result<[GroupModel], Error>) -> Void) {
 		groupsLoader.loadGroups { result in
 			switch result {

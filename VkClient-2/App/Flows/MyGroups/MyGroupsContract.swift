@@ -14,9 +14,20 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 	/// Массив групп пользователя
 	var groups: [GroupModel] { get set }
 	
+	/// Перезагружает таблицу с группами
+	func reloadTableView()
+	
 	/// Показывает ошибку загрузки групп
 	/// - Parameter error: Ошибка загрузки
-	func showGroupsLoadingError(_ error: Error)
+	func showGroupsLoadingErrorText(_ text: String)
+	
+	/// Показывает ошибку выхода из группы
+	/// - Parameter error: Ошибка загрузки
+	func showGroupsLeavingErrorText(_ text: String)
+	
+	/// Удаляет из таблицы ячейку группы, из которой вышли
+	/// - Parameter indexPath: idexPath ячейки, которую нужно удалить
+	func deleteGroupFromView(at indexPath: IndexPath)
 }
 
 // MARK: View Output (Presenter -> View)
@@ -25,6 +36,12 @@ protocol MyGroupsViewOutputProtocol: AnyObject {
 	
 	/// Загружает список групп пользователя
 	func fetchGroups()
+	
+	/// Выходит из выбранной группы
+	/// - Parameters:
+	///   - id: id группы
+	///   - index: idexPath группы в таблице
+	func leaveGroup(id: Int, index: IndexPath)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
@@ -48,12 +65,25 @@ protocol MyGroupsInteractorInputProtocol: AnyObject {
 	///   - url: Строка с url картинки, которую нужно загрузить
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
+	
+	/// Выходит из выбранной группы
+	/// - Parameters:
+	///   - id: id группы
+	///   - index: idexPath группы в таблице
+	func leaveGroup(id: Int, index: IndexPath)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
 /// Исходящий протокол интерактора списка групп пользователя
 protocol MyGroupsInteractorOutputProtocol: AnyObject {
 	
+	/// Заканчивает выход из группы и вызывает удаление ячейки из таблицы
+	/// - Parameter at: indexPatch ячейки группы, которую покинули
+	func removeGroup(at indexPath: IndexPath)
+	
+	/// Показывает ошибку выхода из группы
+	/// - Parameter error: Ошибка загрузки
+	func showGroupsLeavingError(_ error: Error)
 }
 
 // MARK: Router Input (Presenter -> Router)
