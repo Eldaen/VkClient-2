@@ -18,7 +18,7 @@ protocol LoaderProtocol {
 	var cache: ImageCacheInput { get set }
 	
 	/// Сервис для работы с БД
-	var persistence: PersistenceManager { get set }
+	//var persistence: PersistenceManager { get set }
 	
 	/// Загружает картинку и возвращает её, если получилось
 	/// - Parameters:

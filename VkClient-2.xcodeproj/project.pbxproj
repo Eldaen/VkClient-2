@@ -37,6 +37,7 @@
 		D0B327572837901F007E5140 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327562837901F007E5140 /* ImageCacheManager.swift */; };
 		D0B3275A28379698007E5140 /* GroupsMyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275928379698007E5140 /* GroupsMyResponse.swift */; };
 		D0B3275C283796B6007E5140 /* GroupsMyMainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275B283796B6007E5140 /* GroupsMyMainResponse.swift */; };
+		D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3275D28379713007E5140 /* ApiBoolResponse.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -97,6 +98,7 @@
 		D0B327562837901F007E5140 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		D0B3275928379698007E5140 /* GroupsMyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsMyResponse.swift; sourceTree = "<group>"; };
 		D0B3275B283796B6007E5140 /* GroupsMyMainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsMyMainResponse.swift; sourceTree = "<group>"; };
+		D0B3275D28379713007E5140 /* ApiBoolResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBoolResponse.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				D0B3275828379672007E5140 /* ApiGetGroups */,
 				D0B3274D28378940007E5140 /* ApiUserImages */,
 				D0B327412836EC1D007E5140 /* GroupModel.swift */,
+				D0B3275D28379713007E5140 /* ApiBoolResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				D0B327122823F75E007E5140 /* MyGroupsBuilder.swift in Sources */,
 				D0B3272528240820007E5140 /* MyGroupsCell.swift in Sources */,
 				D0B327442836F18C007E5140 /* MyGroupsPresenter.swift in Sources */,
+				D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */,
 				D0B3272028240547007E5140 /* MyGroupsViewController.swift in Sources */,
 				D0B32751283789A2007E5140 /* UserImagesMainResponse.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,

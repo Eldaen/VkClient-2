@@ -11,48 +11,55 @@ import UIKit.UIImage
 protocol GroupsLoader: LoaderProtocol {
 	
 	/// Загружает список групп пользователя
-	func loadGroups(completion: @escaping ([GroupModel]) -> Void)
+	/// - Parameter completion: Клоужер с результатом запроса, массив групп или ошибка
+	func loadGroups(completion: @escaping (Result<[GroupModel], Error>) -> Void)
 	
 	/// Ищет группы, подходящие под текстовый запрос
-	func searchGroups(with query: String, completion: @escaping ([GroupModel]) -> Void)
+	/// - Parameters:
+	///   - query: Строка поискового запроса
+	///   - completion: Клоужер с результатом запроса, массив групп или ошибка
+	func searchGroups(with query: String, completion: @escaping (Result<[GroupModel], Error>) -> Void)
 	
 	/// Запрос на вступление в группу по id
-	func joinGroup(id: Int, completion: @escaping (Int) -> Void)
+	/// - Parameters:
+	///   - id: id гуппы, в которую нужно вступить
+	///   - completion: Клоужер с результатом запроса, код ответа или ошибка
+	func joinGroup(id: Int, completion: @escaping (Result<Int, Error>) -> Void)
 	
-	/// Запрос на вступление в группу по id
-	func leaveGroup(id: Int, completion: @escaping (Int) -> Void)
+	/// Запрос на выход из группы по id
+	/// - Parameters:
+	///   - id: id группы, из которой нужно выйти
+	///   - completion: Клоужер с результатом запроса, код ответа или ошибка
+	func leaveGroup(id: Int, completion: @escaping (Result<Int, Error>) -> Void)
 }
 
 /// Сервис загрузки данных для групп из сети
 final class GroupsService: GroupsLoader {
 	
-	private var networkManager: NetworkManagerProtocol
-	private var cache: ImageCache
+	internal var networkManager: NetworkManagerProtocol
+	internal var cache: ImageCacheInput
 	//private var persistence: PersistenceManager
-	
-	/// Очередь операций для загрузки данных групп
-	let operationQueue: OperationQueue = {
-		let operationQueue = OperationQueue()
-		operationQueue.name = "groupsLoadQueue"
-		operationQueue.qualityOfService = .utility
-		return operationQueue
-	}()
 	
 	/// Ключ для сохранения данных о просрочке в Userdefaults
 	let cacheKey = "groupsExpiry"
 	
-	init(networkManager: NetworkManagerInterface, cache: ImageCache/*, persistence: PersistenceManager*/) {
+	init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput/*, persistence: PersistenceManager*/) {
 		self.networkManager = networkManager
 		self.cache = cache
 		//self.persistence = persistence
 	}
 	
 	/// Загружает список групп пользователя
-	func loadGroups(completion: @escaping ([GroupModel]) -> Void) {
-
+	func loadGroups(completion: @escaping (Result<[GroupModel], Error>) -> Void) {
+		let params = [
+			"order" : "name",
+			"extended" : "1",
+		]
+		
 //		if checkExpiry(key: cacheKey) {
 //			var groups: [GroupModel] = []
-//			self.persistence.read(GroupModel.self) { result in
+//
+//			persistence.read(GroupModel.self) { result in
 //				groups = Array(result)
 //			}
 //
@@ -62,28 +69,28 @@ final class GroupsService: GroupsLoader {
 //			}
 //		}
 		
-		let params = [
-			"order" : "name",
-			"extended" : "1",
-		]
-		
-		let getData = GroupsDataOperation(method: .groupsGet, params: params)
-		let parseData = GroupsDataParseOperation()
-		let completionOperation = GroupsCompletionOperation(completion)
-		let updateRealm = UpdateRealmDataOperation(manager: persistence, cacheHandler: self, cacheKey: cacheKey)
-		
-		parseData.addDependency(getData)
-		completionOperation.addDependency(parseData)
-		updateRealm.addDependency(completionOperation)
-		
-		operationQueue.addOperations([getData, parseData], waitUntilFinished: false)
-		
-		// Realm редиска и не хочет работать из другого потка, если был инициализирован в мейне
-		OperationQueue.main.addOperations([completionOperation, updateRealm], waitUntilFinished: false)
+		networkManager.request(method: .groupsGet,
+							   httpMethod: .get,
+							   params: params) { [weak self] (result: Result<GroupsMyMainResponse, Error>) in
+			switch result {
+			case .success(let groupsResponse):
+				let groups = groupsResponse.response.items
+				//self?.persistence.delete(GroupModel.self) { _ in }
+				//self?.persistence.create(items) { _ in }
+				
+				// Ставим дату просрочки данных
+				if let cacheKey = self?.cacheKey {
+					self?.setExpiry(key: cacheKey, time: 10 * 60)
+				}
+				completion(.success(groups))
+			case .failure(let error):
+				completion(.failure(error))
+			}
+		}
 	}
 	
 	/// Ищет группы, подходящие под текстовый запрос
-	func searchGroups(with query: String, completion: @escaping ([GroupModel]) -> Void) {
+	func searchGroups(with query: String, completion: @escaping (Result<[GroupModel], Error>) -> Void) {
 		let params = [
 			"order" : "name",
 			"extended" : "1",
@@ -96,15 +103,15 @@ final class GroupsService: GroupsLoader {
 							   params: params) { (result: Result<GroupsMyMainResponse, Error>) in
 			switch result {
 			case .success(let groupsResponse):
-				completion(groupsResponse.response.items)
+				completion(.success(groupsResponse.response.items))
 			case .failure(let error):
-				debugPrint("Error: \(error.localizedDescription)")
+				completion(.failure(error))
 			}
 		}
 	}
 	
 	/// Запрос на вступление в группу по id
-	func joinGroup(id: Int, completion: @escaping (Int) -> Void) {
+	func joinGroup(id: Int, completion: @escaping (Result<Int, Error>) -> Void) {
 		let params = [
 			"group_id" : "\(id)",
 			"extended" : "1",
@@ -112,7 +119,7 @@ final class GroupsService: GroupsLoader {
 		
 		networkManager.request(method: .groupsJoin,
 							   httpMethod: .post,
-							   params: params) {[weak self] (result: Result<BoolResponse, Error>) in
+							   params: params) {[weak self] (result: Result<ApiBoolResponse, Error>) in
 			switch result {
 			case .success(let response):
 				
@@ -120,15 +127,15 @@ final class GroupsService: GroupsLoader {
 				if let cacheKey = self?.cacheKey {
 					self?.dropCache(key: cacheKey)
 				}
-				completion(response.response)
+				completion(.success(response.response))
 			case .failure(let error):
-				debugPrint("Error: \(error.localizedDescription)")
+				completion(.failure(error))
 			}
 		}
 	}
 	
 	/// Запрос на вступление в группу по id
-	func leaveGroup(id: Int, completion: @escaping (Int) -> Void) {
+	func leaveGroup(id: Int, completion: @escaping (Result<Int, Error>) -> Void) {
 		let params = [
 			"group_id" : "\(id)",
 			"extended" : "1",
@@ -136,19 +143,19 @@ final class GroupsService: GroupsLoader {
 		
 		networkManager.request(method: .groupsLeave,
 							   httpMethod: .post,
-							   params: params) { [weak self] (result: Result<BoolResponse, Error>) in
+							   params: params) { [weak self] (result: Result<ApiBoolResponse, Error>) in
 			switch result {
 			case .success(let response):
-				self?.persistence.delete(GroupModel.self, keyValue: "\(id)") { _ in }
+				//self?.persistence.delete(GroupModel.self, keyValue: "\(id)") { _ in }
 				
 				// Нужно перекачать данные групп, сбросим кэш
 				if let cacheKey = self?.cacheKey {
 					self?.dropCache(key: cacheKey)
 				}
 				
-				completion(response.response)
+				completion(.success(response.response))
 			case .failure(let error):
-				debugPrint("Error: \(error.localizedDescription)")
+				completion(.failure(error))
 			}
 		}
 	}
