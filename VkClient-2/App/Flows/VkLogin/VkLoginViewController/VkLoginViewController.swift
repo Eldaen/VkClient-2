@@ -11,6 +11,8 @@ import WebKit
 // MARK: - VkLoginViewController
 final class VkLoginViewController: UIViewController {
 	
+	// MARK: - Properties
+	
 	/// Обработчик исходящих событий
 	var output: VkLoginViewOutputProtocol?
 	
@@ -20,6 +22,7 @@ final class VkLoginViewController: UIViewController {
 	}
 	
 	// MARK: - LifeCycle
+	
 	override func loadView() {
 		super.loadView()
 		self.view = VkLoginView()

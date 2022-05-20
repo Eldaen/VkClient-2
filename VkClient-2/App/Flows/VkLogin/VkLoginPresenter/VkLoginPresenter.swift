@@ -11,6 +11,7 @@ import Foundation
 final class VkLoginPresenter {
 	
 	// MARK: - Properties
+	
 	var router: VkLoginRouterInputProtocol?
 	var interactor: VkLoginInteractorInputProtocol?
 	weak var view: VkLoginViewInputProtocol?
