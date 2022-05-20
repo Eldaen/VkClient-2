@@ -21,6 +21,7 @@ final class MyGroupsViewController: UIViewController {
 	}
 
 	var groups = [GroupModel]()
+	var filteredGroups = [GroupModel]()
 	
 	// MARK: - LifeCycle
 	
@@ -42,12 +43,12 @@ final class MyGroupsViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension MyGroupsViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		groups.count
+		filteredGroups.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell: MyGroupsCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-		let group = groups[indexPath.row]
+		let group = filteredGroups[indexPath.row]
 		
 		output?.loadImage(group.image) { image in
 			cell.setImage(with: image)
@@ -66,15 +67,6 @@ extension MyGroupsViewController: UITableViewDelegate {
 				return
 			}
 			output?.leaveGroup(id: id, index: indexPath)
-			
-//			output?.leaveGroup(id: id, index: indexPath.row) { [weak self] result in
-//				if result == true {
-//					self?.myGroupsView.tableView.deleteRows(at: [indexPath], with: .fade)
-//					self?.viewModel.fetchGroups { }
-//				} else {
-//					self?.showLeavingError()
-//				}
-//			}
 		}
 	}
 	
@@ -88,7 +80,19 @@ extension MyGroupsViewController: UITableViewDelegate {
 }
 
 extension MyGroupsViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		searchBar.showsCancelButton = true
+		output?.search(searchText)
+	}
 	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.showsCancelButton = false
+		searchBar.text = nil
+		searchBar.resignFirstResponder()
+		
+		output?.cancelSearch()
+		reloadTableView()
+	}
 }
 
 // MARK: - MyGroupsViewInputProtocol

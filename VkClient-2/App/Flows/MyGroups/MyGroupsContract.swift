@@ -14,6 +14,9 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 	/// Массив групп пользователя
 	var groups: [GroupModel] { get set }
 	
+	/// Массив групп пользователей после поиска
+	var filteredGroups: [GroupModel] { get set }
+	
 	/// Перезагружает таблицу с группами
 	func reloadTableView()
 	
@@ -51,6 +54,13 @@ protocol MyGroupsViewOutputProtocol: AnyObject {
 	
 	/// Переход на экран поиска групп
 	func navigateToSearchGroups()
+	
+	/// Фильтрует группы по указанному запросу
+	/// - Parameter query: Текс запроса
+	func search(_ query: String)
+	
+	/// Отменяет поиск
+	func cancelSearch()
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
@@ -71,6 +81,10 @@ protocol MyGroupsInteractorInputProtocol: AnyObject {
 	///   - id: id группы
 	///   - index: idexPath группы в таблице
 	func leaveGroup(id: Int, index: IndexPath)
+	
+	/// Фильтрует группы по указанному запросу
+	/// - Parameter query: Текс запроса
+	func search(for query: String, in groups: [GroupModel], completion: @escaping ([GroupModel]) -> Void)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)

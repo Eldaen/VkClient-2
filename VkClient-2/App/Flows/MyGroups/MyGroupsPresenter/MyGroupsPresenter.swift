@@ -31,6 +31,17 @@ final class MyGroupsPresenter {
 
 // MARK: - MyGroupsViewOutputProtocol
 extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
+	func search(_ query: String) {
+		interactor.search(for: query, in: view?.groups ?? []) { [weak self] groups in
+			self?.view?.filteredGroups = groups
+			self?.view?.reloadTableView()
+		}
+	}
+	
+	func cancelSearch() {
+		view?.filteredGroups = view?.groups ?? []
+	}
+	
 	func leaveGroup(id: Int, index: IndexPath) {
 		interactor.leaveGroup(id: id, index: index)
 	}
@@ -40,6 +51,7 @@ extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
 			switch result {
 			case .success (let groups):
 				self?.view?.groups = groups
+				self?.view?.filteredGroups = groups
 				self?.view?.reloadTableView()
 			case .failure:
 				self?.view?.showGroupsLoadingErrorText("Не удалось загрузить группы")
@@ -62,6 +74,7 @@ extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
 extension MyGroupsPresenter: MyGroupsInteractorOutputProtocol {
 	func removeGroup(at indexPath: IndexPath) {
 		view?.groups.remove(at: indexPath.row)
+		view?.filteredGroups.remove(at: indexPath.row)
 		view?.deleteGroupFromView(at: indexPath)
 	}
 	

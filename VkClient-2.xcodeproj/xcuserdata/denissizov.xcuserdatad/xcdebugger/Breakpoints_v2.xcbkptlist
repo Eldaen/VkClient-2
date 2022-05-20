@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "41365FE8-9230-4AAA-8729-6DE1A54F2830"
+            uuid = "43D5490B-8FE1-4247-A52E-A57927238271"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VkClient-2/App/Flows/MyGroups/MyGroupsInteractor/MyGroupsInteractor.swift"
+            filePath = "VkClient-2/App/Flows/MyGroups/MyGroupsViewController/MyGroupsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "leaveGroup(id:index:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "searchBarCancelButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

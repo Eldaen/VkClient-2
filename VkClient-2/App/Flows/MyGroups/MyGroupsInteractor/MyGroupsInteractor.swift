@@ -27,6 +27,21 @@ final class MyGroupsInteractor {
 
 // MARK: - MyGroupsInteractorInputProtocol
 extension MyGroupsInteractor: MyGroupsInteractorInputProtocol {
+	func search(for query: String, in groups: [GroupModel], completion: @escaping ([GroupModel]) -> Void) {
+		var result: [GroupModel] = []
+		if query == "" {
+			result = groups
+			completion(result)
+		} else {
+			for group in groups {
+				if group.name.lowercased().contains(query.lowercased()) {
+					result.append(group)
+				}
+			}
+			completion(result)
+		}
+	}
+	
 	func leaveGroup(id: Int, index: IndexPath) {
 		groupsLoader.leaveGroup(id: id) { [weak self] result in
 			switch result {
