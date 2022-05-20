@@ -73,7 +73,9 @@ extension MyGroupsViewController: UISearchBarDelegate {
 
 // MARK: - MyGroupsViewInputProtocol
 extension MyGroupsViewController: MyGroupsViewInputProtocol {
-	
+	func showGroupsLoadingError(_ error: Error) {
+		//TODO: Сделать отображение ошибки
+	}
 }
 
 // MARK: - Private methods

@@ -10,7 +10,20 @@ import UIKit
 // MARK: - MyGroupsBuilder
 final class MyGroupsBuilder {
 	
+	/// Билдер модуля экрана отображения групп пользователя
+	/// - Returns: Контроллер экрана групп пользователя
 	static func build() -> UIViewController {
-		return UIViewController()
+		let networkManager = NetworkManager()
+		let cache = ImageCacheManager()
+		let service = GroupsService(networkManager: networkManager, cache: cache)
+		let viewController = MyGroupsViewController()
+		let presenter = MyGroupsPresenter()
+		let interactor = MyGroupsInteractor(groupsService: service)
+		
+		viewController.output = presenter
+		presenter.interactor = interactor
+		presenter.view = viewController
+		
+		return viewController
 	}
 }
