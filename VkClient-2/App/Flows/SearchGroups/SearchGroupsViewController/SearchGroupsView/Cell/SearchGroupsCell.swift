@@ -45,16 +45,14 @@ final class SearchGroupsCell: UITableViewCell {
 	}
 	
 	/// Конфигурируем ячейку для отображения группы
-	func configure(name: String, image: UIImage?, id: Int, isMember: Int) {
-		groupName.text = name
-		groupImage.image = image
-		self.id = id
-		self.isMember = isMember
-		self.name = name
+	func configure(with group: GroupModel) {
+		groupName.text = group.name
+		groupImage.image = UIImage()
+		self.id = group.id
+		self.isMember = group.isMember
+		self.name = group.name
 		
-		self.contentView.addSubview(groupName)
-		self.contentView.addSubview(groupImage)
-		
+		addSubviews()
 		setupConstaints()
 		animate()
 	}
@@ -88,5 +86,10 @@ private extension SearchGroupsCell {
 			groupImage.widthAnchor.constraint(equalToConstant: 58),
 			groupImage.heightAnchor.constraint(equalTo: groupImage.widthAnchor, multiplier: 1.0),
 		])
+	}
+	
+	func addSubviews() {
+		self.contentView.addSubview(groupName)
+		self.contentView.addSubview(groupImage)
 	}
 }

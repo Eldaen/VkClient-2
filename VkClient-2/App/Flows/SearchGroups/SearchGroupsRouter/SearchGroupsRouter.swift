@@ -5,7 +5,7 @@
 //  Created by Денис Сизов on 20.05.2022.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - SearchGroupsRouter
 final class SearchGroupsRouter {

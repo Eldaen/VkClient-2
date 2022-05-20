@@ -102,8 +102,7 @@ extension MyGroupsViewController: MyGroupsViewInputProtocol {
 	}
 	
 	func showGroupsLoadingErrorText(_ text: String) {
-		let alert = UIAlertController(title: "Ошибка",
-									  message: text, preferredStyle: .alert)
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
 		let action = UIAlertAction(title: "Повторить", style: .cancel) {[weak self] _ in
 			self?.output?.fetchGroups()
 		}
@@ -113,8 +112,7 @@ extension MyGroupsViewController: MyGroupsViewInputProtocol {
 	}
 	
 	func showGroupsLeavingErrorText(_ text: String) {
-		let alert = UIAlertController(title: "Ошибка",
-									  message: text, preferredStyle: .alert)
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
 		let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
 		alert.addAction(action)
 		

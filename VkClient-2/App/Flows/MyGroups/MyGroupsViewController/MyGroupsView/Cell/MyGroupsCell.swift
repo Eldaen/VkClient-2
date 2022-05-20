@@ -43,9 +43,7 @@ final class MyGroupsCell: UITableViewCell {
 		groupName.text = group.name
 		self.id = group.id
 		
-		contentView.addSubview(groupName)
-		contentView.addSubview(groupImage)
-		
+		addSubviews()
 		setupConstaints()
 		animate()
 	}
@@ -80,5 +78,10 @@ private extension MyGroupsCell {
 			groupImage.widthAnchor.constraint(equalToConstant: 58),
 			groupImage.heightAnchor.constraint(equalTo: groupImage.widthAnchor, multiplier: 1.0),
 		])
+	}
+	
+	private func addSubviews() {
+		contentView.addSubview(groupName)
+		contentView.addSubview(groupImage)
 	}
 }
