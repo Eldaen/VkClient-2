@@ -10,7 +10,7 @@ import UIKit
 // MARK: - VkLoginBuilder
 final class VkLoginBuilder {
 	
-	/// Билд контроллера экрана авторизации
+	/// Билд модуля отображения экрана авторизации
 	/// - Returns: UIViewController для отображения экрана авторизации
 	static func build() -> UIViewController {
 		let service = VkLoginService()

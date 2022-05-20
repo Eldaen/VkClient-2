@@ -20,7 +20,6 @@ final class TabBarController: UITabBarController {
 
 // MARK: - Private methods
 private extension TabBarController {
-	
 	func configureTabBar() {
 		self.tabBar.tintColor = .black
 		self.tabBar.barTintColor = .white
