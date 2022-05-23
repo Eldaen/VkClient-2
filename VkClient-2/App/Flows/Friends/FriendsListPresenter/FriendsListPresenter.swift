@@ -58,7 +58,9 @@ extension FriendsListPresenter: FriendsListViewOutputProtocol {
 	}
 	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
-		
+		interactor.loadImage(url) { image in
+			completion(image)
+		}
 	}
 	
 	func search(_ query: String) {

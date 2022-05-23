@@ -39,7 +39,9 @@ extension FriendsListInteractor: FriendsListInteractorInputProtocol {
 	}
 	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
-		
+		friendsLoader.loadImage(url: url) { image in
+			completion(image)
+		}
 	}
 	
 	func search(for query: String, in groups: [UserModel], completion: @escaping ([UserModel]) -> Void) {
