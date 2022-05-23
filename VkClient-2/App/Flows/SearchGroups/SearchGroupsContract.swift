@@ -20,6 +20,12 @@ protocol SearchGroupsViewInputProtocol: AnyObject {
 	/// Перезагружает таблицу с группами
 	func reloadTableView()
 	
+	/// Запустить спиннер
+	func startLoadAnimation()
+	
+	/// Останавливает спиннер
+	func stopLoadAnimation()
+	
 	/// Показывает ошибку загрузки групп
 	/// - Parameter error: Ошибка загрузки
 	func showGroupsLoadingErrorText(_ text: String)

@@ -79,8 +79,6 @@ private extension MyGroupsView {
 			tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
 			tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
 			tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
-			spinner.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-			spinner.centerYAnchor.constraint(equalTo: tableView.centerYAnchor),
 		])
 	}
 }

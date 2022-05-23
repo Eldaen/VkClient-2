@@ -35,11 +35,11 @@ final class MyGroupsViewController: UIViewController {
 		configureNavigation()
 		configureSearchbar()
 		setupTableView()
+		startLoadAnimation()
 		output?.fetchGroups()
 	}
 	
 	override func viewDidLayoutSubviews() {
-		startLoadAnimation()
 		myGroupsView.spinner.center = myGroupsView.center
 	}
 }

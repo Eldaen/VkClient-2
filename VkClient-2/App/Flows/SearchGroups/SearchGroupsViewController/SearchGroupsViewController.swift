@@ -32,16 +32,27 @@ final class SearchGroupsViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		startLoadAnimation()
 		configureNavigation()
 		configureSearchbar()
 		setupTableView()
+		startLoadAnimation()
 		output?.fetchGroups()
+	}
+	
+	override func viewDidLayoutSubviews() {
+		searchGroupsView.spinner.center = searchGroupsView.center
 	}
 }
 
 // MARK: - SearchGroupsViewInputProtocol
 extension SearchGroupsViewController: SearchGroupsViewInputProtocol {
+	func stopLoadAnimation() {
+		searchGroupsView.spinner.stopAnimating()
+	}
+	
+	func startLoadAnimation() {
+		searchGroupsView.spinner.startAnimating()
+	}
 	
 	func reloadTableView() {
 		searchGroupsView.tableView.reloadData()
@@ -123,10 +134,6 @@ private extension SearchGroupsViewController {
 	
 	func configureNavigation() {
 		self.title = "Поиск групп"
-	}
-	
-	func startLoadAnimation() {
-		searchGroupsView.spinner.startAnimating()
 	}
 	
 	func configureSearchbar() {

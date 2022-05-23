@@ -38,6 +38,7 @@ extension SearchGroupsPresenter: SearchGroupsViewOutputProtocol {
 				self?.view?.groups = groups
 				self?.view?.filteredGroups = groups
 				self?.view?.reloadTableView()
+				self?.view?.stopLoadAnimation()
 			case .failure:
 				self?.view?.showGroupsLoadingErrorText("Не удалось загрузить группы")
 			}

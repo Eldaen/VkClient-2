@@ -56,7 +56,6 @@ private extension SearchGroupsView {
 	/// Конфигурирует UI
 	func configureUI () {
 		addSubviews()
-		setupSpinner()
 		setupConstraints()
 		setupTableView()
 	}
@@ -64,6 +63,7 @@ private extension SearchGroupsView {
 	/// Добавляет сабвью на основную вью
 	func addSubviews() {
 		self.addSubview(tableView)
+		self.addSubview(spinner)
 		tableView.tableHeaderView = searchBar
 	}
 	
@@ -75,11 +75,6 @@ private extension SearchGroupsView {
 			tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
 			tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
 		])
-	}
-	
-	/// Конфигурирует спиннер загрузки
-	func setupSpinner() {
-		spinner.center = self.center
 	}
 	
 	func setupTableView() {
