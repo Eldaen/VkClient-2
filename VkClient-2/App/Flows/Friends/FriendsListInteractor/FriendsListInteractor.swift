@@ -5,7 +5,7 @@
 //  Created by Денис Сизов on 23.05.2022.
 //
 
-import Foundation
+import UIKit.UIImage
 
 // MARK: - FriendsListInteractor
 final class FriendsListInteractor {
@@ -27,5 +27,22 @@ final class FriendsListInteractor {
 
 // MARK: - FriendsListInteractorInputProtocol
 extension FriendsListInteractor: FriendsListInteractorInputProtocol {
+	func fetchFriends(_ completion: @escaping (Result<[FriendsSection], Error>) -> Void) {
+		friendsLoader.loadFriends { result in
+			switch result {
+			case .success(let friends):
+				completion(.success(friends))
+			case .failure(let error):
+				completion(.failure(error))
+			}
+		}
+	}
 	
+	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
+		
+	}
+	
+	func search(for query: String, in groups: [UserModel], completion: @escaping ([UserModel]) -> Void) {
+		
+	}
 }

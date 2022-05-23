@@ -12,21 +12,32 @@ import UIKit
 protocol FriendsListViewInputProtocol: AnyObject {
 	
 	/// Массив друзей пользователя
-	var friends: [UserModel] { get set }
+	var friends: [FriendsSection] { get set }
 	
 	/// Массив друзей после поиска
-	var filteredFriends: [UserModel] { get set}
+	var filteredFriends: [FriendsSection] { get set}
+	
+	/// Перезагружает таблицу с друзьями
+	func reloadTableView()
 	
 	/// Запустить спиннер
 	func startLoadAnimation()
 	
 	/// Останавливает спиннер
 	func stopLoadAnimation()
+	
+	/// Показывает ошибку загрузки друзей
+	/// - Parameter error: Ошибка загрузки
+	func showFriendsLoadingErrorText(_ text: String)
 }
 
 // MARK: View Output (Presenter -> View)
 /// Исходящий протокол контроллера отображения списка друзей
 protocol FriendsListViewOutputProtocol: AnyObject {
+	
+	/// Возвращает нужного пользователя из секции по indexPath
+	/// - Parameter indexPath: IndexPath ячейки, из которой запрашивают пользователя
+	func getFriendFromSection(at indexPath: IndexPath) -> UserModel?
 	
 	/// Загружает пользователей
 	func fetchFriends()
@@ -48,6 +59,9 @@ protocol FriendsListViewOutputProtocol: AnyObject {
 // MARK: Interactor Input (Presenter -> Interactor)
 /// Входящий протокол интерактора списка друзей
 protocol FriendsListInteractorInputProtocol: AnyObject {
+	
+	/// Загружает список групп пользователя
+	func fetchFriends(_ completion: @escaping (Result<[FriendsSection], Error>) -> Void)
 
 	/// Загружает изображение из сети
 	/// - Parameters:

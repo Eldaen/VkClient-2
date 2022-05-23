@@ -12,10 +12,10 @@ import UIKit.UIImage
 protocol UserLoader: LoaderProtocol {
 	
 	/// Загружает список друзей
-	func loadFriends(completion: @escaping ([FriendsSection]) -> Void)
+	func loadFriends(completion: @escaping (Result<[FriendsSection], Error>) -> Void)
 	
 	/// Загружает все фото пользователя
-	func loadUserPhotos(for id: String, completion: @escaping ([ApiImage]) -> Void)
+	func loadUserPhotos(for id: String, completion: @escaping (Result<[ApiImage], Error>) -> Void)
 	
 	/// Запрашивает кол-во друзей пользователя
 	func getFriendsCount(completion: @escaping (Int) -> Void)
@@ -47,7 +47,7 @@ final class UserService: UserLoader {
 	// MARK: - Methods
 	
 	/// Загружает список друзей
-	func loadFriends(completion: @escaping ([FriendsSection]) -> Void) {
+	func loadFriends(completion: @escaping (Result<[FriendsSection], Error>) -> Void) {
 		let params = [
 			"order" : "name",
 			"fields" : "photo_100",
@@ -89,10 +89,10 @@ final class UserService: UserLoader {
 						self?.setExpiry(key: cacheKey, time: 10 * 60)
 					}
 					
-					completion(sections)
+					completion(.success(sections))
 				}
 			case .failure(let error):
-				debugPrint("Error: \(error.localizedDescription)")
+				completion(.failure(error))
 			}
 		}
 	}
@@ -112,7 +112,7 @@ final class UserService: UserLoader {
 	}
 	
 	/// Загружает все фото пользователя
-	func loadUserPhotos(for id: String, completion: @escaping ([ApiImage]) -> Void) {
+	func loadUserPhotos(for id: String, completion: @escaping (Result<[ApiImage], Error>) -> Void) {
 		let params = [
 			"owner_id" : id,
 			"count": "50",
@@ -123,9 +123,9 @@ final class UserService: UserLoader {
 			switch result {
 			case .success(let imagesResponse):
 				let imagesModels = imagesResponse.response.items
-				completion(imagesModels)
-			case .failure(_):
-				break
+				completion(.success(imagesModels))
+			case .failure(let error):
+				completion(.failure(error))
 			}
 		}
 	}

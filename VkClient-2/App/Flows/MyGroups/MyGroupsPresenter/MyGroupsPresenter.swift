@@ -48,7 +48,7 @@ extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
 	}
 	
 	func fetchGroups() {
-		interactor.fetchGroups() { [weak self] result in
+		interactor.fetchGroups { [weak self] result in
 			switch result {
 			case .success (let groups):
 				self?.view?.groups = groups

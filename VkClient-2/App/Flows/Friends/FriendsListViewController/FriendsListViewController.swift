@@ -20,8 +20,8 @@ final class FriendsListViewController: UIViewController {
 		return self.view as! FriendsListView
 	}
 	
-	var friends = [UserModel]()
-	var filteredFriends = [UserModel]()
+	var friends = [FriendsSection]()
+	var filteredFriends = [FriendsSection]()
 	
 	// MARK: - Life Cycle
 	
@@ -52,7 +52,9 @@ extension FriendsListViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell: FriendsListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-		let friend = filteredFriends[indexPath.row]
+		guard let friend = output?.getFriendFromSection(at: indexPath) else {
+			return UITableViewCell()
+		}
 		
 		output?.loadImage(friend.image) { image in
 			cell.setImage(with: image)
@@ -74,6 +76,20 @@ extension FriendsListViewController: UISearchBarDelegate {
 
 // MARK: - FriendsListViewInputProtocol
 extension FriendsListViewController: FriendsListViewInputProtocol {
+	func showFriendsLoadingErrorText(_ text: String) {
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "Повторить", style: .cancel) {[weak self] _ in
+			self?.output?.fetchFriends()
+		}
+		alert.addAction(action)
+		
+		present(alert, animated: true, completion: nil)
+	}
+	
+	func reloadTableView() {
+		friendsListView.tableView.reloadData()
+	}
+	
 	func startLoadAnimation() {
 		friendsListView.spinner.startAnimating()
 	}
