@@ -13,7 +13,7 @@ final class FriendsListInteractor {
 	// MARK: - Properties
 	
 	/// Cсылка на презентер
-	weak var output: MyGroupsInteractorOutputProtocol?
+	weak var output: FriendsListInteractorOutputProtocol?
 	
 	/// Cервис по работе с группами
 	private var friendsLoader: UserLoader

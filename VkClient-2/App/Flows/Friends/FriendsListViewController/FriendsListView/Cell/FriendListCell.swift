@@ -33,7 +33,8 @@ final class FriendsListCell: UITableViewCell {
 	/// Функция конфигурации ячейки перед использованием
 	func configure(with user: UserModel) {
 		friendName.text = user.name
-
+		
+		addSubviews()
 		setupConstaints()
 		animate()
 	}

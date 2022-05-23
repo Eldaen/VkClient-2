@@ -22,6 +22,7 @@ final class FriendsListViewController: UIViewController {
 	
 	var friends = [FriendsSection]()
 	var filteredFriends = [FriendsSection]()
+	var lettersOfNames = [String]()
 	
 	// MARK: - Life Cycle
 	
@@ -47,7 +48,25 @@ final class FriendsListViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension FriendsListViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		filteredFriends[section].data.count
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
 		filteredFriends.count
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		let section = filteredFriends[section]
+		return String(section.key)
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		return getHeader(for: section)
+	}
+	
+	/// Создаёт массив заголовков секций, по одной букве, с которой начинаются имена друзей
+	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+		return lettersOfNames
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,5 +135,18 @@ private extension FriendsListViewController {
 	
 	func configureSearchbar() {
 		friendsListView.searchBar.delegate = self
+	}
+	
+	func getHeader(for section: Int) -> UIView {
+		let header = UIView()
+		header.backgroundColor = .lightGray.withAlphaComponent(0.5)
+		
+		let leter: UILabel = UILabel(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
+		leter.textColor = UIColor.black.withAlphaComponent(0.5)
+		leter.text = String(filteredFriends[section].key)
+		leter.font = UIFont.fourteen
+	
+		header.addSubview(leter)
+		return header
 	}
 }

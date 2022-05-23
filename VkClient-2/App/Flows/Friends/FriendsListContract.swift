@@ -15,7 +15,10 @@ protocol FriendsListViewInputProtocol: AnyObject {
 	var friends: [FriendsSection] { get set }
 	
 	/// Массив друзей после поиска
-	var filteredFriends: [FriendsSection] { get set}
+	var filteredFriends: [FriendsSection] { get set }
+	
+	/// Список букв для заголовков секций
+	var lettersOfNames: [String] { get set }
 	
 	/// Перезагружает таблицу с друзьями
 	func reloadTableView()
@@ -76,7 +79,7 @@ protocol FriendsListInteractorInputProtocol: AnyObject {
 
 // MARK: Interactor Output (Interactor -> Presenter)
 /// Исходящий протокол интерактора списка друзей
-protocol FriendsListnteractorOutputProtocol: AnyObject {
+protocol FriendsListInteractorOutputProtocol: AnyObject {
 	
 }
 

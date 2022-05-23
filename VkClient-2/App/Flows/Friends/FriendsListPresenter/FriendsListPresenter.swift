@@ -48,6 +48,7 @@ extension FriendsListPresenter: FriendsListViewOutputProtocol {
 			case .success (let friends):
 				self?.view?.friends = friends
 				self?.view?.filteredFriends = friends
+				self?.formSectionHeaders(for: friends)
 				self?.view?.reloadTableView()
 				self?.view?.stopLoadAnimation()
 			case .failure:
@@ -70,6 +71,17 @@ extension FriendsListPresenter: FriendsListViewOutputProtocol {
 }
 
 // MARK: - FriendsListnteractorOutputProtocol
-extension FriendsListPresenter: FriendsListnteractorOutputProtocol {
+extension FriendsListPresenter: FriendsListInteractorOutputProtocol {
 	
+}
+
+// MARK: - Private methods
+private extension FriendsListPresenter {
+	func formSectionHeaders(for sections: [FriendsSection]) {
+		var result = [String]()
+		for section in sections {
+			result.append(String(section.key))
+		}
+		view?.lettersOfNames = result
+	}
 }

@@ -62,6 +62,7 @@
 		D0B3279B283BC34A007E5140 /* FriendsCountMainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279A283BC34A007E5140 /* FriendsCountMainResponse.swift */; };
 		D0B3279D283BC378007E5140 /* VkFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */; };
 		D0B3279F283BC3FA007E5140 /* FriendsCountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */; };
+		D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -147,6 +148,7 @@
 		D0B3279A283BC34A007E5140 /* FriendsCountMainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCountMainResponse.swift; sourceTree = "<group>"; };
 		D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkFriendsResponse.swift; sourceTree = "<group>"; };
 		D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCountResponse.swift; sourceTree = "<group>"; };
+		D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListRouter.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 		D0B3277D283BACD1007E5140 /* FriendsListRouter */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */,
 			);
 			path = FriendsListRouter;
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 				D0B3276E2837CDF7007E5140 /* SearchGroupsPresenter.swift in Sources */,
 				D0B327442836F18C007E5140 /* MyGroupsPresenter.swift in Sources */,
 				D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */,
+				D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */,
 				D0B3272028240547007E5140 /* MyGroupsViewController.swift in Sources */,
 				D0B32751283789A2007E5140 /* UserImagesMainResponse.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
