@@ -63,6 +63,7 @@
 		D0B3279D283BC378007E5140 /* VkFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */; };
 		D0B3279F283BC3FA007E5140 /* FriendsCountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */; };
 		D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */; };
+		D0B327A5283BEBDB007E5140 /* FriendsProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327A4283BEBDB007E5140 /* FriendsProfileBuilder.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -149,6 +150,7 @@
 		D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkFriendsResponse.swift; sourceTree = "<group>"; };
 		D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCountResponse.swift; sourceTree = "<group>"; };
 		D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListRouter.swift; sourceTree = "<group>"; };
+		D0B327A4283BEBDB007E5140 /* FriendsProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileBuilder.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -374,12 +376,12 @@
 			path = ApiGetGroups;
 			sourceTree = "<group>";
 		};
-		D0B327612837AC00007E5140 /* SearchGroups */ = {
+		D0B327612837AC00007E5140 /* SearchGroupsBuilder */ = {
 			isa = PBXGroup;
 			children = (
 				D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */,
 			);
-			path = SearchGroups;
+			path = SearchGroupsBuilder;
 			sourceTree = "<group>";
 		};
 		D0B327642837C708007E5140 /* SearchGroups */ = {
@@ -518,6 +520,14 @@
 			path = ApiGetFriends;
 			sourceTree = "<group>";
 		};
+		D0B327A3283BEBC0007E5140 /* FriendsProfileBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327A4283BEBDB007E5140 /* FriendsProfileBuilder.swift */,
+			);
+			path = FriendsProfileBuilder;
+			sourceTree = "<group>";
+		};
 		D0DCDB47281814500065E7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -621,7 +631,8 @@
 		D0DCDB8D2818151B0065E7C5 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				D0B327612837AC00007E5140 /* SearchGroups */,
+				D0B327A3283BEBC0007E5140 /* FriendsProfileBuilder */,
+				D0B327612837AC00007E5140 /* SearchGroupsBuilder */,
 				D0B327102823F750007E5140 /* NewsBuilder */,
 				D0B3270F2823F74A007E5140 /* FriendsListBuilder */,
 				D0B3270E2823F741007E5140 /* MyGroupsBuilder */,
@@ -829,6 +840,7 @@
 				D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */,
 				D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */,
 				D0B3272028240547007E5140 /* MyGroupsViewController.swift in Sources */,
+				D0B327A5283BEBDB007E5140 /* FriendsProfileBuilder.swift in Sources */,
 				D0B32751283789A2007E5140 /* UserImagesMainResponse.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
 				D0B327702837CE60007E5140 /* SearchGroupsInteractor.swift in Sources */,

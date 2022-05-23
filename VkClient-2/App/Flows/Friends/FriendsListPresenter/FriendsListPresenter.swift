@@ -31,6 +31,10 @@ final class FriendsListPresenter {
 
 // MARK: - FriendsListViewOutputProtocol
 extension FriendsListPresenter: FriendsListViewOutputProtocol {
+	func openProfile(for friend: UserModel) {
+		router.openProfile(for: friend)
+	}
+	
 	func getFriendFromSection(at indexPath: IndexPath) -> UserModel? {
 		guard let view = view else { return nil }
 		guard indexPath.section < view.filteredFriends.count else { return nil }

@@ -57,6 +57,11 @@ protocol FriendsListViewOutputProtocol: AnyObject {
 	
 	/// Отменяет поиск
 	func cancelSearch()
+	
+	/// Передаёт роутеру запрос на переход в профиль польхзователя
+	/// - Parameters:
+	///   - friend: Модель пользователя, чей профиль открывать
+	func openProfile(for friend: UserModel)
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
@@ -89,5 +94,5 @@ protocol FriendsListRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
 
 	/// Переход на экран профиля друга
-	func navigateToFriendProfile()
+	func openProfile(for friend: UserModel)
 }

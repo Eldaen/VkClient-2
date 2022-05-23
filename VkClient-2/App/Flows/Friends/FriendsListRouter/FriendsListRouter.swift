@@ -13,7 +13,10 @@ final class FriendsListRouter {
 
 // MARK: - VkLoginRouterInputProtocol
 extension FriendsListRouter: FriendsListRouterInputProtocol {
-	func navigateToFriendProfile() {
-		
+	func openProfile(for friend: UserModel) {
+		viewController?.navigationController?.pushViewController(
+			FriendsProfileBuilder.build(userModel: friend)
+			, animated: true
+		)
 	}
 }
