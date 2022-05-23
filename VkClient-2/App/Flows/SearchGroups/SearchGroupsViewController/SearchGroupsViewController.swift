@@ -23,6 +23,21 @@ final class SearchGroupsViewController: UIViewController {
 		return self.view as! SearchGroupsView
 	}
 	
+	// MARK: - LifeCycle
+	
+	override func loadView() {
+		super.loadView()
+		self.view = SearchGroupsView()
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		startLoadAnimation()
+		configureNavigation()
+		configureSearchbar()
+		setupTableView()
+		output?.fetchGroups()
+	}
 }
 
 // MARK: - SearchGroupsViewInputProtocol
@@ -72,7 +87,29 @@ extension SearchGroupsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension SearchGroupsViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let cell = tableView.cellForRow(at: indexPath) as? SearchGroupsCell,
+			  let id = cell.id else {
+			return
+		}
+		output?.joinGroup(id: id)
+	}
+}
+
+extension SearchGroupsViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		searchBar.showsCancelButton = true
+		output?.search(searchText)
+	}
 	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.showsCancelButton = false
+		searchBar.text = nil
+		searchBar.resignFirstResponder()
+		
+		output?.cancelSearch()
+		reloadTableView()
+	}
 }
 
 // MARK: - Private methods
@@ -83,5 +120,17 @@ private extension SearchGroupsViewController {
 		searchGroupsView.tableView.register(registerClass: SearchGroupsCell.self)
 		searchGroupsView.tableView.dataSource = self
 		searchGroupsView.tableView.delegate = self
+	}
+	
+	func configureNavigation() {
+		self.title = "Мои группы"
+	}
+	
+	func startLoadAnimation() {
+		searchGroupsView.spinner.startAnimating()
+	}
+	
+	func configureSearchbar() {
+		searchGroupsView.searchBar.delegate = self
 	}
 }
