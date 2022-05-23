@@ -90,7 +90,19 @@ extension FriendsListViewController: UITableViewDelegate {
 
 // MARK: - UISearchBarDelegate
 extension FriendsListViewController: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		searchBar.showsCancelButton = true
+		output?.search(searchText)
+	}
 	
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.showsCancelButton = false
+		searchBar.text = nil
+		searchBar.resignFirstResponder()
+		
+		output?.cancelSearch()
+		reloadTableView()
+	}
 }
 
 // MARK: - FriendsListViewInputProtocol

@@ -63,7 +63,7 @@ protocol FriendsListViewOutputProtocol: AnyObject {
 /// Входящий протокол интерактора списка друзей
 protocol FriendsListInteractorInputProtocol: AnyObject {
 	
-	/// Загружает список групп пользователя
+	/// Загружает список друзей пользователя
 	func fetchFriends(_ completion: @escaping (Result<[FriendsSection], Error>) -> Void)
 
 	/// Загружает изображение из сети
@@ -72,9 +72,9 @@ protocol FriendsListInteractorInputProtocol: AnyObject {
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
 	
-	/// Фильтрует группы по указанному запросу
+	/// Фильтрует друзей по указанному запросу
 	/// - Parameter query: Текс запроса
-	func search(for query: String, in groups: [UserModel], completion: @escaping ([UserModel]) -> Void)
+	func search(for query: String, in groups: [FriendsSection], completion: @escaping ([FriendsSection]) -> Void)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)

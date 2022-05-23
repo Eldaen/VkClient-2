@@ -64,11 +64,14 @@ extension FriendsListPresenter: FriendsListViewOutputProtocol {
 	}
 	
 	func search(_ query: String) {
-		
+		interactor.search(for: query, in: view?.friends ?? []) { [weak self] friends in
+			self?.view?.filteredFriends = friends
+			self?.view?.reloadTableView()
+		}
 	}
 	
 	func cancelSearch() {
-		
+		view?.filteredFriends = view?.friends ?? []
 	}
 }
 

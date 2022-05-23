@@ -44,7 +44,44 @@ extension FriendsListInteractor: FriendsListInteractorInputProtocol {
 		}
 	}
 	
-	func search(for query: String, in groups: [UserModel], completion: @escaping ([UserModel]) -> Void) {
+	func search(for query: String, in friends: [FriendsSection], completion: @escaping ([FriendsSection]) -> Void) {
+		var result = [FriendsSection]()
 		
+		if query == "" {
+			result = friends
+			completion(result)
+		} else {
+			for section in friends { // сначала перебираем массив секций с друзьями
+				for (_, friend) in section.data.enumerated() { // потом перебираем массивы друзей в секциях
+					if friend.name.lowercased().contains(query.lowercased()) { // Ищем в имени нужный текст, оба текста сравниваем в нижнем регистре
+						var searchedSection = section
+						
+						// Если фильтр пустой, то можно сразу добавлять
+						if result.isEmpty {
+							searchedSection.data = [friend]
+							result.append(searchedSection)
+						} else {
+							
+							// Если в массиве секций уже есть секция с таким ключом, то нужно к имеющемуся массиву друзей добавить друга
+							var found = false
+							for (sectionIndex, filteredSection) in result.enumerated() {
+								if filteredSection.key == section.key {
+									result[sectionIndex].data.append(friend)
+									found = true
+									break
+								}
+							}
+							
+							// Если такого ключа ещё нет, то создаём новый массив с нашим найденным другом
+							if !found {
+								searchedSection.data = [friend]
+								result.append(searchedSection)
+							}
+						}
+					}
+				}
+			}
+		}
+		completion(result)
 	}
 }
