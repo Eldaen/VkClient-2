@@ -32,11 +32,15 @@ final class MyGroupsViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		startLoadAnimation()
 		configureNavigation()
 		configureSearchbar()
 		setupTableView()
 		output?.fetchGroups()
+	}
+	
+	override func viewDidLayoutSubviews() {
+		startLoadAnimation()
+		myGroupsView.spinner.center = myGroupsView.center
 	}
 }
 
@@ -103,7 +107,16 @@ extension MyGroupsViewController: MyGroupsViewInputProtocol {
 	}
 	
 	func reloadViewData() {
+		startLoadAnimation()
 		output?.fetchGroups()
+	}
+	
+	func stopLoadAnimation() {
+		myGroupsView.spinner.stopAnimating()
+	}
+	
+	func startLoadAnimation() {
+		myGroupsView.spinner.startAnimating()
 	}
 	
 	func showGroupsLoadingErrorText(_ text: String) {
@@ -150,10 +163,6 @@ private extension MyGroupsViewController {
 		myGroupsView.tableView.register(registerClass: MyGroupsCell.self)
 		myGroupsView.tableView.dataSource = self
 		myGroupsView.tableView.delegate = self
-	}
-	
-	func startLoadAnimation() {
-		myGroupsView.spinner.startAnimating()
 	}
 	
 	func configureSearchbar() {

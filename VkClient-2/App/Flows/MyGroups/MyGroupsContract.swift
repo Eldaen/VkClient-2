@@ -23,6 +23,12 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 	/// Обновляет список групп
 	func reloadViewData()
 	
+	/// Запустить спиннер
+	func startLoadAnimation()
+	
+	/// Останавливает спиннер
+	func stopLoadAnimation()
+	
 	/// Показывает ошибку загрузки групп
 	/// - Parameter error: Ошибка загрузки
 	func showGroupsLoadingErrorText(_ text: String)

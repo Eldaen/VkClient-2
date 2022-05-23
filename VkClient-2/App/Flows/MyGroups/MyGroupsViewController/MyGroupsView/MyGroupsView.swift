@@ -57,18 +57,12 @@ private extension MyGroupsView {
 	func configureUI() {
 		addSubviews()
 		setupTableView()
-		setupSpinner()
 		setupConstraints()
 	}
 	
 	/// Конфигурирует таблицу
 	func setupTableView() {
 		tableView.rowHeight = 80
-	}
-	
-	/// Конфигурирует спиннер загрузки
-	func setupSpinner() {
-		spinner.center = self.center
 	}
 	
 	/// Добавляет сабвью на основную вью
@@ -84,7 +78,9 @@ private extension MyGroupsView {
 			tableView.topAnchor.constraint(equalTo: self.topAnchor),
 			tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
 			tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
-			tableView.rightAnchor.constraint(equalTo: self.rightAnchor)
+			tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
+			spinner.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+			spinner.centerYAnchor.constraint(equalTo: tableView.centerYAnchor),
 		])
 	}
 }
