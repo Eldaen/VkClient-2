@@ -79,7 +79,6 @@ extension SearchGroupsViewController: UITableViewDataSource {
 		output?.loadImage(group.image, completion: { image in
 			cell.setImage(with: image)
 		})
-		
 		cell.configure(with: group)
 		return cell
 	}

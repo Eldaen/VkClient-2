@@ -47,7 +47,6 @@ final class SearchGroupsCell: UITableViewCell {
 	/// Конфигурируем ячейку для отображения группы
 	func configure(with group: GroupModel) {
 		groupName.text = group.name
-		groupImage.image = UIImage()
 		self.id = group.id
 		self.isMember = group.isMember
 		self.name = group.name
