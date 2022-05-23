@@ -10,7 +10,23 @@ import UIKit
 // MARK: - SearchGroupsBuilder
 final class SearchGroupsBuilder {
 	
+	/// Билдер модуля экрана поиска групп
+	/// - Returns: Контроллер экрана поиска групп
 	static func build() -> UIViewController {
-		return UIViewController()
+		let networkManager = NetworkManager()
+		let cache = ImageCacheManager()
+		let service = GroupsService(networkManager: networkManager, cache: cache)
+		let viewController = SearchGroupsViewController()
+		let interactor = SearchGroupsInteractor(groupsService: service)
+		let router = SearchGroupsRouter()
+		let presenter = SearchGroupsPresenter(router: router, interactor: interactor, view: viewController)
+		
+		viewController.output = presenter
+		presenter.interactor = interactor
+		presenter.view = viewController
+		router.viewController = viewController
+		interactor.output = presenter
+		
+		return viewController
 	}
 }
