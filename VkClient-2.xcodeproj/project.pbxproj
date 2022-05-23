@@ -47,6 +47,23 @@
 		D0B327722837CF12007E5140 /* SearchGroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327712837CF12007E5140 /* SearchGroupsRouter.swift */; };
 		D0B327752837CFAD007E5140 /* SearchGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327742837CFAD007E5140 /* SearchGroupsView.swift */; };
 		D0B3277828383CF5007E5140 /* SearchGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3277728383CF5007E5140 /* SearchGroupsCell.swift */; };
+		D0B32781283BAD21007E5140 /* FriendsListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32780283BAD21007E5140 /* FriendsListContract.swift */; };
+		D0B32783283BAEAA007E5140 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32782283BAEAA007E5140 /* UserModel.swift */; };
+		D0B32785283BAF19007E5140 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32784283BAF19007E5140 /* FriendsListViewController.swift */; };
+		D0B32787283BAFC9007E5140 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32786283BAFC9007E5140 /* FriendsListView.swift */; };
+		D0B32789283BB0DB007E5140 /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32788283BB0DB007E5140 /* FriendListCell.swift */; };
+		D0B3278B283BB447007E5140 /* FriendsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3278A283BB447007E5140 /* FriendsListPresenter.swift */; };
+		D0B3278D283BB674007E5140 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3278C283BB674007E5140 /* AvatarView.swift */; };
+		D0B3278F283BB75F007E5140 /* Extension+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3278E283BB75F007E5140 /* Extension+UIFont.swift */; };
+		D0B32791283BB9C6007E5140 /* FriendsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32790283BB9C6007E5140 /* FriendsListInteractor.swift */; };
+		D0B32793283BBF9A007E5140 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32792283BBF9A007E5140 /* UserService.swift */; };
+		D0B32796283BC0AB007E5140 /* FriendsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32795283BC0AB007E5140 /* FriendsSection.swift */; };
+		D0B32799283BC32F007E5140 /* VkFriendsMainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32798283BC32F007E5140 /* VkFriendsMainResponse.swift */; };
+		D0B3279B283BC34A007E5140 /* FriendsCountMainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279A283BC34A007E5140 /* FriendsCountMainResponse.swift */; };
+		D0B3279D283BC378007E5140 /* VkFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */; };
+		D0B3279F283BC3FA007E5140 /* FriendsCountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */; };
+		D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */; };
+		D0B327A5283BEBDB007E5140 /* FriendsProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327A4283BEBDB007E5140 /* FriendsProfileBuilder.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -117,6 +134,23 @@
 		D0B327712837CF12007E5140 /* SearchGroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsRouter.swift; sourceTree = "<group>"; };
 		D0B327742837CFAD007E5140 /* SearchGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsView.swift; sourceTree = "<group>"; };
 		D0B3277728383CF5007E5140 /* SearchGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupsCell.swift; sourceTree = "<group>"; };
+		D0B32780283BAD21007E5140 /* FriendsListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListContract.swift; sourceTree = "<group>"; };
+		D0B32782283BAEAA007E5140 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D0B32784283BAF19007E5140 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		D0B32786283BAFC9007E5140 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
+		D0B32788283BB0DB007E5140 /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
+		D0B3278A283BB447007E5140 /* FriendsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListPresenter.swift; sourceTree = "<group>"; };
+		D0B3278C283BB674007E5140 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		D0B3278E283BB75F007E5140 /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
+		D0B32790283BB9C6007E5140 /* FriendsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListInteractor.swift; sourceTree = "<group>"; };
+		D0B32792283BBF9A007E5140 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		D0B32795283BC0AB007E5140 /* FriendsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSection.swift; sourceTree = "<group>"; };
+		D0B32798283BC32F007E5140 /* VkFriendsMainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkFriendsMainResponse.swift; sourceTree = "<group>"; };
+		D0B3279A283BC34A007E5140 /* FriendsCountMainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCountMainResponse.swift; sourceTree = "<group>"; };
+		D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkFriendsResponse.swift; sourceTree = "<group>"; };
+		D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCountResponse.swift; sourceTree = "<group>"; };
+		D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListRouter.swift; sourceTree = "<group>"; };
+		D0B327A4283BEBDB007E5140 /* FriendsProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileBuilder.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +237,7 @@
 			children = (
 				D0B327012823DA08007E5140 /* VkLoginService.swift */,
 				D0B32747283785FA007E5140 /* GroupsService.swift */,
+				D0B32792283BBF9A007E5140 /* UserService.swift */,
 				D0B32749283786A0007E5140 /* LoaderProtocol.swift */,
 			);
 			path = Services;
@@ -316,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B3273F28366C3E007E5140 /* Extension+UITableView.swift */,
+				D0B3278E283BB75F007E5140 /* Extension+UIFont.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,12 +376,12 @@
 			path = ApiGetGroups;
 			sourceTree = "<group>";
 		};
-		D0B327612837AC00007E5140 /* SearchGroups */ = {
+		D0B327612837AC00007E5140 /* SearchGroupsBuilder */ = {
 			isa = PBXGroup;
 			children = (
 				D0B327622837AC11007E5140 /* SearchGroupsBuilder.swift */,
 			);
-			path = SearchGroups;
+			path = SearchGroupsBuilder;
 			sourceTree = "<group>";
 		};
 		D0B327642837C708007E5140 /* SearchGroups */ = {
@@ -408,6 +444,88 @@
 				D0B3277728383CF5007E5140 /* SearchGroupsCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D0B32779283BACA8007E5140 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3277D283BACD1007E5140 /* FriendsListRouter */,
+				D0B3277C283BACC8007E5140 /* FriendsListInteractor */,
+				D0B3277B283BACC1007E5140 /* FriendsListPresenter */,
+				D0B3277A283BACB2007E5140 /* FriendsListViewController */,
+				D0B32780283BAD21007E5140 /* FriendsListContract.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		D0B3277A283BACB2007E5140 /* FriendsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3277E283BAD00007E5140 /* FriendsListView */,
+				D0B32784283BAF19007E5140 /* FriendsListViewController.swift */,
+			);
+			path = FriendsListViewController;
+			sourceTree = "<group>";
+		};
+		D0B3277B283BACC1007E5140 /* FriendsListPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3278A283BB447007E5140 /* FriendsListPresenter.swift */,
+			);
+			path = FriendsListPresenter;
+			sourceTree = "<group>";
+		};
+		D0B3277C283BACC8007E5140 /* FriendsListInteractor */ = {
+			isa = PBXGroup;
+			children = (
+				D0B32790283BB9C6007E5140 /* FriendsListInteractor.swift */,
+			);
+			path = FriendsListInteractor;
+			sourceTree = "<group>";
+		};
+		D0B3277D283BACD1007E5140 /* FriendsListRouter */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327A0283BCC6E007E5140 /* FriendsListRouter.swift */,
+			);
+			path = FriendsListRouter;
+			sourceTree = "<group>";
+		};
+		D0B3277E283BAD00007E5140 /* FriendsListView */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3277F283BAD0C007E5140 /* Cell */,
+				D0B32786283BAFC9007E5140 /* FriendsListView.swift */,
+				D0B3278C283BB674007E5140 /* AvatarView.swift */,
+			);
+			path = FriendsListView;
+			sourceTree = "<group>";
+		};
+		D0B3277F283BAD0C007E5140 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D0B32788283BB0DB007E5140 /* FriendListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D0B32797283BC30D007E5140 /* ApiGetFriends */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3279A283BC34A007E5140 /* FriendsCountMainResponse.swift */,
+				D0B3279E283BC3FA007E5140 /* FriendsCountResponse.swift */,
+				D0B32798283BC32F007E5140 /* VkFriendsMainResponse.swift */,
+				D0B3279C283BC378007E5140 /* VkFriendsResponse.swift */,
+			);
+			path = ApiGetFriends;
+			sourceTree = "<group>";
+		};
+		D0B327A3283BEBC0007E5140 /* FriendsProfileBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327A4283BEBDB007E5140 /* FriendsProfileBuilder.swift */,
+			);
+			path = FriendsProfileBuilder;
 			sourceTree = "<group>";
 		};
 		D0DCDB47281814500065E7C5 = {
@@ -501,6 +619,7 @@
 		D0DCDB8C281815150065E7C5 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				D0B32779283BACA8007E5140 /* Friends */,
 				D0B327642837C708007E5140 /* SearchGroups */,
 				D0B32717282403E8007E5140 /* MyGroups */,
 				D0B3270B2823F4A7007E5140 /* TabBar */,
@@ -512,7 +631,8 @@
 		D0DCDB8D2818151B0065E7C5 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				D0B327612837AC00007E5140 /* SearchGroups */,
+				D0B327A3283BEBC0007E5140 /* FriendsProfileBuilder */,
+				D0B327612837AC00007E5140 /* SearchGroupsBuilder */,
 				D0B327102823F750007E5140 /* NewsBuilder */,
 				D0B3270F2823F74A007E5140 /* FriendsListBuilder */,
 				D0B3270E2823F741007E5140 /* MyGroupsBuilder */,
@@ -524,10 +644,13 @@
 		D0DCDB8E281815220065E7C5 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				D0B32797283BC30D007E5140 /* ApiGetFriends */,
 				D0B3275828379672007E5140 /* ApiGetGroups */,
 				D0B3274D28378940007E5140 /* ApiUserImages */,
 				D0B327412836EC1D007E5140 /* GroupModel.swift */,
 				D0B3275D28379713007E5140 /* ApiBoolResponse.swift */,
+				D0B32782283BAEAA007E5140 /* UserModel.swift */,
+				D0B32795283BC0AB007E5140 /* FriendsSection.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -693,49 +816,66 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B3279B283BC34A007E5140 /* FriendsCountMainResponse.swift in Sources */,
 				D0B327162823F7AA007E5140 /* NewsBuilder.swift in Sources */,
+				D0B3279F283BC3FA007E5140 /* FriendsCountResponse.swift in Sources */,
 				D0B3271E28240474007E5140 /* MyGroupsContract.swift in Sources */,
+				D0B32787283BAFC9007E5140 /* FriendsListView.swift in Sources */,
 				D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */,
 				D0B326E428183607007E5140 /* VkLoginPresenter.swift in Sources */,
 				D0B3274C283788E3007E5140 /* ApiImage.swift in Sources */,
 				D0B327072823E936007E5140 /* SessionManager.swift in Sources */,
+				D0B32793283BBF9A007E5140 /* UserService.swift in Sources */,
 				D0B3275A28379698007E5140 /* GroupsMyResponse.swift in Sources */,
 				D0B32722282405A8007E5140 /* MyGroupsView.swift in Sources */,
+				D0B32783283BAEAA007E5140 /* UserModel.swift in Sources */,
 				D0B32748283785FA007E5140 /* GroupsService.swift in Sources */,
 				D0B3274F28378955007E5140 /* ImageSizes.swift in Sources */,
+				D0B32791283BB9C6007E5140 /* FriendsListInteractor.swift in Sources */,
+				D0B32799283BC32F007E5140 /* VkFriendsMainResponse.swift in Sources */,
 				D0B327122823F75E007E5140 /* MyGroupsBuilder.swift in Sources */,
 				D0B3272528240820007E5140 /* MyGroupsCell.swift in Sources */,
 				D0B3276E2837CDF7007E5140 /* SearchGroupsPresenter.swift in Sources */,
 				D0B327442836F18C007E5140 /* MyGroupsPresenter.swift in Sources */,
 				D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */,
+				D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */,
 				D0B3272028240547007E5140 /* MyGroupsViewController.swift in Sources */,
+				D0B327A5283BEBDB007E5140 /* FriendsProfileBuilder.swift in Sources */,
 				D0B32751283789A2007E5140 /* UserImagesMainResponse.swift in Sources */,
 				D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */,
 				D0B327702837CE60007E5140 /* SearchGroupsInteractor.swift in Sources */,
 				D0B3277828383CF5007E5140 /* SearchGroupsCell.swift in Sources */,
+				D0B3278F283BB75F007E5140 /* Extension+UIFont.swift in Sources */,
 				D0B32753283789C1007E5140 /* UserImagesResponse.swift in Sources */,
 				D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */,
 				D0B327422836EC1D007E5140 /* GroupModel.swift in Sources */,
 				D0DCDB93281816490065E7C5 /* VkLoginViewController.swift in Sources */,
+				D0B32781283BAD21007E5140 /* FriendsListContract.swift in Sources */,
 				D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */,
 				D0B327752837CFAD007E5140 /* SearchGroupsView.swift in Sources */,
 				D0B327142823F792007E5140 /* FriendsListBuilder.swift in Sources */,
 				D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */,
 				D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */,
+				D0B3278B283BB447007E5140 /* FriendsListPresenter.swift in Sources */,
 				D0B327632837AC11007E5140 /* SearchGroupsBuilder.swift in Sources */,
 				D0B326FF2823B73C007E5140 /* VkLoginView.swift in Sources */,
+				D0B32796283BC0AB007E5140 /* FriendsSection.swift in Sources */,
 				D0B3276A2837C8FF007E5140 /* SearchGroupsContract.swift in Sources */,
 				D0B3274028366C3E007E5140 /* Extension+UITableView.swift in Sources */,
 				D0B3274628378456007E5140 /* MyGroupsInteractor.swift in Sources */,
 				D0B3275C283796B6007E5140 /* GroupsMyMainResponse.swift in Sources */,
 				D0B3274A283786A0007E5140 /* LoaderProtocol.swift in Sources */,
 				D0B3270D2823F4B3007E5140 /* TabBarController.swift in Sources */,
+				D0B32789283BB0DB007E5140 /* FriendListCell.swift in Sources */,
 				D0B327572837901F007E5140 /* ImageCacheManager.swift in Sources */,
+				D0B32785283BAF19007E5140 /* FriendsListViewController.swift in Sources */,
 				D0B3275528378BFE007E5140 /* NetworkManager.swift in Sources */,
+				D0B3279D283BC378007E5140 /* VkFriendsResponse.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,
 				D0B327722837CF12007E5140 /* SearchGroupsRouter.swift in Sources */,
 				D0B3276C2837CD80007E5140 /* SearchGroupsViewController.swift in Sources */,
 				D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */,
+				D0B3278D283BB674007E5140 /* AvatarView.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

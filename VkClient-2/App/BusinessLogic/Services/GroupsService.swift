@@ -7,6 +7,7 @@
 
 import UIKit.UIImage
 
+// MARK: - GroupsLoader protocol
 /// Протокол загрузки данных групп
 protocol GroupsLoader: LoaderProtocol {
 	
@@ -33,8 +34,11 @@ protocol GroupsLoader: LoaderProtocol {
 	func leaveGroup(id: Int, completion: @escaping (Result<Int, Error>) -> Void)
 }
 
+// MARK: - GroupsService
 /// Сервис загрузки данных для групп из сети
 final class GroupsService: GroupsLoader {
+	
+	// MARK: - Properties
 	
 	internal var networkManager: NetworkManagerProtocol
 	internal var cache: ImageCacheInput
@@ -43,11 +47,15 @@ final class GroupsService: GroupsLoader {
 	/// Ключ для сохранения данных о просрочке в Userdefaults
 	let cacheKey = "groupsExpiry"
 	
+	// MARK: - Init
+	
 	init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput/*, persistence: PersistenceManager*/) {
 		self.networkManager = networkManager
 		self.cache = cache
 		//self.persistence = persistence
 	}
+	
+	// MARK: - Methods
 	
 	/// Загружает список групп пользователя
 	func loadGroups(completion: @escaping (Result<[GroupModel], Error>) -> Void) {
