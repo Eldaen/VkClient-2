@@ -73,9 +73,17 @@ extension MyGroupsPresenter: MyGroupsViewOutputProtocol {
 // MARK: - MyGroupsInteractorOutputProtocol
 extension MyGroupsPresenter: MyGroupsInteractorOutputProtocol {
 	func removeGroup(at indexPath: IndexPath) {
-		view?.groups.remove(at: indexPath.row)
 		view?.filteredGroups.remove(at: indexPath.row)
 		view?.deleteGroupFromView(at: indexPath)
+		
+		interactor.fetchGroups() { [weak self] result in
+			switch result {
+			case .success (let groups):
+				self?.view?.groups = groups
+			case .failure(let error):
+				debugPrint(error.localizedDescription)
+			}
+		}
 	}
 	
 	func showGroupLeavingError(_ error: Error) {

@@ -79,6 +79,7 @@ extension MyGroupsViewController: UITableViewDelegate {
 	}
 }
 
+// MARK: - UISearchBarDelegate
 extension MyGroupsViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		searchBar.showsCancelButton = true
@@ -99,6 +100,10 @@ extension MyGroupsViewController: UISearchBarDelegate {
 extension MyGroupsViewController: MyGroupsViewInputProtocol {
 	func reloadTableView() {
 		myGroupsView.tableView.reloadData()
+	}
+	
+	func reloadViewData() {
+		output?.fetchGroups()
 	}
 	
 	func showGroupsLoadingErrorText(_ text: String) {

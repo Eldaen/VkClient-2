@@ -122,7 +122,7 @@ private extension SearchGroupsViewController {
 	}
 	
 	func configureNavigation() {
-		self.title = "Мои группы"
+		self.title = "Поиск групп"
 	}
 	
 	func startLoadAnimation() {

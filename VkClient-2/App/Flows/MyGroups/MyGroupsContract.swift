@@ -20,6 +20,9 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 	/// Перезагружает таблицу с группами
 	func reloadTableView()
 	
+	/// Обновляет список групп
+	func reloadViewData()
+	
 	/// Показывает ошибку загрузки групп
 	/// - Parameter error: Ошибка загрузки
 	func showGroupsLoadingErrorText(_ text: String)
