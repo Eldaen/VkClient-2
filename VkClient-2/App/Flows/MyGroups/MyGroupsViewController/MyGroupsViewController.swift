@@ -32,11 +32,15 @@ final class MyGroupsViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		startLoadAnimation()
 		configureNavigation()
 		configureSearchbar()
 		setupTableView()
+		startLoadAnimation()
 		output?.fetchGroups()
+	}
+	
+	override func viewDidLayoutSubviews() {
+		myGroupsView.spinner.center = myGroupsView.center
 	}
 }
 
@@ -79,6 +83,7 @@ extension MyGroupsViewController: UITableViewDelegate {
 	}
 }
 
+// MARK: - UISearchBarDelegate
 extension MyGroupsViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		searchBar.showsCancelButton = true
@@ -101,12 +106,35 @@ extension MyGroupsViewController: MyGroupsViewInputProtocol {
 		myGroupsView.tableView.reloadData()
 	}
 	
+	func reloadViewData() {
+		startLoadAnimation()
+		output?.fetchGroups()
+	}
+	
+	func stopLoadAnimation() {
+		myGroupsView.spinner.stopAnimating()
+	}
+	
+	func startLoadAnimation() {
+		myGroupsView.spinner.startAnimating()
+	}
+	
 	func showGroupsLoadingErrorText(_ text: String) {
-		//TODO: Сделать отображение ошибки
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "Повторить", style: .cancel) {[weak self] _ in
+			self?.output?.fetchGroups()
+		}
+		alert.addAction(action)
+		
+		present(alert, animated: true, completion: nil)
 	}
 	
 	func showGroupsLeavingErrorText(_ text: String) {
-		//TODO: Сделать отображение ошибки
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(action)
+		
+		present(alert, animated: true, completion: nil)
 	}
 	
 	func deleteGroupFromView(at indexPath: IndexPath) {
@@ -135,10 +163,6 @@ private extension MyGroupsViewController {
 		myGroupsView.tableView.register(registerClass: MyGroupsCell.self)
 		myGroupsView.tableView.dataSource = self
 		myGroupsView.tableView.delegate = self
-	}
-	
-	func startLoadAnimation() {
-		myGroupsView.spinner.startAnimating()
 	}
 	
 	func configureSearchbar() {

@@ -52,7 +52,7 @@ extension MyGroupsInteractor: MyGroupsInteractorInputProtocol {
 					debugPrint("Group leaving code was \(resultCode)")
 				}
 			case .failure(let error):
-				self?.output?.showGroupsLeavingError(error)
+				self?.output?.showGroupLeavingError(error)
 				debugPrint(error.localizedDescription)
 			}
 		}

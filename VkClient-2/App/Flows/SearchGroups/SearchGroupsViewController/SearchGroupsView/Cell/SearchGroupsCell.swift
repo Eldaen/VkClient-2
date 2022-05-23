@@ -1,29 +1,35 @@
 //
-//  MyGroupsCell.swift
+//  SearchGroupsCell.swift
 //  VkClient-2
 //
-//  Created by Денис Сизов on 05.05.2022.
+//  Created by Денис Сизов on 21.05.2022.
 //
 
 import UIKit
 
-/// Ячейка группы для контроллера MyGroupsViewController
-final class MyGroupsCell: UITableViewCell {
+/// Ячейка группы для контроллера SearchGroupsController
+final class SearchGroupsCell: UITableViewCell {
 	
-	// MARK: - Properties
+	//MARK: - Properties
 	
-	/// ID группы, которую сейчас отображает ячейка
+	/// ID группы, которую ячейка отображает сейчас
 	var id: Int?
 	
+	/// Является ли членом этой группы
+	var isMember: Int?
+	
 	/// Название группы
-	let groupName: UILabel = {
+	var name: String?
+	
+	/// Название группы
+	private let groupName: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
 	/// Логотип группы
-	let groupImage: UIImageView = {
+	private let groupImage: UIImageView = {
 		let image = UIImageView()
 		image.translatesAutoresizingMaskIntoConstraints = false
 		image.contentMode = .scaleAspectFit
@@ -35,13 +41,15 @@ final class MyGroupsCell: UITableViewCell {
 	/// Меняет картинку, используется для замены после подгрузки из сети
 	func setImage(with image: UIImage) {
 		groupImage.image = image
-		self.layoutIfNeeded()
+		self.groupImage.layoutIfNeeded()
 	}
 	
 	/// Конфигурируем ячейку для отображения группы
 	func configure(with group: GroupModel) {
 		groupName.text = group.name
 		self.id = group.id
+		self.isMember = group.isMember
+		self.name = group.name
 		
 		addSubviews()
 		setupConstaints()
@@ -53,21 +61,20 @@ final class MyGroupsCell: UITableViewCell {
 		self.groupImage.alpha = 0
 		self.groupName.alpha = 0
 		
-		UIView.animate(
-			withDuration: 0.3,
-			delay: 0,
-			options: [],
-			animations: {
-				self.groupImage.alpha = 1
-				self.groupName.alpha = 1
-			}
-		)
+		UIView.animate(withDuration: 0.3,
+					   delay: 0,
+					   options: [],
+					   animations: {
+			self.groupImage.alpha = 1
+			self.groupName.alpha = 1
+		})
 	}
+	
 }
 
 // MARK: - Private methods
-private extension MyGroupsCell {
-	private func setupConstaints() {
+private extension SearchGroupsCell {
+	func setupConstaints() {
 		NSLayoutConstraint.activate([
 			groupName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			groupName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -80,8 +87,8 @@ private extension MyGroupsCell {
 		])
 	}
 	
-	private func addSubviews() {
-		contentView.addSubview(groupName)
-		contentView.addSubview(groupImage)
+	func addSubviews() {
+		self.contentView.addSubview(groupName)
+		self.contentView.addSubview(groupImage)
 	}
 }
