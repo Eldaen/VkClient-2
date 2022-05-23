@@ -39,8 +39,7 @@ protocol SearchGroupsViewOutputProtocol: AnyObject {
 	/// Вступает в выбранную группу
 	/// - Parameters:
 	///   - id: id группы
-	///   - index: idexPath группы в таблице
-	func joinGroup(id: Int, index: IndexPath)
+	func joinGroup(id: Int)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
@@ -66,8 +65,8 @@ protocol SearchGroupsInteractorInputProtocol: AnyObject {
 	/// Вступает в выбранную группу
 	/// - Parameters:
 	///   - id: id группы
-	///   - index: idexPath группы в таблице
-	func joinGroup(id: Int, index: IndexPath)
+	///   - completion: Клоужер с результатом вступления
+	func joinGroup(id: Int, completion: @escaping (Result<Bool, Error>) -> Void)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
@@ -77,7 +76,7 @@ protocol SearchGroupsInteractorInputProtocol: AnyObject {
 	
 	/// Фильтрует группы по указанному запросу
 	/// - Parameter query: Текс запроса
-	func search(for query: String, in groups: [GroupModel], completion: @escaping ([GroupModel]) -> Void)
+	func search(for query: String, completion: @escaping (Result<[GroupModel], Error>) -> Void)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)

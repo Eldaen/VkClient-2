@@ -9,12 +9,15 @@ import UIKit
 
 // MARK: - SearchGroupsRouter
 final class SearchGroupsRouter {
+	
+	// MARK: - Properties
+	
 	weak var viewController: UIViewController?
 }
 
 // MARK: - SearchGroupsRouterInputProtocol
 extension SearchGroupsRouter: SearchGroupsRouterInputProtocol {
 	func navigateToMyGroups() {
-		
+		viewController?.navigationController?.popViewController(animated: true)
 	}
 }
