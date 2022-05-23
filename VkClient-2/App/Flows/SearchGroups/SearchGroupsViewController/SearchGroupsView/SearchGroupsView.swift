@@ -1,24 +1,16 @@
 //
-//  MyGroupsView.swift
+//  SearchGroupsView.swift
 //  VkClient-2
 //
-//  Created by Денис Сизов on 05.05.2022.
+//  Created by Денис Сизов on 20.05.2022.
 //
 
 import UIKit
 
-/// Вью для MyGroupsViewController
-final class MyGroupsView: UIView {
+/// Вью для SearchGroupsViewController
+final class SearchGroupsView: UIView {
 	
 	// MARK: - Subviews
-	
-	/// Таблица с ячейками групп, в которых состоит пользователь
-	public let tableView: UITableView = {
-		let tableView = UITableView()
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		tableView.backgroundColor = .white
-		return tableView
-	}()
 	
 	/// Вью поиска
 	public let searchBar: UISearchBar = {
@@ -28,6 +20,14 @@ final class MyGroupsView: UIView {
 		searchBar.isTranslucent = false
 		searchBar.sizeToFit()
 		return searchBar
+	}()
+	
+	/// Таблица для найденных групп
+	public let tableView: UITableView = {
+		let tableView = UITableView()
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.backgroundColor = .white
+		return tableView
 	}()
 	
 	/// Индикатор загрузки
@@ -51,18 +51,13 @@ final class MyGroupsView: UIView {
 }
 
 // MARK: - Private methods
-private extension MyGroupsView {
+private extension SearchGroupsView {
 	
-	/// Конфигурирует вью
-	func configureUI() {
+	/// Конфигурирует UI
+	func configureUI () {
 		addSubviews()
-		setupTableView()
 		setupConstraints()
-	}
-	
-	/// Конфигурирует таблицу
-	func setupTableView() {
-		tableView.rowHeight = 80
+		setupTableView()
 	}
 	
 	/// Добавляет сабвью на основную вью
@@ -80,5 +75,9 @@ private extension MyGroupsView {
 			tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
 			tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
 		])
+	}
+	
+	func setupTableView() {
+		tableView.rowHeight = 80
 	}
 }

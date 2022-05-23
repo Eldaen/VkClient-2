@@ -20,6 +20,15 @@ protocol MyGroupsViewInputProtocol: AnyObject {
 	/// Перезагружает таблицу с группами
 	func reloadTableView()
 	
+	/// Обновляет список групп
+	func reloadViewData()
+	
+	/// Запустить спиннер
+	func startLoadAnimation()
+	
+	/// Останавливает спиннер
+	func stopLoadAnimation()
+	
 	/// Показывает ошибку загрузки групп
 	/// - Parameter error: Ошибка загрузки
 	func showGroupsLoadingErrorText(_ text: String)
@@ -97,7 +106,7 @@ protocol MyGroupsInteractorOutputProtocol: AnyObject {
 	
 	/// Показывает ошибку выхода из группы
 	/// - Parameter error: Ошибка загрузки
-	func showGroupsLeavingError(_ error: Error)
+	func showGroupLeavingError(_ error: Error)
 }
 
 // MARK: Router Input (Presenter -> Router)
@@ -107,10 +116,4 @@ protocol MyGroupsRouterInputProtocol: AnyObject {
 
 	/// Переход на экран поиска групп
 	func navigateToSearchGroups()
-}
-
-// MARK: - Service Input (Interactor -> Service)
-/// Входящий протокол сервиса
-protocol MyGroupsServiceInput {
-	
 }

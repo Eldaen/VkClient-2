@@ -15,6 +15,13 @@ final class MyGroupsRouter {
 // MARK: - VkLoginRouterInputProtocol
 extension MyGroupsRouter: MyGroupsRouterInputProtocol {
 	func navigateToSearchGroups() {
-		viewController?.navigationController?.pushViewController(SearchGroupsBuilder.build(), animated: true)
+		guard let contoller = viewController as? MyGroupsViewInputProtocol else {
+			return
+		}
+		viewController?.navigationController?.pushViewController(
+			SearchGroupsBuilder.build(
+				parentalControllerLink: contoller
+			), animated: true
+		)
 	}
 }

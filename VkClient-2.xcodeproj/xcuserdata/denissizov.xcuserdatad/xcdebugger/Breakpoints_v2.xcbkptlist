@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "43D5490B-8FE1-4247-A52E-A57927238271"
+            uuid = "E2E5FCA2-FF22-436E-9271-B1B3EE2A9683"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VkClient-2/App/Flows/MyGroups/MyGroupsViewController/MyGroupsViewController.swift"
+            filePath = "VkClient-2/App/Flows/SearchGroups/SearchGroupsViewController/SearchGroupsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "searchBarCancelButtonClicked(_:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "startLoadAnimation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
