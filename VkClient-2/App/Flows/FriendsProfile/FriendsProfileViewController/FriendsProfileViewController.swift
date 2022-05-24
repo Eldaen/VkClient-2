@@ -92,15 +92,15 @@ extension FriendsProfileViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - FriendsProfileViewInputProtocol
 extension FriendsProfileViewController: FriendsProfileViewInputProtocol {
 	func reloadСollectionView() {
-		
+		friendsProfileView.collectionView.reloadData()
 	}
 	
 	func startLoadAnimation() {
-		
+		friendsProfileView.spinner.startAnimating()
 	}
 	
 	func stopLoadAnimation() {
-		
+		friendsProfileView.spinner.stopAnimating()
 	}
 	
 	func showProfileLoadingErrorText(_ text: String) {
@@ -117,6 +117,7 @@ private extension FriendsProfileViewController {
 	}
 	
 	func setupCollectionView() {
+		friendsProfileView.collectionView.register(cell: FriendsProfileCell.self)
 		friendsProfileView.collectionView.dataSource = self
 		friendsProfileView.collectionView.delegate = self
 	}

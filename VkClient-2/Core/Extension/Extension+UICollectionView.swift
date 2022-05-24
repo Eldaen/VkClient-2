@@ -20,7 +20,7 @@ extension UICollectionView {
 	/// Регистрирует ячейку в коллекции
 	/// - Parameter cell: Тип регистрируемой ячейки
 	func register<T: UICollectionViewCell>(cell: T.Type) {
-		register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
+		register(cell.self, forCellWithReuseIdentifier: T.reuseIdentifier)
 	}
 	
 	/// Запрашивает и возвращает ячейку нужного типа
