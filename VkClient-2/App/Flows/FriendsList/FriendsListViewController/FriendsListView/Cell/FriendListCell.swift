@@ -10,7 +10,7 @@ import UIKit
 /// Ячейка группы для контроллера FriendsListViewController
 final class FriendsListCell: UITableViewCell {
 	
-	// MARK: - Properties
+	// MARK: - Subviews
 	
 	/// Имя друга
 	private let friendName: UILabel = {

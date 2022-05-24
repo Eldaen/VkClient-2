@@ -8,6 +8,9 @@ import UIKit
 
 // MARK: - FriendsListRouter
 final class FriendsListRouter {
+	
+	// MARK: - Properties
+	
 	weak var viewController: UIViewController?
 }
 

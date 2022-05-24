@@ -10,7 +10,7 @@ import UIKit
 /// Ячейка группы для контроллера SearchGroupsController
 final class SearchGroupsCell: UITableViewCell {
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	/// ID группы, которую ячейка отображает сейчас
 	var id: Int?
@@ -20,6 +20,8 @@ final class SearchGroupsCell: UITableViewCell {
 	
 	/// Название группы
 	var name: String?
+	
+	// MARK: - Subviews
 	
 	/// Название группы
 	private let groupName: UILabel = {
