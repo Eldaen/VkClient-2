@@ -38,7 +38,6 @@ final class GalleryViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 		output?.getStoredImages()
 		output?.createImageViews()
 		updateProgress()
@@ -133,8 +132,8 @@ private extension GalleryViewController {
 	@objc func onPan(_ recognizer: UIPanGestureRecognizer) {
 		switch recognizer.state {
 		case .began:
-			swipeToRight = setSwipeToRight()
-			swipeToLeft = setSwipeToLeft()
+			swipeToRight = getSwipeToRight()
+			swipeToLeft = getSwipeToLeft()
 		case .changed:
 			let translationX = recognizer.translation(in: self.view).x
 			if translationX > 0 {
@@ -156,7 +155,7 @@ private extension GalleryViewController {
 		galleryView.leftImageView.transform = transform
 	}
 	
-	func setSwipeToRight() -> UIViewPropertyAnimator {
+	func getSwipeToRight() -> UIViewPropertyAnimator {
 		return UIViewPropertyAnimator(
 			duration: 0.5,
 			curve: .easeInOut,
@@ -184,7 +183,7 @@ private extension GalleryViewController {
 			})
 	}
 	
-	func setSwipeToLeft() -> UIViewPropertyAnimator {
+	func getSwipeToLeft() -> UIViewPropertyAnimator {
 		return UIViewPropertyAnimator(
 			duration: 0.3,
 			curve: .easeInOut,
