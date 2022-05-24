@@ -11,6 +11,9 @@ import UIKit
 /// Входящий протокол контроллера отображения профиля друга
 protocol FriendsProfileViewInputProtocol: AnyObject {
 	
+	/// Массив строк со ссылками на картинки пользователя
+	var storedImages: [String] { get set }
+	
 	/// Запустить спиннер
 	func startLoadAnimation()
 	
@@ -20,14 +23,17 @@ protocol FriendsProfileViewInputProtocol: AnyObject {
 	/// Показывает ошибку загрузки друзей
 	/// - Parameter error: Ошибка загрузки
 	func showProfileLoadingErrorText(_ text: String)
+	
+	/// Перезагружает коллекцию
+	func reloadСollectionView()
 }
 
 // MARK: View Output (Presenter -> View)
 /// Исходящий протокол контроллера отображения профиля друга
 protocol FriendsProfileViewOutputProtocol: AnyObject {
 	
-	/// Загружает картинки пользователя
-	func fetchImages()
+	/// Загружает профиль пользователя
+	func loadProfile()
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
@@ -39,6 +45,12 @@ protocol FriendsProfileViewOutputProtocol: AnyObject {
 // MARK: Interactor Input (Presenter -> Interactor)
 /// Входящий протокол интерактора профиля друга
 protocol FriendsProfileInteractorInputProtocol: AnyObject {
+	
+	/// Загружает модели картинок пользователя
+	/// - Parameters:
+	///   - for: id друга, чей профиль открывается
+	///   - completion: Клоужер с массивом ссылок на картинки
+	func loadUserPhotos(for id: String, completion: @escaping (Result<[String], Error>) -> Void)
 
 	/// Загружает изображение из сети
 	/// - Parameters:

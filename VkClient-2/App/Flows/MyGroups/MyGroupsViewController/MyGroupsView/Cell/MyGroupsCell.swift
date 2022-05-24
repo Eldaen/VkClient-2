@@ -15,6 +15,8 @@ final class MyGroupsCell: UITableViewCell {
 	/// ID группы, которую сейчас отображает ячейка
 	var id: Int?
 	
+	// MARK: - Subviews
+	
 	/// Название группы
 	let groupName: UILabel = {
 		let label = UILabel()

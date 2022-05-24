@@ -69,6 +69,9 @@
 		D0B327B0283BEF27007E5140 /* FriendsProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327AF283BEF27007E5140 /* FriendsProfilePresenter.swift */; };
 		D0B327B2283BEF9D007E5140 /* FriendsProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327B1283BEF9D007E5140 /* FriendsProfileInteractor.swift */; };
 		D0B327B4283BF021007E5140 /* FriendsProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327B3283BF021007E5140 /* FriendsProfileRouter.swift */; };
+		D0B327B8283BF2A2007E5140 /* FriendsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327B7283BF2A2007E5140 /* FriendsProfileView.swift */; };
+		D0B327BA283BF75B007E5140 /* FriendsProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327B9283BF75B007E5140 /* FriendsProfileCell.swift */; };
+		D0B327BC283D05FA007E5140 /* Extension+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327BB283D05FA007E5140 /* Extension+UICollectionView.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -161,6 +164,9 @@
 		D0B327AF283BEF27007E5140 /* FriendsProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfilePresenter.swift; sourceTree = "<group>"; };
 		D0B327B1283BEF9D007E5140 /* FriendsProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileInteractor.swift; sourceTree = "<group>"; };
 		D0B327B3283BF021007E5140 /* FriendsProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileRouter.swift; sourceTree = "<group>"; };
+		D0B327B7283BF2A2007E5140 /* FriendsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileView.swift; sourceTree = "<group>"; };
+		D0B327B9283BF75B007E5140 /* FriendsProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileCell.swift; sourceTree = "<group>"; };
+		D0B327BB283D05FA007E5140 /* Extension+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UICollectionView.swift"; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -362,6 +368,7 @@
 			children = (
 				D0B3273F28366C3E007E5140 /* Extension+UITableView.swift */,
 				D0B3278E283BB75F007E5140 /* Extension+UIFont.swift */,
+				D0B327BB283D05FA007E5140 /* Extension+UICollectionView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -553,6 +560,7 @@
 		D0B327A7283BED82007E5140 /* FriendsProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D0B327B5283BF291007E5140 /* View */,
 				D0B327AD283BEEA6007E5140 /* FriendsProfileViewController.swift */,
 			);
 			path = FriendsProfileViewController;
@@ -580,6 +588,23 @@
 				D0B327B3283BF021007E5140 /* FriendsProfileRouter.swift */,
 			);
 			path = FriendsProfileRouter;
+			sourceTree = "<group>";
+		};
+		D0B327B5283BF291007E5140 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327B6283BF295007E5140 /* Cell */,
+				D0B327B7283BF2A2007E5140 /* FriendsProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0B327B6283BF295007E5140 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327B9283BF75B007E5140 /* FriendsProfileCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D0DCDB47281814500065E7C5 = {
@@ -926,9 +951,11 @@
 				D0B3275C283796B6007E5140 /* GroupsMyMainResponse.swift in Sources */,
 				D0B3274A283786A0007E5140 /* LoaderProtocol.swift in Sources */,
 				D0B3270D2823F4B3007E5140 /* TabBarController.swift in Sources */,
+				D0B327BC283D05FA007E5140 /* Extension+UICollectionView.swift in Sources */,
 				D0B32789283BB0DB007E5140 /* FriendListCell.swift in Sources */,
 				D0B327572837901F007E5140 /* ImageCacheManager.swift in Sources */,
 				D0B32785283BAF19007E5140 /* FriendsListViewController.swift in Sources */,
+				D0B327B8283BF2A2007E5140 /* FriendsProfileView.swift in Sources */,
 				D0B3275528378BFE007E5140 /* NetworkManager.swift in Sources */,
 				D0B3279D283BC378007E5140 /* VkFriendsResponse.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,
@@ -937,6 +964,7 @@
 				D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */,
 				D0B3278D283BB674007E5140 /* AvatarView.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
+				D0B327BA283BF75B007E5140 /* FriendsProfileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
