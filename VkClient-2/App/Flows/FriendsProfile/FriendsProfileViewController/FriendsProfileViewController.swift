@@ -69,12 +69,24 @@ extension FriendsProfileViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension FriendsProfileViewController: UICollectionViewDelegate {
-	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		output?.openGalleryFor(photo: indexPath.item)
+	}
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FriendsProfileViewController: UICollectionViewDelegateFlowLayout {
-	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+		let frameCV = collectionView.frame
+
+		let cellWidth = frameCV.width / cellsCount
+		let cellHeight = cellWidth
+
+		// считаем размеры ячеек с учётом отступов, чтобы всё ровненько было
+		let spacing = ( cellsCount + 1 ) * cellsOffset / cellsCount
+		return CGSize(width: cellWidth - spacing, height: cellHeight - ( cellsOffset * 2) )
+	}
 }
 
 // MARK: - FriendsProfileViewInputProtocol

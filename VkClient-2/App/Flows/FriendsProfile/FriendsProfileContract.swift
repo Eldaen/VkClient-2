@@ -43,11 +43,18 @@ protocol FriendsProfileViewOutputProtocol: AnyObject {
 	///   - url: Строка с url картинки, которую нужно загрузить
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
+	
+	/// Просит роутер открыть экран подробного просмотра фото
+	/// - Parameter photo: id фото в массиве моделей фотографий, который хранится в интеракторе
+	func openGalleryFor(photo: Int)
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
 /// Входящий протокол интерактора профиля друга
 protocol FriendsProfileInteractorInputProtocol: AnyObject {
+	
+	/// Массив моделей картинок пользователя
+	var storedModels: [ApiImage] { get }
 	
 	/// Загружает модели картинок пользователя
 	/// - Parameters:
@@ -73,6 +80,6 @@ protocol FriendsProfileInteractorOutputProtocol: AnyObject {
 protocol FriendsProfileRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
 
-	/// Переход на экран профиля друга
-	func openImage(for friend: UserModel)
+	/// Переход на экран подробного просмотра фото
+	func openGalleryFor(photo: Int, in images: [ApiImage])
 }

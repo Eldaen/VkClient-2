@@ -36,6 +36,10 @@ final class FriendsProfilePresenter {
 
 // MARK: - FriendsProfileViewOutputProtocol
 extension FriendsProfilePresenter: FriendsProfileViewOutputProtocol {
+	func openGalleryFor(photo: Int) {
+		router.openGalleryFor(photo: photo, in: interactor.storedModels)
+	}
+	
 	func loadProfile() {
 		interactor.loadUserPhotos(for: String(friend.id)) { [weak self] result in
 			switch result {

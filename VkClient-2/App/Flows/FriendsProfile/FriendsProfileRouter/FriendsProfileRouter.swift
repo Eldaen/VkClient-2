@@ -17,7 +17,12 @@ final class FriendsProfileRouter {
 
 // MARK: - FriendsProfileRouterInputProtocol
 extension FriendsProfileRouter: FriendsProfileRouterInputProtocol {
-	func openImage(for friend: UserModel) {
-		
+	func openGalleryFor(photo: Int, in images: [ApiImage]) {
+		viewController?.navigationController?.pushViewController(
+			GalleryBuilder.build(
+				photoId: photo,
+				imageModels: images
+			), animated: true
+		)
 	}
 }
