@@ -104,7 +104,13 @@ extension FriendsProfileViewController: FriendsProfileViewInputProtocol {
 	}
 	
 	func showProfileLoadingErrorText(_ text: String) {
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "Повторить", style: .cancel) {[weak self] _ in
+			self?.output?.loadProfile()
+		}
+		alert.addAction(action)
 		
+		present(alert, animated: true, completion: nil)
 	}
 }
 
