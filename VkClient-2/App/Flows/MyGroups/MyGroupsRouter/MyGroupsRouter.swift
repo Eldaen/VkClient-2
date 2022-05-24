@@ -9,6 +9,9 @@ import UIKit
 
 // MARK: - MyGroupsRouter
 final class MyGroupsRouter {
+	
+	// MARK: - Properties
+	
 	weak var viewController: UIViewController?
 }
 

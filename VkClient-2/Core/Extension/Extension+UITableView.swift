@@ -23,7 +23,7 @@ extension UITableView {
 	}
 	
 	/// Запрашивает и возвращает ячейку нужного типа
-	/// - Parameter indexPath: indexPatch
+	/// - Parameter indexPath: indexPath
 	/// - Returns: Ячейка нужного типа
 	func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T {
 		guard let cell = dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier, for: indexPath) as? T else {
