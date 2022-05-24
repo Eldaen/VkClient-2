@@ -24,19 +24,23 @@ protocol GalleryViewInputProtocol: AnyObject {
 
 // MARK: View Output (Presenter -> View)
 /// Исходящий протокол контроллера подробного просмотра фото
-protocol GalleryViewOutputProtocol: AnyObject {
+@objc protocol GalleryViewOutputProtocol: AnyObject {
+	
+	/// Текущее главное фото в карусели
+	var selectedPhoto: Int { get set }
 	
 	/// Загружает активные картинки
 	func fetchPhotos(array: [Int])
 	
-	/// Загружает изображение из сети
-	/// - Parameters:
-	///   - url: Строка с url картинки, которую нужно загрузить
-	///   - completion: Клоужер с картинкой
-	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
-	
 	/// Сортирует из моделей нужные ссылки на картинки в storedImages
 	func getStoredImages()
+	
+	/// Обработчик жестов смахивания и перелистывания
+	/// - Parameter recognizer: UIPanGestureRecognizer
+	func onPan(_ recognizer: UIPanGestureRecognizer)
+	
+	/// Создаёт массив UIImageView для отображения галереи
+	func createImageViews()
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
@@ -48,6 +52,10 @@ protocol GalleryInteractorInputProtocol: AnyObject {
 	///   - url: Строка с url картинки, которую нужно загрузить
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
+	
+	/// Сортирует картинки нужного размера из моделей
+	/// - Parameter completion: Массив строк со ссылками на картинки нужного размера
+	func getStoredImages(completion: @escaping ([String]) -> Void)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
