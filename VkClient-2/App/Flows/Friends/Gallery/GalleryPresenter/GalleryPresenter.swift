@@ -5,7 +5,7 @@
 //  Created by Денис Сизов on 24.05.2022.
 //
 
-import UIKit.UIImage
+import UIKit
 
 // MARK: - GalleryPresenter
 final class GalleryPresenter {
@@ -31,10 +31,7 @@ final class GalleryPresenter {
 
 // MARK: - GalleryViewOutputProtocol
 extension GalleryPresenter: GalleryViewOutputProtocol {
-	@objc func onPan(_ recognizer: UIPanGestureRecognizer) {
-		
-	}
-	
+
 	func fetchPhotos(array: [Int]) {
 		guard let view = view else { return }
 		for index in array {

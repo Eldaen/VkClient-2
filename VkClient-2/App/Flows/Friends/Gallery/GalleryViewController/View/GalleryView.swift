@@ -46,7 +46,7 @@ final class GalleryView: UIView {
 	
 	// MARK: - Methods
 	
-	func setImage() {
+	func setImages() {
 		addImageSubviews()
 		configureImageSubviews()
 		setupImageSubviewsConstraints()

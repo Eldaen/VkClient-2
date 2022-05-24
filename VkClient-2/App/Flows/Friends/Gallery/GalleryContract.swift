@@ -24,7 +24,7 @@ protocol GalleryViewInputProtocol: AnyObject {
 
 // MARK: View Output (Presenter -> View)
 /// Исходящий протокол контроллера подробного просмотра фото
-@objc protocol GalleryViewOutputProtocol: AnyObject {
+protocol GalleryViewOutputProtocol: AnyObject {
 	
 	/// Текущее главное фото в карусели
 	var selectedPhoto: Int { get set }
@@ -34,10 +34,6 @@ protocol GalleryViewInputProtocol: AnyObject {
 	
 	/// Сортирует из моделей нужные ссылки на картинки в storedImages
 	func getStoredImages()
-	
-	/// Обработчик жестов смахивания и перелистывания
-	/// - Parameter recognizer: UIPanGestureRecognizer
-	func onPan(_ recognizer: UIPanGestureRecognizer)
 	
 	/// Создаёт массив UIImageView для отображения галереи
 	func createImageViews()

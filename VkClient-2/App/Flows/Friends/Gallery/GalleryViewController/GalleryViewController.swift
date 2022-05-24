@@ -48,7 +48,7 @@ final class GalleryViewController: UIViewController {
 		super.viewWillAppear(animated)
 		
 		// регистрируем распознаватель жестов
-		let gestPan = UIPanGestureRecognizer(target: self, action: #selector(output?.onPan(_:)))
+		let gestPan = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
 		galleryView.addGestureRecognizer(gestPan)
 		
 		configureImages()
@@ -112,6 +112,8 @@ private extension GalleryViewController {
 		galleryView.leftImageView = photoViews[indexPhotoLeft]
 		galleryView.middleImageView = photoViews[indexPhotoMid]
 		galleryView.rightImageView = photoViews[indexPhotoRight]
+		
+		galleryView.setImages()
 	}
 	
 	/// Cначала ставит нужные картинки и потом включает анимацию увеличения до оригинала
@@ -125,6 +127,88 @@ private extension GalleryViewController {
 				self?.galleryView.middleImageView.transform = .identity
 				self?.galleryView.rightImageView.transform = .identity
 				self?.galleryView.leftImageView.transform = .identity
+			})
+	}
+	
+	@objc func onPan(_ recognizer: UIPanGestureRecognizer) {
+		switch recognizer.state {
+		case .began:
+			swipeToRight = setSwipeToRight()
+			swipeToLeft = setSwipeToLeft()
+		case .changed:
+			let translationX = recognizer.translation(in: self.view).x
+			if translationX > 0 {
+				swipeToRight.fractionComplete = abs(translationX)/100 // fractionComplete это про завершенность анимации от 0 до 1, можно плавно делать анимацию в зависимости от жеста
+			} else {
+				swipeToLeft.fractionComplete = abs(translationX)/100
+			}
+		case .ended:
+			swipeToRight.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+			swipeToLeft.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+		default:
+			return
+		}
+	}
+	
+	func moveViews(using transform: CGAffineTransform) {
+		galleryView.middleImageView.transform = transform
+		galleryView.rightImageView.transform = transform
+		galleryView.leftImageView.transform = transform
+	}
+	
+	func setSwipeToRight() -> UIViewPropertyAnimator {
+		return UIViewPropertyAnimator(
+			duration: 0.5,
+			curve: .easeInOut,
+			animations: {
+				UIView.animate(
+					withDuration: 0.01,
+					animations: { [weak self] in
+						guard let self = self else { return }
+						let scale = CGAffineTransform(scaleX: 0.8, y: 0.8) // уменьшаем
+						let translation = CGAffineTransform(translationX: self.galleryView.bounds.maxX - 10, y: 0) // направо до края экрана - 10, у нас так констрэйнты заданы
+						let transform = scale.concatenating(translation)
+						self.moveViews(using: transform)
+					}, completion: { [weak self] _ in
+						guard let self = self,
+							  let output = self.output else {
+							return
+						}
+						output.selectedPhoto -= 1
+						if output.selectedPhoto < 0 {
+							output.selectedPhoto = self.storedImages.count - 1
+						}
+						self.updateProgress()
+						self.startAnimate()
+					})
+			})
+	}
+	
+	func setSwipeToLeft() -> UIViewPropertyAnimator {
+		return UIViewPropertyAnimator(
+			duration: 0.3,
+			curve: .easeInOut,
+			animations: {
+				UIView.animate(
+					withDuration: 0.01,
+					animations: { [weak self] in
+						guard let self = self else { return }
+						let scale = CGAffineTransform(scaleX: 0.8, y: 0.8)
+						let translation = CGAffineTransform(translationX: -self.galleryView.bounds.maxX + 10, y: 0)
+						let transform = scale.concatenating(translation)
+						self.moveViews(using: transform)
+					}, completion: { [weak self] _ in
+						guard let self = self,
+							  let output = self.output else {
+							return
+						}
+						output.selectedPhoto += 1
+						if output.selectedPhoto > self.storedImages.count - 1 {
+							output.selectedPhoto = 0
+						}
+						self.updateProgress()
+						self.startAnimate()
+					})
 			})
 	}
 }
