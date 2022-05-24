@@ -32,6 +32,9 @@ protocol FriendsProfileViewInputProtocol: AnyObject {
 /// Исходящий протокол контроллера отображения профиля друга
 protocol FriendsProfileViewOutputProtocol: AnyObject {
 	
+	/// Модель друга, чей профиль открывается
+	var friend: UserModel { get }
+	
 	/// Загружает профиль пользователя
 	func loadProfile()
 	

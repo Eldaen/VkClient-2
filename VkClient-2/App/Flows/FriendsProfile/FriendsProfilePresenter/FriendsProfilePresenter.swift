@@ -46,8 +46,6 @@ extension FriendsProfilePresenter: FriendsProfileViewOutputProtocol {
 			case .failure:
 				self?.view?.showProfileLoadingErrorText("Не удалось загрузить фото")
 			}
-			
-			
 		}
 	}
 	

@@ -86,9 +86,8 @@ extension FriendsListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension FriendsListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let cell = tableView.cellForRow(at: indexPath) as? FriendsListCell else {
-			return
-		}
+		tableView.deselectRow(at: indexPath, animated: true)
+		
 		let section = filteredFriends[indexPath.section]
 		let friend = section.data[indexPath.row]
 		

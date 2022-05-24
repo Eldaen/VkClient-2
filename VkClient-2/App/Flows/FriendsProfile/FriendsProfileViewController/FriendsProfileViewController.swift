@@ -18,7 +18,11 @@ final class FriendsProfileViewController: UIViewController {
 	/// Отступы между фото
 	private let cellsOffset: CGFloat = 10.0
 	
-	var storedImages = [String]()
+	var storedImages = [String]() {
+		didSet {
+			friendsProfileView.photosCount.text = String(storedImages.count)
+		}
+	}
 	
 	/// Обработчик исходящих событий
 	var output: FriendsProfileViewOutputProtocol?
@@ -40,6 +44,8 @@ final class FriendsProfileViewController: UIViewController {
 		configureNavigation()
 		setupCollectionView()
 		startLoadAnimation()
+		setStaticData()
+		loadProfilePhoto()
 		output?.loadProfile()
 	}
 }
@@ -101,5 +107,16 @@ private extension FriendsProfileViewController {
 	func setupCollectionView() {
 		friendsProfileView.collectionView.dataSource = self
 		friendsProfileView.collectionView.delegate = self
+	}
+	
+	func setStaticData() {
+		friendsProfileView.photosCount.text = String(storedImages.count)
+		friendsProfileView.friendName.text = output?.friend.name
+	}
+	
+	func loadProfilePhoto() {
+		output?.loadImage(output?.friend.image ?? "") { [weak self] image in
+			self?.friendsProfileView.userAvatar.image = image
+		}
 	}
 }
