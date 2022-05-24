@@ -52,7 +52,9 @@ extension FriendsProfilePresenter: FriendsProfileViewOutputProtocol {
 	}
 	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
-		
+		interactor.loadImage(url) { image in
+			completion(image)
+		}
 	}
 }
 

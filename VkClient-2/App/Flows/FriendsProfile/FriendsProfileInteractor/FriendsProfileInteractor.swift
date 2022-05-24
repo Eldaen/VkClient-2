@@ -48,7 +48,9 @@ extension FriendsProfileInteractor: FriendsProfileInteractorInputProtocol {
 	}
 	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
-		
+		friendsLoader.loadImage(url: url) { image in
+			completion(image)
+		}
 	}
 }
 
