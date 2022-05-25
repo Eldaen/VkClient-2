@@ -15,7 +15,7 @@ protocol NewsFooterCellProtocol {
 	func configure (with model: NewsTableViewCellModelProtocol)
 	
 	/// Обработчик лайков
-	var likesResponder: NewsViewModelType? { get set }
+	var likesResponder: NewsViewInputProtocol? { get set }
 }
 
 // MARK: - NewsFooterCell
@@ -60,12 +60,12 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 		views.translatesAutoresizingMaskIntoConstraints = false
 		return views
 	}()
-
-	/// Модель новости, которую отображаем
-	private var model: NewsTableViewCellModelType?
 	
 	/// Вью модель
-	var likesResponder: NewsViewModelType?
+	var likesResponder: NewsViewInputProtocol?
+	
+	private var postId: Int = 0
+	private var sourceId: Int = 0
 	
 	/// Конфигурирует ячейку NewsTableViewCell
 	/// - Parameters:
@@ -75,7 +75,8 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 		setupFooter()
 		setupConstraints()
 		
-		self.model = model
+		postId = model.postID
+		sourceId = model.source.id
 		updateCellData(with: model)
 		
 		selectionStyle = .none
@@ -132,25 +133,20 @@ private extension NewsFooterCell {
 }
 
 // MARK: - CanLike protocol extension
-extension NewsFooterCell: CanLike {
+extension NewsFooterCell: CanLikeProtocol {
 	
 	///  Отправляет запрос на лайк поста
 	func setLike() {
-		if let id = model?.postID,
-		   let ownerId = model?.source.id {
-			likesResponder?.setLike(post: id, owner: ownerId) { [weak self] result in
-				self?.likesControl.setCount(with: result)
-			}
+		likesResponder?.setLike(post: postId, owner: sourceId) { [weak self] result in
+			self?.likesControl.setCount(with: result)
 		}
 	}
 	
 	/// Отправляет запрос на отмену лайка
 	func removeLike() {
-		if let id = model?.postID,
-		   let ownerId = model?.source.id {
-			likesResponder?.setLike(post: id, owner: ownerId) { [weak self] result in
-				self?.likesControl.setCount(with: result)
-			}
+		likesResponder?.setLike(post: postId, owner: sourceId) { [weak self] result in
+			self?.likesControl.setCount(with: result)
 		}
+		
 	}
 }

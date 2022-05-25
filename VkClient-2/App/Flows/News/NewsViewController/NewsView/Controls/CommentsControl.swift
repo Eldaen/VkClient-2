@@ -5,4 +5,7 @@
 //  Created by Денис Сизов on 25.05.2022.
 //
 
-import Foundation
+/// Контрол для отображения вьюшки с комментами
+final class CommentsControl: NewsControl {
+	
+}
