@@ -73,6 +73,11 @@
 		D0B327BA283BF75B007E5140 /* FriendsProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327B9283BF75B007E5140 /* FriendsProfileCell.swift */; };
 		D0B327BC283D05FA007E5140 /* Extension+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327BB283D05FA007E5140 /* Extension+UICollectionView.swift */; };
 		D0B327BF283D269B007E5140 /* GalleryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327BE283D269B007E5140 /* GalleryBuilder.swift */; };
+		D0B327C8283D2CCC007E5140 /* GalleryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327C7283D2CCC007E5140 /* GalleryContract.swift */; };
+		D0B327CA283D2EFB007E5140 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327C9283D2EFB007E5140 /* GalleryViewController.swift */; };
+		D0B327CC283D2F06007E5140 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327CB283D2F06007E5140 /* GalleryView.swift */; };
+		D0B327CE283D2F81007E5140 /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327CD283D2F81007E5140 /* GalleryPresenter.swift */; };
+		D0B327D0283D3033007E5140 /* GalleryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B327CF283D3033007E5140 /* GalleryInteractor.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -169,6 +174,11 @@
 		D0B327B9283BF75B007E5140 /* FriendsProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsProfileCell.swift; sourceTree = "<group>"; };
 		D0B327BB283D05FA007E5140 /* Extension+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UICollectionView.swift"; sourceTree = "<group>"; };
 		D0B327BE283D269B007E5140 /* GalleryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryBuilder.swift; sourceTree = "<group>"; };
+		D0B327C7283D2CCC007E5140 /* GalleryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryContract.swift; sourceTree = "<group>"; };
+		D0B327C9283D2EFB007E5140 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		D0B327CB283D2F06007E5140 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		D0B327CD283D2F81007E5140 /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
+		D0B327CF283D3033007E5140 /* GalleryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryInteractor.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -617,6 +627,60 @@
 			path = GalleryBuilder;
 			sourceTree = "<group>";
 		};
+		D0B327C0283D2C48007E5140 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327C2283D2C75007E5140 /* GalleryInteractor */,
+				D0B327C5283D2C9D007E5140 /* GalleryPresenter */,
+				D0B327C4283D2C95007E5140 /* GalleryViewController */,
+				D0B327C7283D2CCC007E5140 /* GalleryContract.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		D0B327C1283D2C4F007E5140 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327C0283D2C48007E5140 /* Gallery */,
+				D0B327A6283BED6B007E5140 /* FriendsProfile */,
+				D0B32779283BACA8007E5140 /* FriendsList */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		D0B327C2283D2C75007E5140 /* GalleryInteractor */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327CF283D3033007E5140 /* GalleryInteractor.swift */,
+			);
+			path = GalleryInteractor;
+			sourceTree = "<group>";
+		};
+		D0B327C4283D2C95007E5140 /* GalleryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327C6283D2CB7007E5140 /* View */,
+				D0B327C9283D2EFB007E5140 /* GalleryViewController.swift */,
+			);
+			path = GalleryViewController;
+			sourceTree = "<group>";
+		};
+		D0B327C5283D2C9D007E5140 /* GalleryPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327CD283D2F81007E5140 /* GalleryPresenter.swift */,
+			);
+			path = GalleryPresenter;
+			sourceTree = "<group>";
+		};
+		D0B327C6283D2CB7007E5140 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0B327CB283D2F06007E5140 /* GalleryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D0DCDB47281814500065E7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -708,8 +772,7 @@
 		D0DCDB8C281815150065E7C5 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				D0B327A6283BED6B007E5140 /* FriendsProfile */,
-				D0B32779283BACA8007E5140 /* FriendsList */,
+				D0B327C1283D2C4F007E5140 /* Friends */,
 				D0B327642837C708007E5140 /* SearchGroups */,
 				D0B32717282403E8007E5140 /* MyGroups */,
 				D0B3270B2823F4A7007E5140 /* TabBar */,
@@ -908,6 +971,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B3279B283BC34A007E5140 /* FriendsCountMainResponse.swift in Sources */,
+				D0B327CE283D2F81007E5140 /* GalleryPresenter.swift in Sources */,
 				D0B327B2283BEF9D007E5140 /* FriendsProfileInteractor.swift in Sources */,
 				D0B327162823F7AA007E5140 /* NewsBuilder.swift in Sources */,
 				D0B3279F283BC3FA007E5140 /* FriendsCountResponse.swift in Sources */,
@@ -931,6 +995,7 @@
 				D0B3276E2837CDF7007E5140 /* SearchGroupsPresenter.swift in Sources */,
 				D0B327442836F18C007E5140 /* MyGroupsPresenter.swift in Sources */,
 				D0B3275E28379713007E5140 /* ApiBoolResponse.swift in Sources */,
+				D0B327CC283D2F06007E5140 /* GalleryView.swift in Sources */,
 				D0B327BF283D269B007E5140 /* GalleryBuilder.swift in Sources */,
 				D0B327A1283BCC6E007E5140 /* FriendsListRouter.swift in Sources */,
 				D0B3272028240547007E5140 /* MyGroupsViewController.swift in Sources */,
@@ -951,6 +1016,8 @@
 				D0B327042823E1FD007E5140 /* VkLoginRouter.swift in Sources */,
 				D0B327752837CFAD007E5140 /* SearchGroupsView.swift in Sources */,
 				D0B327142823F792007E5140 /* FriendsListBuilder.swift in Sources */,
+				D0B327C8283D2CCC007E5140 /* GalleryContract.swift in Sources */,
+				D0B327D0283D3033007E5140 /* GalleryInteractor.swift in Sources */,
 				D0B326E2281832D3007E5140 /* VkLoginBuilder.swift in Sources */,
 				D0B327022823DA08007E5140 /* VkLoginService.swift in Sources */,
 				D0B3278B283BB447007E5140 /* FriendsListPresenter.swift in Sources */,
@@ -975,6 +1042,7 @@
 				D0B3276C2837CD80007E5140 /* SearchGroupsViewController.swift in Sources */,
 				D0B327602837ABA2007E5140 /* MyGroupsRouter.swift in Sources */,
 				D0B3278D283BB674007E5140 /* AvatarView.swift in Sources */,
+				D0B327CA283D2EFB007E5140 /* GalleryViewController.swift in Sources */,
 				D0B326E62818369C007E5140 /* VkLoginInteractor.swift in Sources */,
 				D0B327BA283BF75B007E5140 /* FriendsProfileCell.swift in Sources */,
 			);
