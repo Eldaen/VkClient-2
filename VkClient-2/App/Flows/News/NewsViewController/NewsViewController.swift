@@ -63,11 +63,15 @@ final class NewsViewController: UIViewController {
 // MARK: - NewsViewInputProtocol
 extension NewsViewController: NewsViewInputProtocol {
 	func setLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
-		
+		output?.setLike(post: post, owner: owner) { likesCount in
+			completion(likesCount)
+		}
 	}
 	
 	func removeLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
-		
+		output?.removeLike(post: post, owner: owner) { likesCount in
+			completion(likesCount)
+		}
 	}
 	
 	func reloadTableView() {
@@ -75,11 +79,11 @@ extension NewsViewController: NewsViewInputProtocol {
 	}
 	
 	func startLoadAnimation() {
-		
+		newsView.spinner.startAnimating()
 	}
 	
 	func stopLoadAnimation() {
-		
+		newsView.spinner.stopAnimating()
 	}
 	
 	func showNewsLoadingErrorText(_ text: String) {

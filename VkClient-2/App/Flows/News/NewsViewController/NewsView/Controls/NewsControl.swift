@@ -30,6 +30,20 @@ class NewsControl: UIControl {
 	private var label: UILabel = UILabel()
 	private var bgView: UIView = UIView()
 	
+	// MARK: - Init
+	  
+	  override init(frame: CGRect) {
+		  super.init(frame: frame)
+		  self.setupView()
+		  addGestureRecognizer(tapGestureRecognizer)
+	  }
+	  
+	  required init?(coder aDecoder: NSCoder) {
+		  super.init(coder: aDecoder)
+		  self.setupView()
+		  addGestureRecognizer(tapGestureRecognizer)
+	  }
+	
 	// MARK: - Methods
 	
 	internal func setupView() {
@@ -76,19 +90,5 @@ class NewsControl: UIControl {
 	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 		let frame = self.bounds.insetBy(dx: -20, dy: -20)
 		return frame.contains(point) ? self : nil
-	}
-	
-  // MARK: - Init
-	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.setupView()
-		addGestureRecognizer(tapGestureRecognizer)
-	}
-	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		self.setupView()
-		addGestureRecognizer(tapGestureRecognizer)
 	}
 }

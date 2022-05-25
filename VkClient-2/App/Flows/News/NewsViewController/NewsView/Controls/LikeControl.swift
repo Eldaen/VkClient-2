@@ -31,13 +31,38 @@ final class LikeControl: NewsControl {
 	/// Обработчик лайков
 	var responder: CanLikeProtocol?
 	
+	/// Флаг лайка
+	var hasMyLike: Bool = false {
+		didSet {
+			if hasMyLike == true {
+				transitionToFill()
+			} else {
+				transitionToEmpty()
+			}
+		}
+	}
+	
 	// MARK: - Private properties
 	
-	private var hasMyLike: Bool = false
+	
 	private var likesImageEmpty: UIImageView = UIImageView()
 	private var likesImageFill: UIImageView = UIImageView()
 	private var likesLabel: UILabel = UILabel()
 	private var bgView: UIView = UIView()
+	
+	// MARK: - Init
+	
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.setupView()
+		addGestureRecognizer(tapGestureRecognizer)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		self.setupView()
+		addGestureRecognizer(tapGestureRecognizer)
+	}
 	
 	// MARK: - Methods
 	
@@ -57,7 +82,7 @@ final class LikeControl: NewsControl {
 		likesImageFill.frame = CGRect(x: 5, y: 5, width: 24, height: 21)
 		likesImageFill.image = imageFill
 		likesImageFill.tintColor = .red
-			
+		
 		//Настраиваем Label
 		likesLabel.frame = CGRect(x: 30, y: 8, width: 50, height: 12)
 		likesLabel.text = String(count)
@@ -92,21 +117,13 @@ final class LikeControl: NewsControl {
 			count += 1
 			hasMyLike = true
 			responder?.setLike()
-			
-			UIView.transition(from: likesImageEmpty,
-							  to: likesImageFill,
-							  duration: 0.2,
-							  options: .transitionCrossDissolve)
+			transitionToFill()
 		} else {
 			self.likesLabel.text = "\(count - 1)"
 			count -= 1
 			hasMyLike = false
 			responder?.removeLike()
-			
-			UIView.transition(from: likesImageFill,
-							  to: likesImageEmpty,
-							  duration: 0.2,
-							  options: .transitionCrossDissolve)
+			transitionToEmpty()
 		}
 		likesLabel.text = String(count)
 	}
@@ -115,18 +132,25 @@ final class LikeControl: NewsControl {
 		let frame = self.bounds.insetBy(dx: -20, dy: -20)
 		return frame.contains(point) ? self : nil
 	}
-	
-  // MARK: - Init
-	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.setupView()
-		addGestureRecognizer(tapGestureRecognizer)
+}
+
+// MARK: - Private methods
+private extension LikeControl {
+	func transitionToFill() {
+		UIView.transition(
+			from: likesImageEmpty,
+			to: likesImageFill,
+			duration: 0.2,
+			options: .transitionCrossDissolve
+		)
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		self.setupView()
-		addGestureRecognizer(tapGestureRecognizer)
+	func transitionToEmpty() {
+		UIView.transition(
+			from: likesImageFill,
+			to: likesImageEmpty,
+			duration: 0.2,
+			options: .transitionCrossDissolve
+		)
 	}
 }

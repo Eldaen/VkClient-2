@@ -87,6 +87,9 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 	/// - Parameters:
 	///   - model: Модель новости, которую нужно отобразить
 	func configure (with model: NewsTableViewCellModelProtocol) {
+		likesControl.setLikesResponder(responder: self)
+		likesControl.hasMyLike = model.likesModel?.userLikes == 1 ? true : false
+		
 		setupCell()
 		setupFooter()
 		setupConstraints()
@@ -96,7 +99,6 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 		updateCellData(with: model)
 		
 		selectionStyle = .none
-		likesControl.setLikesResponder(responder: self)
 	}
 }
 
@@ -166,9 +168,8 @@ extension NewsFooterCell: CanLikeProtocol {
 	
 	/// Отправляет запрос на отмену лайка
 	func removeLike() {
-		likesResponder?.setLike(post: postId, owner: sourceId) { [weak self] result in
+		likesResponder?.removeLike(post: postId, owner: sourceId) { [weak self] result in
 			self?.likesControl.setCount(with: result)
 		}
-		
 	}
 }

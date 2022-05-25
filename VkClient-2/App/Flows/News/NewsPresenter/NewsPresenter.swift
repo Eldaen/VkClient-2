@@ -28,6 +28,18 @@ final class NewsPresenter {
 
 // MARK: - NewsViewOutputProtocol
 extension NewsPresenter: NewsViewOutputProtocol {
+	func removeLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
+		interactor.removeLike(post: post, owner: owner) { likesCount in
+			completion(likesCount)
+		}
+	}
+	
+	func setLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
+		interactor.setLike(post: post, owner: owner) { likesCount in
+			completion(likesCount)
+		}
+	}
+	
 	func configureCell(cell: UITableViewCell, index: Int, type: NewsViewControllerCellTypes) {
 		guard let news = view?.news else { return }
 		

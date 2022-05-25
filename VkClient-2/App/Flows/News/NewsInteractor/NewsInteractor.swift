@@ -15,7 +15,7 @@ final class NewsInteractor {
 	/// Cсылка на презентер
 	weak var output: NewsInteractorOutputProtocol?
 	
-	/// Cервис по работе с группами
+	/// Cервис по работе с новостями
 	private var newsLoader: NewsLoader
 	
 	// MARK: - Init
@@ -25,7 +25,20 @@ final class NewsInteractor {
 	}
 }
 
+// MARK: - NewsInteractorInputProtocol
 extension NewsInteractor: NewsInteractorInputProtocol {
+	func removeLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
+		newsLoader.removeLike(for: post, owner: owner) { likesCount in
+			completion(likesCount)
+		}
+	}
+	
+	func setLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
+		newsLoader.setLike(for: post, owner: owner) { likesCount in
+			completion(likesCount)
+		}
+	}
+	
 	func fetchNews(_ completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void) {
 		newsLoader.loadNews(startTime: nil, startFrom: nil) { result in
 			switch result {

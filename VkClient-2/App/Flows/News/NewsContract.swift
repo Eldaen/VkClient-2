@@ -65,11 +65,39 @@ protocol NewsViewOutputProtocol: AnyObject {
 	///   - url: Строка с url картинки, которую нужно загрузить
 	///   - completion: Клоужер с картинкой
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void)
+	
+	/// Ставит лайк посту
+	/// - Parameters:
+	///   - post: ID новости, которой ставим лайк
+	///   - owner: ID источника новости
+	///   - completion: Клоужер с кол-вом лайков после установки
+	func setLike(post: Int, owner: Int, completion: @escaping (Int) -> Void)
+	
+	/// Убирает лайк у поста
+	/// - Parameters:
+	///   - post: ID новости, у которой убираем лайк
+	///   - owner: ID источника новости
+	///   - completion: Клоужер с кол-вом лайков после изменения
+	func removeLike(post: Int, owner: Int, completion: @escaping (Int) -> Void)
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
 /// Входящий протокол интерактора списка новостей
 protocol NewsInteractorInputProtocol: AnyObject {
+	
+	/// Убирает лайк у поста
+	/// - Parameters:
+	///   - post: ID новости, у которой убираем лайк
+	///   - owner: ID источника новости
+	///   - completion: Клоужер с кол-вом лайков после изменения
+	func removeLike(post: Int, owner: Int, completion: @escaping (Int) -> Void)
+	
+	/// Ставит лайк посту
+	/// - Parameters:
+	///   - post: ID новости, которой ставим лайк
+	///   - owner: ID источника новости
+	///   - completion: Клоужер с кол-вом лайков после установки
+	func setLike(post: Int, owner: Int, completion: @escaping (Int) -> Void)
 	
 	/// Загружает список групп пользователя
 	func fetchNews(_ completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
