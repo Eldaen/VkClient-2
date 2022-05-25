@@ -71,7 +71,7 @@ extension NewsViewController: NewsViewInputProtocol {
 	}
 	
 	func reloadTableView() {
-		
+		newsView.tableView.reloadData()
 	}
 	
 	func startLoadAnimation() {

@@ -38,7 +38,23 @@ extension NewsInteractor: NewsInteractorInputProtocol {
 	}
 	
 	func loadImages(array: [ImageSizes], completion: @escaping ([UIImage]) -> Void) {
+		var images = [UIImage]()
+		let imageGroup = DispatchGroup()
 		
+		// Создаём группу по загрузке всех картинок новости
+		DispatchQueue.global().async(group: imageGroup) { [weak self] in
+			for imageName in array {
+				imageGroup.enter()
+				self?.newsLoader.loadImage(url: imageName.url) { image in
+					images.append(image)
+					imageGroup.leave()
+				}
+			}
+		}
+		
+		imageGroup.notify(queue: DispatchQueue.main) {
+			completion(images)
+		}
 	}
 	
 	func fetchNews(_ completion: @escaping (Result<[GroupModel], Error>) -> Void) {
@@ -46,6 +62,8 @@ extension NewsInteractor: NewsInteractorInputProtocol {
 	}
 	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
-		
+		newsLoader.loadImage(url: url) { image in
+			completion(image)
+		}
 	}
 }
