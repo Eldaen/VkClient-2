@@ -13,7 +13,7 @@ protocol NewsLoader: LoaderProtocol {
 	/// Загружает список групп пользователя
 	func loadNews(startTime: Double?,
 				  startFrom: String?,
-				  completion: @escaping ([NewsTableViewCellModelType], String) -> Void)
+				  completion: @escaping ([NewsTableViewCellModelProtocol], String) -> Void)
 	
 	///   Отправляет запрос на лайк поста
 	func setLike(for id: Int, owner: Int, completion: @escaping (Int) -> Void)
@@ -38,7 +38,7 @@ final class NewsService: NewsLoader {
 	func loadNews(
 		startTime: Double?,
 		startFrom: String?,
-		completion: @escaping ([NewsTableViewCellModelType], String
+		completion: @escaping ([NewsTableViewCellModelProtocol], String
 		) -> Void
 	) {
 		var params = [
@@ -74,8 +74,8 @@ final class NewsService: NewsLoader {
 	}
 	
 	/// Вытаскивает из моделей картинок URL-ы картинок нужного размера
-	func sortImage(by sizeType: String, from array: [ApiImage]) -> [Sizes] {
-		var sizes: [Sizes] = []
+	func sortImage(by sizeType: String, from array: [ApiImage]) -> [ImageSizes] {
+		var sizes: [ImageSizes] = []
 		
 		for model in array {
 			for size in model.sizes {
@@ -113,7 +113,7 @@ final class NewsService: NewsLoader {
 		
 		networkManager.request(method: .setLike,
 							   httpMethod: .post,
-							   params: params) { (result: Result<LikesResponse, Error>) in
+							   params: params) { (result: Result<LikesMainResponse, Error>) in
 			switch result {
 			case .success(let response):
 				completion(response.response.likes)
@@ -155,7 +155,7 @@ private extension NewsService {
 		let groups = newsResponse.response.groups
 		let users = newsResponse.response.profiles
 		var news: [NewsTableViewCellModel] = []
-		var source: NewsSourceProtocol = UserModel()
+		var source: NewsSourceProtocol = UserModel(name: "Вася", image: "", id: 0)
 		var link: Link? = nil
 		
 		for post in items {
@@ -210,7 +210,7 @@ private extension NewsService {
 		if sourceId < 0 {
 			for group in groups {
 				if group.id == sourceId.magnitude || group.id == sourceId {
-					let source = group
+					var source = group
 					source.id = -source.id
 					return source
 				}
@@ -222,16 +222,16 @@ private extension NewsService {
 				}
 			}
 		}
-		return UserModel()
+		return UserModel(name: "Вася", image: "", id: 0) // Заглушка, если что-то пошло не так
 	}
 	
 	/// Вытаскивает из модели нужные ссылки на картинки
-	func getImages(post: NewsModel) -> [Sizes] {
+	func getImages(post: NewsModel) -> [ImageSizes] {
 		// Вытаскиваем нужные картинки
-		var imageLinksArray: [Sizes]? = []
+		var imageLinksArray: [ImageSizes]? = []
 		
 		// Превью, если видео
-		var videoImages: [Sizes] = []
+		var videoImages: [ImageSizes] = []
 		
 		// Если есть фото, то нам нужны фото
 		if let images = post.photos?.items {
@@ -256,7 +256,7 @@ private extension NewsService {
 				if let video = attachment.video {
 					if let photo = video.firstFrame?.first,
 					   let photo = video.photo?.last {
-						let size = Sizes(url: photo.url, type: "z", height: photo.height, width: photo.width)
+						let size = ImageSizes(url: photo.url, type: "z", height: photo.height, width: photo.width)
 						videoImages.append(size)
 					}
 				}
@@ -271,11 +271,11 @@ private extension NewsService {
 			}
 			
 		}
-		return imageLinksArray ?? [Sizes]()
+		return imageLinksArray ?? [ImageSizes]()
 	}
 	
 	/// Проверяет массив AttachmentsModel на наличие ссылок
-	func checkForLinks(_ array: [AttachmentsModel]?) -> Link? {
+	func checkForLinks(_ array: [AttachmentsResponseModel]?) -> Link? {
 		guard let array = array else { return nil }
 		
 		for attach in array {
