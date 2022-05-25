@@ -134,6 +134,23 @@ extension NewsViewController: UITableViewDataSource {
 	}
 }
 
+// MARK: - UITableViewDelegate
+extension NewsViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.item == 2 {
+			if let height = news[indexPath.section].newsImageModels.first?.height,
+			   let width = news[indexPath.section].newsImageModels.first?.width {
+				let aspectRatio = Double(height) / Double(width)
+				return tableView.bounds.width * CGFloat(aspectRatio)
+			} else {
+				return UITableView.automaticDimension
+			}
+		} else {
+			return UITableView.automaticDimension
+		}
+	}
+}
+
 // MARK: - Private methods
 private extension NewsViewController {
 	
@@ -148,7 +165,7 @@ private extension NewsViewController {
 		tableView.register(registerClass: NewsLinkCell.self)
 		
 		tableView.dataSource = self
-		//tableView.delegate = self
+		tableView.delegate = self
 		//tableView.prefetchDataSource = self
 	}
 	

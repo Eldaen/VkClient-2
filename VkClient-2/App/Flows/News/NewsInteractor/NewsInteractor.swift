@@ -57,10 +57,6 @@ extension NewsInteractor: NewsInteractorInputProtocol {
 		}
 	}
 	
-	func fetchNews(_ completion: @escaping (Result<[GroupModel], Error>) -> Void) {
-		
-	}
-	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {
 		newsLoader.loadImage(url: url) { image in
 			completion(image)
