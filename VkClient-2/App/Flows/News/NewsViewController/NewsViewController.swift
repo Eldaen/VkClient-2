@@ -22,6 +22,9 @@ final class NewsViewController: UIViewController {
 	
 	// MARK: - Properties
 	
+	/// Обработчик исходящих событий
+	var output: NewsViewOutputProtocol?
+	
 	var news = [NewsTableViewCellModelProtocol]()
 	
 	/// Количество ячеек в секции новости
@@ -29,6 +32,32 @@ final class NewsViewController: UIViewController {
 	
 	/// Количество ячеек в секции новости, если есть ссылка
 	private let cellsWithLink: Int = 5
+	
+	/// UIView
+	var newsView: NewsView {
+		return self.view as! NewsView
+	}
+	
+	// MARK: - Life Cycle
+	
+	override func loadView() {
+		super.loadView()
+		self.view = NewsView()
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setupTableView()
+		//setupRefreshControl()
+		configureNewsViewTableView()
+		//newsView.spinner.startAnimating()
+		output?.fetchNews()
+	}
+	
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		newsView.tableView.frame = newsView.bounds
+	}
 }
 
 // MARK: - NewsViewInputProtocol
@@ -108,6 +137,21 @@ extension NewsViewController: UITableViewDataSource {
 // MARK: - Private methods
 private extension NewsViewController {
 	
+	/// Конфигурируем TableView
+	func setupTableView() {
+		let tableView = newsView.tableView
+		
+		tableView.register(registerClass: NewsAuthorCell.self)
+		tableView.register(registerClass: NewsTextCell.self)
+		tableView.register(registerClass: NewsCollectionCell.self)
+		tableView.register(registerClass: NewsFooterCell.self)
+		tableView.register(registerClass: NewsLinkCell.self)
+		
+		tableView.dataSource = self
+		//tableView.delegate = self
+		//tableView.prefetchDataSource = self
+	}
+	
 	/// Проверяет наличие ссылки в новости
 	func checkLink(for section: Int) -> Bool {
 		return (news[section].link) != nil
@@ -133,5 +177,10 @@ private extension NewsViewController {
 			print("Some News Table view issue")
 			return nil
 		}
+	}
+	
+	func configureNewsViewTableView() {
+		newsView.tableView.reloadData()
+		newsView.tableView.separatorStyle = .none
 	}
 }

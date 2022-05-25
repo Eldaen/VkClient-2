@@ -13,7 +13,7 @@ final class NewsInteractor {
 	// MARK: - Properties
 	
 	/// Cсылка на презентер
-	weak var output: MyGroupsInteractorOutputProtocol?
+	weak var output: NewsInteractorOutputProtocol?
 	
 	/// Cервис по работе с группами
 	private var newsLoader: NewsLoader
