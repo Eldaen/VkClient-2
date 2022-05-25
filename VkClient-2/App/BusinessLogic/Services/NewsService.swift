@@ -13,7 +13,7 @@ protocol NewsLoader: LoaderProtocol {
 	/// Загружает список групп пользователя
 	func loadNews(startTime: Double?,
 				  startFrom: String?,
-				  completion: @escaping ([NewsTableViewCellModelProtocol], String) -> Void)
+				  completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
 	
 	///   Отправляет запрос на лайк поста
 	func setLike(for id: Int, owner: Int, completion: @escaping (Int) -> Void)
@@ -38,8 +38,7 @@ final class NewsService: NewsLoader {
 	func loadNews(
 		startTime: Double?,
 		startFrom: String?,
-		completion: @escaping ([NewsTableViewCellModelProtocol], String
-		) -> Void
+		completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void
 	) {
 		var params = [
 			"filters" : "posts",
@@ -65,9 +64,10 @@ final class NewsService: NewsLoader {
 				let nextFrom = newsResponse.response.nextFrom ?? ""
 				
 				if let news = self?.configureAnswer(newsResponse) {
-					completion(news, nextFrom)
+					completion(.success(NewsFetchingResponse(news: news, nextFrom: nextFrom)))
 				}
 			case .failure(let error):
+				completion(.failure(error))
 				debugPrint("Error: \(error.localizedDescription)")
 			}
 		}
