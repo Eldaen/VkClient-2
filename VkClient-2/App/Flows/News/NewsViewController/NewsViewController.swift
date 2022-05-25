@@ -136,6 +136,11 @@ extension NewsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension NewsViewController: UITableViewDelegate {
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		self.newsView.tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		if indexPath.item == 2 {
 			if let height = news[indexPath.section].newsImageModels.first?.height,

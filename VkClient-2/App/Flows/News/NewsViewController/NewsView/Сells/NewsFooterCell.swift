@@ -21,6 +21,8 @@ protocol NewsFooterCellProtocol {
 // MARK: - NewsFooterCell
 /// Ячейка для отображения новостей пользователя в контроллере NewsController
 final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
+	
+	// MARK: - Subviews
 
 	private let footerView: UIView = {
 		let view = UIView()
@@ -61,11 +63,25 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 		return views
 	}()
 	
-	/// Вью модель
+	private let graySpacer: UIView = {
+		let view = UIView()
+		view.backgroundColor = .gray
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	
+	// MARK: - Properties
+	
+	/// Обработчик лайков
 	var likesResponder: NewsViewInputProtocol?
 	
 	private var postId: Int = 0
 	private var sourceId: Int = 0
+	
+	/// Высота разделителя
+	let spacerHeight: CGFloat = 5
+	
+	// MARK: - Methods
 	
 	/// Конфигурирует ячейку NewsTableViewCell
 	/// - Parameters:
@@ -101,6 +117,11 @@ private extension NewsFooterCell {
 			
 			viewsLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -10),
 			viewsLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+			
+			graySpacer.topAnchor.constraint(equalTo: footerView.bottomAnchor),
+			graySpacer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+			graySpacer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+			graySpacer.heightAnchor.constraint(equalToConstant: spacerHeight),
 		])
 		
 		let footerTop = footerView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 20)
@@ -110,6 +131,7 @@ private extension NewsFooterCell {
 	
 	func setupCell() {
 		contentView.addSubview(footerView)
+		contentView.addSubview(graySpacer)
 	}
 	
 	/// Конфигурируем футер
