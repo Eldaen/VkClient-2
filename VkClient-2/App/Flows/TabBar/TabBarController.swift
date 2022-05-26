@@ -15,6 +15,8 @@ final class TabBarController: UITabBarController {
 	/// Флаг демо режима
 	private var isDemoModeEnabled: Bool
 	
+	weak var restartDelegate: RestartDelegate?
+	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
@@ -25,8 +27,9 @@ final class TabBarController: UITabBarController {
 	
 	// MARK: - Init
 	
-	init(isDemoModeEnabled: Bool) {
+	init(isDemoModeEnabled: Bool, restartDelegate: RestartDelegate?) {
 		self.isDemoModeEnabled = isDemoModeEnabled
+		self.restartDelegate = restartDelegate
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -45,7 +48,7 @@ private extension TabBarController {
 	}
 	
 	func configureNavigationControllers() {
-		let myGroupsController = isDemoModeEnabled ? DemoMyGroupsBuilder.build() : MyGroupsBuilder.build()
+		let myGroupsController = isDemoModeEnabled ? DemoMyGroupsBuilder.build() : MyGroupsBuilder.build(restartDelegate: restartDelegate)
 		let friendsListController = isDemoModeEnabled ? DemoFriendsListBuilder.build() : FriendsListBuilder.build()
 		let newsController = isDemoModeEnabled ? DemoNewsBuilder.build() : NewsBuilder.build()
 		

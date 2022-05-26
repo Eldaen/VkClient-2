@@ -12,7 +12,7 @@ final class MyGroupsBuilder {
 	
 	/// Билдер модуля экрана отображения групп пользователя
 	/// - Returns: Контроллер экрана групп пользователя
-	static func build() -> UIViewController {
+	static func build(restartDelegate: RestartDelegate?) -> UIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
 		let service = GroupsService(networkManager: networkManager, cache: cache)
@@ -22,6 +22,7 @@ final class MyGroupsBuilder {
 		let presenter = MyGroupsPresenter(router: router, interactor: interactor, view: viewController)
 		
 		viewController.output = presenter
+		viewController.restartDelegate = restartDelegate
 		presenter.interactor = interactor
 		presenter.view = viewController
 		router.viewController = viewController

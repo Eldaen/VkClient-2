@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - VkLoginViewController
-final class MyGroupsViewController: UIViewController {
+final class MyGroupsViewController: MyCustomUIViewController {
 	
 	// MARK: - Properties
 	

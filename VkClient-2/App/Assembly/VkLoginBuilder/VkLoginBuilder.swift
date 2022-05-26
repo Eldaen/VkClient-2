@@ -12,7 +12,7 @@ final class VkLoginBuilder {
 	
 	/// Билд модуля отображения экрана авторизации
 	/// - Returns: UIViewController для отображения экрана авторизации
-	static func build() -> UIViewController {
+	static func build(restartDelegate: RestartDelegate) -> UIViewController {
 		let service = VkLoginService()
 		let router = VkLoginRouter()
 		let viewController = VkLoginViewController()
@@ -20,6 +20,7 @@ final class VkLoginBuilder {
 		let interactor = VkLoginInteractor()
 		
 		router.viewController = viewController
+		router.restartDelegate = restartDelegate
 		viewController.output = presenter
 		presenter.interactor = interactor
 		presenter.view = viewController
