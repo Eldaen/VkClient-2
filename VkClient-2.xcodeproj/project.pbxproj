@@ -120,6 +120,8 @@
 		D0B3283E283FE543007E5140 /* groups.json in Resources */ = {isa = PBXBuildFile; fileRef = D0B3283B283FE543007E5140 /* groups.json */; };
 		D0B32841283FE683007E5140 /* DemoFriendsProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32840283FE683007E5140 /* DemoFriendsProfileBuilder.swift */; };
 		D0B32844283FE8A2007E5140 /* DemoGalleryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32843283FE8A2007E5140 /* DemoGalleryBuilder.swift */; };
+		D0B32847283FED52007E5140 /* MyCustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32846283FED52007E5140 /* MyCustomUIViewController.swift */; };
+		D0B32849283FF2BD007E5140 /* AppStartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32848283FF2BD007E5140 /* AppStartManager.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -263,6 +265,8 @@
 		D0B3283B283FE543007E5140 /* groups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = groups.json; path = "../../../../../../../2 - Пользовательский интерфейс iOS приложений/VK Client/VK client/demo/groups.json"; sourceTree = "<group>"; };
 		D0B32840283FE683007E5140 /* DemoFriendsProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoFriendsProfileBuilder.swift; sourceTree = "<group>"; };
 		D0B32843283FE8A2007E5140 /* DemoGalleryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGalleryBuilder.swift; sourceTree = "<group>"; };
+		D0B32846283FED52007E5140 /* MyCustomUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomUIViewController.swift; sourceTree = "<group>"; };
+		D0B32848283FF2BD007E5140 /* AppStartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartManager.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 				D0B3275428378BFE007E5140 /* NetworkManager.swift */,
 				D0B327062823E936007E5140 /* SessionManager.swift */,
 				D0B327562837901F007E5140 /* ImageCacheManager.swift */,
+				D0B32848283FF2BD007E5140 /* AppStartManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1016,6 +1021,14 @@
 			path = DemoGalleryBuilder;
 			sourceTree = "<group>";
 		};
+		D0B32845283FED44007E5140 /* CustomController */ = {
+			isa = PBXGroup;
+			children = (
+				D0B32846283FED52007E5140 /* MyCustomUIViewController.swift */,
+			);
+			path = CustomController;
+			sourceTree = "<group>";
+		};
 		D0DCDB47281814500065E7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1110,7 @@
 		D0DCDB8B281815030065E7C5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D0B32845283FED44007E5140 /* CustomController */,
 				D0B3273E28366C28007E5140 /* Extension */,
 				D0DCDB53281814500065E7C5 /* AppDelegate.swift */,
 				D0DCDB55281814500065E7C5 /* SceneDelegate.swift */,
@@ -1325,6 +1339,7 @@
 				D0B327072823E936007E5140 /* SessionManager.swift in Sources */,
 				D0B32836283FCD28007E5140 /* DemoNewsService.swift in Sources */,
 				D0B32808283E3A26007E5140 /* NewsAuthorCell.swift in Sources */,
+				D0B32849283FF2BD007E5140 /* AppStartManager.swift in Sources */,
 				D0B32793283BBF9A007E5140 /* UserService.swift in Sources */,
 				D0B32844283FE8A2007E5140 /* DemoGalleryBuilder.swift in Sources */,
 				D0B3275A28379698007E5140 /* GroupsMyResponse.swift in Sources */,
@@ -1373,6 +1388,7 @@
 				D0B3278F283BB75F007E5140 /* Extension+UIFont.swift in Sources */,
 				D0B32753283789C1007E5140 /* UserImagesResponse.swift in Sources */,
 				D0B32817283E5F73007E5140 /* LikeControl.swift in Sources */,
+				D0B32847283FED52007E5140 /* MyCustomUIViewController.swift in Sources */,
 				D0B32805283E2D73007E5140 /* LikesResponse.swift in Sources */,
 				D0B327AC283BEDB3007E5140 /* FriendsProfileContract.swift in Sources */,
 				D0B32841283FE683007E5140 /* DemoFriendsProfileBuilder.swift in Sources */,
