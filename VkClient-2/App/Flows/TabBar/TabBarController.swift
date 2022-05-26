@@ -48,9 +48,11 @@ private extension TabBarController {
 	}
 	
 	func configureNavigationControllers() {
-		let myGroupsController = isDemoModeEnabled ? DemoMyGroupsBuilder.build() : MyGroupsBuilder.build(restartDelegate: restartDelegate)
+		let myGroupsController = isDemoModeEnabled ? DemoMyGroupsBuilder.build() : MyGroupsBuilder.build()
 		let friendsListController = isDemoModeEnabled ? DemoFriendsListBuilder.build() : FriendsListBuilder.build()
 		let newsController = isDemoModeEnabled ? DemoNewsBuilder.build() : NewsBuilder.build()
+		
+		[myGroupsController, friendsListController, newsController].forEach { $0.restartDelegate = restartDelegate }
 		
 		let myGroups = createNavController(
 			for: myGroupsController,

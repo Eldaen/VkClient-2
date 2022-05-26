@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - FriendsListViewController
-final class FriendsListViewController: UIViewController {
+final class FriendsListViewController: MyCustomUIViewController {
 	
 	// MARK: - Properties
 	

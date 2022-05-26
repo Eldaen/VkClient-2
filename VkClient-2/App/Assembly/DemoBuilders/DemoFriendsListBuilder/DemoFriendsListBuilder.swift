@@ -12,7 +12,7 @@ final class DemoFriendsListBuilder {
 	
 	/// Билдер модуля экрана списка друзей в демо режиме
 	/// - Returns: Контроллер экрана списка друзей
-	static func build() -> UIViewController {
+	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
 		let service = DemoFriendsListService(networkManager: networkManager, cache: cache)
