@@ -8,7 +8,7 @@
 import Foundation
 
 /// Модель пользователя
-struct UserModel: Codable {
+struct UserModel: NewsSourceProtocol, Codable {
 	var name: String
 	var image: String
 	var id: Int
