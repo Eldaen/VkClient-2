@@ -127,16 +127,17 @@ final class NewsService: NewsLoader {
 		let params = [
 			"type" : "post",
 			"item_id" : "\(id)",
+			"owner_id" : "\(owner)",
 		]
 		
 		networkManager.request(
 			method: .removeLike,
 			httpMethod: .post,
 			params: params
-		) { (result: Result<ApiBoolResponse, Error>) in
+		) { (result: Result<LikesMainResponse, Error>) in
 			switch result {
 			case .success(let response):
-				completion(response.response)
+				completion(response.response.likes)
 			case .failure(let error):
 				debugPrint("Error: \(error.localizedDescription)")
 			}
