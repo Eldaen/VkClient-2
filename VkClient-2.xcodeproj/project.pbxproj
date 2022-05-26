@@ -106,6 +106,8 @@
 		D0B3281B283E60EC007E5140 /* RepostsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3281A283E60EC007E5140 /* RepostsControl.swift */; };
 		D0B3281D283E613D007E5140 /* CommentsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3281C283E613D007E5140 /* CommentsControl.swift */; };
 		D0B3281F283E7929007E5140 /* NewsFetchingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3281E283E7929007E5140 /* NewsFetchingResponse.swift */; };
+		D0B32822283F8125007E5140 /* NewsRefreshDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32821283F8125007E5140 /* NewsRefreshDelegateProtocol.swift */; };
+		D0B32824283F8E03007E5140 /* ShowMoreNewsTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B32823283F8E03007E5140 /* ShowMoreNewsTextDelegate.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -235,6 +237,8 @@
 		D0B3281A283E60EC007E5140 /* RepostsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostsControl.swift; sourceTree = "<group>"; };
 		D0B3281C283E613D007E5140 /* CommentsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsControl.swift; sourceTree = "<group>"; };
 		D0B3281E283E7929007E5140 /* NewsFetchingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFetchingResponse.swift; sourceTree = "<group>"; };
+		D0B32821283F8125007E5140 /* NewsRefreshDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRefreshDelegateProtocol.swift; sourceTree = "<group>"; };
+		D0B32823283F8E03007E5140 /* ShowMoreNewsTextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMoreNewsTextDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -763,6 +767,8 @@
 			isa = PBXGroup;
 			children = (
 				D0B327D7283E1F05007E5140 /* NewsView */,
+				D0B32823283F8E03007E5140 /* ShowMoreNewsTextDelegate.swift */,
+				D0B32821283F8125007E5140 /* NewsRefreshDelegateProtocol.swift */,
 				D0B327DB283E2081007E5140 /* NewsViewController.swift */,
 			);
 			path = NewsViewController;
@@ -1221,6 +1227,7 @@
 				D0B327B0283BEF27007E5140 /* FriendsProfilePresenter.swift in Sources */,
 				D0B32819283E5FC1007E5140 /* NewsControl.swift in Sources */,
 				D0B32783283BAEAA007E5140 /* UserModel.swift in Sources */,
+				D0B32822283F8125007E5140 /* NewsRefreshDelegateProtocol.swift in Sources */,
 				D0B32748283785FA007E5140 /* GroupsService.swift in Sources */,
 				D0B3274F28378955007E5140 /* ImageSizes.swift in Sources */,
 				D0B32791283BB9C6007E5140 /* FriendsListInteractor.swift in Sources */,
@@ -1289,6 +1296,7 @@
 				D0B327572837901F007E5140 /* ImageCacheManager.swift in Sources */,
 				D0B32785283BAF19007E5140 /* FriendsListViewController.swift in Sources */,
 				D0B327B8283BF2A2007E5140 /* FriendsProfileView.swift in Sources */,
+				D0B32824283F8E03007E5140 /* ShowMoreNewsTextDelegate.swift in Sources */,
 				D0B3275528378BFE007E5140 /* NetworkManager.swift in Sources */,
 				D0B3279D283BC378007E5140 /* VkFriendsResponse.swift in Sources */,
 				D0B326E02818231B007E5140 /* VkLoginContract.swift in Sources */,

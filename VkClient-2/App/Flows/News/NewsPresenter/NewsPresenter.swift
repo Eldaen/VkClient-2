@@ -15,6 +15,12 @@ final class NewsPresenter {
 	var interactor: NewsInteractorInputProtocol
 	weak var view: NewsViewInputProtocol?
 	
+	/// Дата последней новости
+	var lastDate: Double?
+	
+	/// Данные по следующей prefetch подгрузке
+	var nextFrom: String?
+	
 	// MARK: - Init
 	
 	init(
@@ -67,6 +73,8 @@ extension NewsPresenter: NewsViewOutputProtocol {
 		case .link:
 			guard let linkCell = cell as? NewsLinkCellProtocol else { return }
 			linkCell.configure(with: news[index])
+		case .emptyRow:
+			break
 		}
 	}
 	
@@ -75,11 +83,48 @@ extension NewsPresenter: NewsViewOutputProtocol {
 			switch result {
 			case .success(let news):
 				self?.view?.news = news.news
+				self?.nextFrom = news.nextFrom
+				self?.view?.stopLoadAnimation()
 				self?.view?.reloadTableView()
 			case .failure:
 				self?.view?.showNewsLoadingErrorText("Не удалось загрузить новости")
 			}
 		})
+	}
+	
+	func fetchFreshNews(completion: @escaping (_ indexSet: IndexSet?) -> Void) {
+		interactor.fetchFreshNews(startTime: lastDate, startFrom: nil) { [weak self] result in
+			switch result {
+			case .success(let newsResponse):
+				if let newsCount = self?.view?.news.count {
+					self?.view?.news.insert(contentsOf: newsResponse.news, at: 0)
+					
+					let indexSet = IndexSet(integersIn: newsCount..<newsCount + newsResponse.news.count)
+					completion(indexSet)
+					return
+				}
+			case .failure:
+				self?.view?.showNewsLoadingErrorText("Не удалось загрузить новости")
+			}
+		}
+	}
+	
+	func prefetchNews(completion: @escaping (_ indexSet: IndexSet?) -> Void) {
+		interactor.fetchFreshNews(startTime: nil, startFrom: nextFrom) { [weak self] result in
+			switch result {
+			case .success(let newsResponse):
+				if let newsCount = self?.view?.news.count {
+					self?.nextFrom = newsResponse.nextFrom
+					self?.view?.news.append(contentsOf: newsResponse.news)
+					
+					let indexSet = IndexSet(integersIn: newsCount..<newsCount + newsResponse.news.count)
+					completion(indexSet)
+					return
+				}
+			case .failure:
+				self?.view?.showNewsLoadingErrorText("Не удалось загрузить новости")
+			}
+		}
 	}
 	
 	func loadImage(_ url: String, completion: @escaping (UIImage) -> Void) {

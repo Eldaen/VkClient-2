@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - NewCollectionCellProtocol
 /// Протокол медиа ячейки для NewsController
 protocol NewCollectionCellProtocol {
 	
@@ -20,6 +21,7 @@ protocol NewCollectionCellProtocol {
 	func updateCollection(with images: [UIImage])
 }
 
+// MARK: - NewsCollectionCell
 /// Ячейка для отображения новостей пользователя в контроллере NewsController
 final class NewsCollectionCell: UITableViewCell, NewCollectionCellProtocol {
 	

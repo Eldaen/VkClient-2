@@ -26,6 +26,11 @@ final class NewsView: UIView {
 		return spinner
 	}()
 	
+	// MARK: - Properties
+	
+	/// Обработчик pull to refresh
+	var refreshResponder: NewsRefreshDelegateProtocol?
+	
 	// MARK: - Init
 	
 	override init(frame: CGRect) {
@@ -59,5 +64,10 @@ private extension NewsView {
 	private func configureUI() {
 		addSubviews()
 		setupSpinner()
+	}
+	
+	/// Запрашивает обновление новостей, инициируется RefreshControl-ом
+	@objc func refreshNews() {
+		refreshResponder?.refreshNews()
 	}
 }

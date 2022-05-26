@@ -15,6 +15,7 @@ enum NewsViewControllerCellTypes {
 	case collection
 	case footer
 	case link
+	case emptyRow
 }
 
 // MARK: - NewsViewController
@@ -27,11 +28,11 @@ final class NewsViewController: UIViewController {
 	
 	var news = [NewsTableViewCellModelProtocol]()
 	
-	/// Количество ячеек в секции новости
-	private let cellsCount: Int = 4
+	/// Cостояние загрузки через pre-fretch
+	private var isLoading = false
 	
-	/// Количество ячеек в секции новости, если есть ссылка
-	private let cellsWithLink: Int = 5
+	/// Количество ячеек в секции новости
+	private let cellsCount: Int = 5
 	
 	/// UIView
 	var newsView: NewsView {
@@ -48,9 +49,9 @@ final class NewsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupTableView()
-		//setupRefreshControl()
+		setupRefreshControl()
 		configureNewsViewTableView()
-		//newsView.spinner.startAnimating()
+		newsView.spinner.startAnimating()
 		output?.fetchNews()
 	}
 	
@@ -102,11 +103,7 @@ extension NewsViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if checkLink(for: section) {
-			return cellsWithLink
-		} else {
-			return cellsCount
-		}
+		cellsCount
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,6 +128,8 @@ extension NewsViewController: UITableViewDataSource {
 		case .link:
 			let linkCell: NewsLinkCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
 			cell = linkCell
+		case .emptyRow:
+			break
 		}
 		
 		output?.configureCell(cell: cell, index: indexPath.section, type: type)
@@ -160,6 +159,46 @@ extension NewsViewController: UITableViewDelegate {
 	}
 }
 
+// MARK: - NewsRefreshDelegateProtocol
+extension NewsViewController: NewsRefreshDelegateProtocol {
+	
+	@objc func refreshNews() {
+		output?.fetchFreshNews { [weak self] indexSet in
+			guard let indexSet = indexSet else { return }
+			
+			self?.newsView.tableView.insertSections(indexSet, with: .automatic)
+			self?.newsView.tableView.refreshControl?.endRefreshing()
+		}
+	}
+}
+
+// MARK: - ShowMoreDelegate
+extension NewsViewController: ShowMoreNewsTextDelegate {
+	func updateTextHeight(indexPath: IndexPath) {
+		newsView.tableView.beginUpdates()
+		newsView.tableView.endUpdates()
+	}
+}
+
+// MARK: - UITableViewDataSourcePrefetching
+extension NewsViewController: UITableViewDataSourcePrefetching {
+	func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+		guard let maxSection = indexPaths.map({ $0.section }).max() else { return }
+		
+		if maxSection > ( news.count - 3 ),
+		   isLoading == false {
+			isLoading = true
+			
+			output?.prefetchNews { [weak self] indexSet in
+				guard let indexSet = indexSet else { return }
+				
+				self?.newsView.tableView.insertSections(indexSet, with: .automatic)
+				self?.isLoading = false
+			}
+		}
+	}
+}
+
 // MARK: - Private methods
 private extension NewsViewController {
 	
@@ -175,7 +214,7 @@ private extension NewsViewController {
 		
 		tableView.dataSource = self
 		tableView.delegate = self
-		//tableView.prefetchDataSource = self
+		tableView.prefetchDataSource = self
 	}
 	
 	/// Проверяет наличие ссылки в новости
@@ -195,7 +234,7 @@ private extension NewsViewController {
 			if checkLink(for: item.section) {
 				return .link
 			} else {
-				return .footer
+				return .emptyRow
 			}
 		case 4:
 			return .footer
@@ -208,5 +247,13 @@ private extension NewsViewController {
 	func configureNewsViewTableView() {
 		newsView.tableView.reloadData()
 		newsView.tableView.separatorStyle = .none
+	}
+	
+	/// Настраивает RefreshControl для контроллера
+	func setupRefreshControl() {
+		newsView.tableView.refreshControl = UIRefreshControl()
+		newsView.tableView.refreshControl?.tintColor = .black
+		newsView.tableView.refreshControl?.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+		newsView.refreshResponder = self
 	}
 }

@@ -27,6 +27,7 @@ final class NewsInteractor {
 
 // MARK: - NewsInteractorInputProtocol
 extension NewsInteractor: NewsInteractorInputProtocol {
+	
 	func removeLike(post: Int, owner: Int, completion: @escaping (Int) -> Void) {
 		newsLoader.removeLike(for: post, owner: owner) { likesCount in
 			completion(likesCount)
@@ -41,6 +42,17 @@ extension NewsInteractor: NewsInteractorInputProtocol {
 	
 	func fetchNews(_ completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void) {
 		newsLoader.loadNews(startTime: nil, startFrom: nil) { result in
+			switch result {
+			case .success(let response):
+				completion(.success(response))
+			case .failure(let error):
+				completion(.failure(error))
+			}
+		}
+	}
+	
+	func fetchFreshNews(startTime: Double?, startFrom: String?, completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void) {
+		newsLoader.loadNews(startTime: startTime, startFrom: startFrom) { result in
 			switch result {
 			case .success(let response):
 				completion(.success(response))

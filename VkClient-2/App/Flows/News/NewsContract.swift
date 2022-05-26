@@ -60,6 +60,12 @@ protocol NewsViewOutputProtocol: AnyObject {
 	/// Загружает список новостей
 	func fetchNews()
 	
+	/// Загружает свежие новости для pull to refresh
+	func fetchFreshNews(completion: @escaping (_ indexSet: IndexSet?) -> Void)
+	
+	/// Загружает новости, по мере прокрутки
+	func prefetchNews(completion: @escaping (_ indexSet: IndexSet?) -> Void)
+	
 	/// Загружает изображение из сети
 	/// - Parameters:
 	///   - url: Строка с url картинки, которую нужно загрузить
@@ -101,6 +107,9 @@ protocol NewsInteractorInputProtocol: AnyObject {
 	
 	/// Загружает список групп пользователя
 	func fetchNews(_ completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
+	
+	/// Загружает свежие новости
+	func fetchFreshNews(startTime: Double?, startFrom: String?, completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:
