@@ -52,7 +52,7 @@ final class NewsTextCell: UITableViewCell, NewsTextCellProtocol {
 	private var shortTextState: Bool = false
 	
 	/// Делегат для обновления высоты ячейки текста
-	//var delegate: ShowMoreDelegate?
+	var delegate: ShowMoreNewsTextDelegate?
 	
 	/// IndexPath ячейки в таблице
 	var indexPath: IndexPath = IndexPath()
@@ -131,7 +131,7 @@ private extension NewsTextCell {
 			showShortText()
 			button.setTitle("показать полностью", for: .normal)
 		}
-		//delegate?.updateTextHeight(indexPath: indexPath)
+		delegate?.updateTextHeight(indexPath: indexPath)
 	}
 	
 	/// Отображает весь текст поста

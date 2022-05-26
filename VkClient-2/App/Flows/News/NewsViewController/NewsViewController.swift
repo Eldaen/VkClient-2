@@ -88,11 +88,21 @@ extension NewsViewController: NewsViewInputProtocol {
 	}
 	
 	func showNewsLoadingErrorText(_ text: String) {
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "Повторить", style: .cancel) {[weak self] _ in
+			self?.output?.fetchNews()
+		}
+		alert.addAction(action)
 		
+		present(alert, animated: true, completion: nil)
 	}
 	
 	func showNewsLikeErrorText(_ text: String) {
+		let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(action)
 		
+		present(alert, animated: true, completion: nil)
 	}
 }
 
@@ -117,6 +127,7 @@ extension NewsViewController: UITableViewDataSource {
 		case .text:
 			let textCell: NewsTextCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
 			cell = textCell
+			textCell.delegate = self
 			textCell.indexPath = indexPath
 		case .collection:
 			let collectionCell: NewsCollectionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)

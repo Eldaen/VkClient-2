@@ -137,11 +137,11 @@ extension NewsPresenter: NewsViewOutputProtocol {
 // MARK: - NewsInteractorOutputProtocol
 extension NewsPresenter: NewsInteractorOutputProtocol {
 	func showNewsLoadingError(_ error: Error) {
-		
+		view?.showNewsLoadingErrorText("Не удалось загрузить новости")
 	}
 	
 	func showNewsLikeError(_ error: Error) {
-		
+		view?.showNewsLikeErrorText("Не удалось поставить лайк")
 	}
 }
 
