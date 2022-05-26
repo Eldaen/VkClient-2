@@ -19,6 +19,10 @@ final class VkLoginPresenter {
 
 // MARK: - VkLoginViewInputProtocol
 extension VkLoginPresenter: VkLoginViewOutputProtocol {
+	func enableDemoMode() {
+		router?.pushDemoApp()
+	}
+	
 	func authorize() {
 		router?.pushRealApp()
 	}

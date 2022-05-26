@@ -26,6 +26,9 @@ protocol VkLoginViewOutputProtocol: AnyObject {
 	
 	/// Перейти на основной Таб бар контроллер приложения
 	func authorize()
+	
+	/// Запускает демо режим приложения
+	func enableDemoMode()
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
