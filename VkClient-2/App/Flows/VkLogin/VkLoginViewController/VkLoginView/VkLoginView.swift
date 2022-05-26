@@ -33,7 +33,11 @@ final class VkLoginView: UIView {
 		return button
 	}()
 	
+	/// Обработчик нажатия на кнопку demo mode
+	weak var demoModeDelegate: DemoModeDelegate?
+	
 	// MARK: - Init
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.setupWebView()
@@ -44,6 +48,13 @@ final class VkLoginView: UIView {
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
+	
+	// MARK: - Methods
+	
+	func setupDemoButton() {
+		self.addSubview(demoButton)
+		// TODO: Добавить таргет и работоспособность этой кнопке
+	}
 }
 
 // MARK: - Private
@@ -51,12 +62,7 @@ private extension VkLoginView {
 	
 	func setupWebView() {
 		self.addSubview(webView)
-	}
-	
-	func setupDemoButton() {
-		self.addSubview(demoButton)
-		
-		// TODO: Добавить таргет и работоспособность этой кнопке
+		demoButton.addTarget(self, action: #selector(demoOn), for: .touchUpInside)
 	}
 	
 	func setupConstraints() {
@@ -68,5 +74,9 @@ private extension VkLoginView {
 			demoButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
 			demoButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 		])
+	}
+	
+	@objc func demoOn() {
+		demoModeDelegate?.demoOn()
 	}
 }
