@@ -12,14 +12,16 @@ final class FriendsListRouter {
 	// MARK: - Properties
 	
 	weak var viewController: UIViewController?
+	var isDemoModeOn: Bool?
 }
 
 // MARK: - VkLoginRouterInputProtocol
 extension FriendsListRouter: FriendsListRouterInputProtocol {
 	func openProfile(for friend: UserModel) {
-		viewController?.navigationController?.pushViewController(
-			FriendsProfileBuilder.build(userModel: friend)
-			, animated: true
-		)
+		var nextController = FriendsProfileBuilder.build(userModel: friend)
+		if isDemoModeOn != nil {
+			nextController = DemoFriendsProfileBuilder.build()
+		}
+		viewController?.navigationController?.pushViewController(nextController, animated: true)
 	}
 }

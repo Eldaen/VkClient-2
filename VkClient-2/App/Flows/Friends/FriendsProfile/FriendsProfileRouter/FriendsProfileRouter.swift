@@ -13,16 +13,16 @@ final class FriendsProfileRouter {
 	// MARK: - Properties
 	
 	weak var viewController: UIViewController?
+	var isDemoModeOn: Bool?
 }
 
 // MARK: - FriendsProfileRouterInputProtocol
 extension FriendsProfileRouter: FriendsProfileRouterInputProtocol {
 	func openGalleryFor(photo: Int, in images: [ApiImage]) {
-		viewController?.navigationController?.pushViewController(
-			GalleryBuilder.build(
-				photoId: photo,
-				imageModels: images
-			), animated: true
-		)
+		var nextController = GalleryBuilder.build(photoId: photo, imageModels: images)
+		if isDemoModeOn != nil {
+			nextController = DemoGalleryBuilder.build(photoId: photo, imageModels: images)
+		}
+		viewController?.navigationController?.pushViewController(nextController, animated: true)
 	}
 }

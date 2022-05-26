@@ -9,12 +9,29 @@ import UIKit
 
 // MARK: - TabBarController
 final class TabBarController: UITabBarController {
+
+	// MARK: - Properties
 	
-	// MARK: - LifeCycle
+	/// Флаг демо режима
+	private var isDemoModeEnabled: Bool
+	
+	// MARK: - Life Cycle
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureTabBar()
 		configureNavigationControllers()
+	}
+	
+	// MARK: - Init
+	
+	init(isDemoModeEnabled: Bool) {
+		self.isDemoModeEnabled = isDemoModeEnabled
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 }
 
@@ -27,21 +44,25 @@ private extension TabBarController {
 		self.tabBar.backgroundColor = .white
 	}
 	
-	private func configureNavigationControllers() {
+	func configureNavigationControllers() {
+		let myGroupsController = isDemoModeEnabled ? DemoMyGroupsBuilder.build() : MyGroupsBuilder.build()
+		let friendsListController = isDemoModeEnabled ? DemoFriendsListBuilder.build() : FriendsListBuilder.build()
+		let newsController = isDemoModeEnabled ? DemoNewsBuilder.build() : NewsBuilder.build()
+		
 		let myGroups = createNavController(
-			for: MyGroupsBuilder.build(),
+			for: myGroupsController,
 			title: "Мои группы",
 			image: UIImage(systemName: "person.3")!
 		)
 		
 		let friends = createNavController(
-			for: FriendsListBuilder.build(),
+			for: friendsListController,
 			title: "Друзья",
 			image: UIImage(systemName: "person")!
 		)
 		
 		let news = createNavController(
-			for: NewsBuilder.build(),
+			for: newsController,
 			title: "Новости",
 			image: UIImage(systemName: "newspaper")!
 		)
@@ -49,7 +70,7 @@ private extension TabBarController {
 		self.viewControllers = [myGroups, friends, news]
 	}
 	
-	private func createNavController(
+	func createNavController(
 		for rootViewController: UIViewController,
 		title: String,
 		image: UIImage

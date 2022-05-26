@@ -31,6 +31,7 @@ final class VkLoginViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupWebView()
+		setupDemoButton()
 		setupController()
 	}
 }
@@ -78,6 +79,13 @@ extension VkLoginViewController: VkLoginViewInputProtocol {
 	
 }
 
+// MARK: - DemoModeDelegate
+extension VkLoginViewController: DemoModeDelegate {
+	func demoOn() {
+		output?.enableDemoMode()
+	}
+}
+
 // MARK: - Private
 private extension VkLoginViewController {
 	
@@ -90,5 +98,9 @@ private extension VkLoginViewController {
 	func setupController() {
 		navigationController?.isNavigationBarHidden = true
 		output?.setupWKView(with: vkLoginView)
+	}
+	
+	func setupDemoButton() {
+		vkLoginView.demoModeDelegate = self
 	}
 }

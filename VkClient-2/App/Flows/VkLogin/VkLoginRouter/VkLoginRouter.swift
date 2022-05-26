@@ -17,11 +17,17 @@ extension VkLoginRouter: VkLoginRouterInputProtocol {
 
 	/// Переход на таб бар контроллер
 	func pushRealApp() {
-		viewController?.navigationController?.pushViewController(TabBarController(), animated: true)
+		viewController?.navigationController?.pushViewController(
+			TabBarController(isDemoModeEnabled: false),
+			animated: true
+		)
 	}
 	
 	/// Переход на таб бар контроллер со статическими данными
 	func pushDemoApp() {
-		// TODO: Добавить демо режим
+		viewController?.navigationController?.pushViewController(
+			TabBarController(isDemoModeEnabled: true),
+			animated: true
+		)
 	}
 }
