@@ -11,6 +11,21 @@ import UIKit
 final class NewsBuilder {
 	
 	static func build() -> UIViewController {
-		return UIViewController()
+		let networkManager = NetworkManager()
+		let cache = ImageCacheManager()
+		let service = NewsService(networkManager: networkManager, cache: cache)
+		let viewController = NewsViewController()
+		let interactor = NewsInteractor(newsService: service)
+		let presenter = NewsPresenter(
+			interactor: interactor,
+			view: viewController
+		)
+		
+		viewController.output = presenter
+		presenter.interactor = interactor
+		presenter.view = viewController
+		interactor.output = presenter
+		
+		return viewController
 	}
 }

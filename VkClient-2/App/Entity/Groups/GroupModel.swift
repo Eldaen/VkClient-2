@@ -8,7 +8,7 @@
 import Foundation
 
 /// Модель группы Вконтакте
-struct GroupModel: Codable {
+struct GroupModel: NewsSourceProtocol, Codable {
 	var name: String
 	var image: String
 	var id: Int
