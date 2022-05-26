@@ -51,7 +51,11 @@ extension NewsInteractor: NewsInteractorInputProtocol {
 		}
 	}
 	
-	func fetchFreshNews(startTime: Double?, startFrom: String?, completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void) {
+	func fetchFreshNews(
+		startTime: Double?,
+		startFrom: String?,
+		completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void
+	) {
 		newsLoader.loadNews(startTime: startTime, startFrom: startFrom) { result in
 			switch result {
 			case .success(let response):

@@ -57,6 +57,7 @@ final class NewsViewController: UIViewController {
 	
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
+		newsView.spinner.center = newsView.center
 		newsView.tableView.frame = newsView.bounds
 	}
 }

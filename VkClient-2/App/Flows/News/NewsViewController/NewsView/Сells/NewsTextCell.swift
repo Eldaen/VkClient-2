@@ -49,7 +49,8 @@ final class NewsTextCell: UITableViewCell, NewsTextCellProtocol {
 	/// Укороченная версия текста поста
 	private var shortText: String?
 	
-	private var shortTextState: Bool = false
+	/// Флаг состояния текста, укорочен или нет
+	private var isTextShort: Bool = false
 	
 	/// Делегат для обновления высоты ячейки текста
 	var delegate: ShowMoreNewsTextDelegate?
@@ -70,7 +71,7 @@ final class NewsTextCell: UITableViewCell, NewsTextCellProtocol {
 	override func prepareForReuse() {
 		shortText = nil
 		fullText = nil
-		shortTextState = false
+		isTextShort = false
 		button.removeFromSuperview()
 	}
 }
@@ -105,7 +106,6 @@ private extension NewsTextCell {
 			addShowMore()
 			return
 		}
-
 		showFullText()
 	}
 	
@@ -124,7 +124,7 @@ private extension NewsTextCell {
 	
 	/// Переключает режим отображения текста поста
 	@objc func toggleText() {
-		if shortTextState == true {
+		if isTextShort == true {
 			showFullText()
 			button.setTitle("показать меньше", for: .normal)
 		} else {
@@ -137,12 +137,12 @@ private extension NewsTextCell {
 	/// Отображает весь текст поста
 	func showFullText() {
 		postText.text = fullText
-		shortTextState = false
+		isTextShort = false
 	}
 	
 	/// Отображает укороченный текст поста
 	func showShortText() {
 		postText.text = shortText
-		shortTextState = true
+		isTextShort = true
 	}
 }

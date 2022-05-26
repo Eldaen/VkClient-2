@@ -44,7 +44,6 @@ final class LikeControl: NewsControl {
 	
 	// MARK: - Private properties
 	
-	
 	private var likesImageEmpty: UIImageView = UIImageView()
 	private var likesImageFill: UIImageView = UIImageView()
 	private var likesLabel: UILabel = UILabel()

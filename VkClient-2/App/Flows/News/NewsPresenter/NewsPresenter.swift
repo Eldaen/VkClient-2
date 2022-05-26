@@ -104,7 +104,7 @@ extension NewsPresenter: NewsViewOutputProtocol {
 					return
 				}
 			case .failure:
-				self?.view?.showNewsLoadingErrorText("Не удалось загрузить новости")
+				self?.view?.showNewsLoadingErrorText("Не удалось обновить список")
 			}
 		}
 	}
@@ -122,7 +122,7 @@ extension NewsPresenter: NewsViewOutputProtocol {
 					return
 				}
 			case .failure:
-				self?.view?.showNewsLoadingErrorText("Не удалось загрузить новости")
+				self?.view?.showNewsLoadingErrorText("Не удалось загрузить ещё новостей")
 			}
 		}
 	}
@@ -138,10 +138,12 @@ extension NewsPresenter: NewsViewOutputProtocol {
 extension NewsPresenter: NewsInteractorOutputProtocol {
 	func showNewsLoadingError(_ error: Error) {
 		view?.showNewsLoadingErrorText("Не удалось загрузить новости")
+		debugPrint(error.localizedDescription)
 	}
 	
 	func showNewsLikeError(_ error: Error) {
 		view?.showNewsLikeErrorText("Не удалось поставить лайк")
+		debugPrint(error.localizedDescription)
 	}
 }
 
@@ -151,7 +153,6 @@ private extension NewsPresenter {
 	/// Загружает картинку профиля создателя новости
 	func loadPorfileImage(profile: NewsSourceProtocol, completion: @escaping (UIImage) -> Void) {
 		let url = profile.image
-		
 		interactor.loadImage(url) { image in
 			completion(image)
 		}

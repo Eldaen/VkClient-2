@@ -40,9 +40,6 @@ final class NewsCollectionCell: UITableViewCell, NewCollectionCellProtocol {
 	/// Массив картинок для отображения
 	private var collection: [UIImage] = []
 	
-	/// Стандартная высота ячейки коллекции
-	private var standard: NSLayoutConstraint?
-	
 	/// Ячейка коллекции, если картинок нет
 	private var empty: NSLayoutConstraint?
 	
@@ -68,7 +65,6 @@ final class NewsCollectionCell: UITableViewCell, NewCollectionCellProtocol {
 	}
 	
 	override func prepareForReuse() {
-		standard = nil
 		empty = nil
 		collection = []
 	}

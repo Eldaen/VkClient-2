@@ -43,18 +43,6 @@ final class NewsView: UIView {
 		self.configureUI()
 	}
 	
-	// MARK: - Methods
-	
-	/// Добавляет сабвью
-	func addSubviews() {
-		self.addSubview(tableView)
-		self.addSubview(spinner)
-	}
-	
-	/// Конфигурирует спиннер загрузки
-	func setupSpinner() {
-		spinner.center = self.center
-	}
 }
 
 // MARK: - Private methods
@@ -63,7 +51,12 @@ private extension NewsView {
 	/// Конфигурирует вью
 	private func configureUI() {
 		addSubviews()
-		setupSpinner()
+	}
+	
+	/// Добавляет сабвью
+	private func addSubviews() {
+		self.addSubview(tableView)
+		self.addSubview(spinner)
 	}
 	
 	/// Запрашивает обновление новостей, инициируется RefreshControl-ом

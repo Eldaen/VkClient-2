@@ -82,7 +82,6 @@ final class NewsLinkCell: UITableViewCell, NewsLinkCellProtocol {
 
 // MARK: - Private methods
 private extension NewsLinkCell {
-	
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			linkImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -106,7 +105,7 @@ private extension NewsLinkCell {
 		contentView.addSubview(linkHorizontalStack)
 	}
 	
-	/// обновляет данные ячейки
+	/// Обновляет данные ячейки
 	func updateCellData(with model: NewsTableViewCellModelProtocol) {
 		linkTitle.text = model.link?.title
 		

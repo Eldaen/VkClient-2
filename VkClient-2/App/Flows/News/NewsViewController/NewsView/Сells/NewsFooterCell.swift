@@ -11,7 +11,9 @@ import UIKit
 /// Протокол ячейки футера новости для NewsController
 protocol NewsFooterCellProtocol {
 	
-	/// Конфигурирует ячейку данными для отображения
+	/// Конфигурирует ячейку NewsTableViewCell
+	/// - Parameters:
+	///   - model: Модель новости, которую нужно отобразить
 	func configure (with model: NewsTableViewCellModelProtocol)
 	
 	/// Обработчик лайков
@@ -82,10 +84,7 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 	let spacerHeight: CGFloat = 5
 	
 	// MARK: - Methods
-	
-	/// Конфигурирует ячейку NewsTableViewCell
-	/// - Parameters:
-	///   - model: Модель новости, которую нужно отобразить
+
 	func configure (with model: NewsTableViewCellModelProtocol) {
 		likesControl.setLikesResponder(responder: self)
 		likesControl.hasMyLike = model.likesModel?.userLikes == 1 ? true : false
