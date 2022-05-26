@@ -168,6 +168,7 @@ extension NewsViewController: NewsRefreshDelegateProtocol {
 			
 			self?.newsView.tableView.insertSections(indexSet, with: .automatic)
 			self?.newsView.tableView.refreshControl?.endRefreshing()
+			self?.newsView.tableView.reloadData()
 		}
 	}
 }
