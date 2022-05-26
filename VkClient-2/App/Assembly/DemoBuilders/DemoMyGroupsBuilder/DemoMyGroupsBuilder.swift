@@ -12,7 +12,7 @@ final class DemoMyGroupsBuilder {
 	
 	/// Билдер модуля экрана отображения групп пользователя в демо режиме
 	/// - Returns: Контроллер экрана групп пользователя
-	static func build() -> UIViewController {
+	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
 		let service = DemoGroupsService(networkManager: networkManager, cache: cache)

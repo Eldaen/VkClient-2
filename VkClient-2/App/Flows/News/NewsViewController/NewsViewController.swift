@@ -19,7 +19,7 @@ enum NewsViewControllerCellTypes {
 }
 
 // MARK: - NewsViewController
-final class NewsViewController: UIViewController {
+final class NewsViewController: MyCustomUIViewController {
 	
 	// MARK: - Properties
 	

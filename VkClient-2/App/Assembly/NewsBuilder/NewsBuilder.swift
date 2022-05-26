@@ -12,7 +12,7 @@ final class NewsBuilder {
 	
 	// Билдер модуля экрана ленты новостей
 	/// - Returns: Контроллер экрана ленты новостей
-	static func build() -> UIViewController {
+	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
 		let service = NewsService(networkManager: networkManager, cache: cache)

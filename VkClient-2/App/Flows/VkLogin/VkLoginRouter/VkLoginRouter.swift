@@ -10,6 +10,7 @@ import UIKit
 // MARK: - VkLoginRouter
 final class VkLoginRouter {
 	weak var viewController: UIViewController?
+	weak var restartDelegate: RestartDelegate?
 }
 
 // MARK: - VkLoginRouterInputProtocol
@@ -18,7 +19,7 @@ extension VkLoginRouter: VkLoginRouterInputProtocol {
 	/// Переход на таб бар контроллер
 	func pushRealApp() {
 		viewController?.navigationController?.pushViewController(
-			TabBarController(isDemoModeEnabled: false),
+			TabBarController(isDemoModeEnabled: false, restartDelegate: restartDelegate),
 			animated: true
 		)
 	}
@@ -26,7 +27,7 @@ extension VkLoginRouter: VkLoginRouterInputProtocol {
 	/// Переход на таб бар контроллер со статическими данными
 	func pushDemoApp() {
 		viewController?.navigationController?.pushViewController(
-			TabBarController(isDemoModeEnabled: true),
+			TabBarController(isDemoModeEnabled: true, restartDelegate: restartDelegate),
 			animated: true
 		)
 	}

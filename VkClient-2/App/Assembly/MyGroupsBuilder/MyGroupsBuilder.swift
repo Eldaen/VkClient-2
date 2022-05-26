@@ -12,7 +12,7 @@ final class MyGroupsBuilder {
 	
 	/// Билдер модуля экрана отображения групп пользователя
 	/// - Returns: Контроллер экрана групп пользователя
-	static func build() -> UIViewController {
+	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
 		let service = GroupsService(networkManager: networkManager, cache: cache)

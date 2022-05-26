@@ -10,20 +10,18 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	
 	var window: UIWindow?
+	var appStartManager: AppStartManager?
 	
 	
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		guard let _ = (scene as? UIWindowScene) else { return }
 		
-		self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-		self.window?.windowScene = windowScene
+		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+		window?.windowScene = windowScene
 		
-		let navigationController = UINavigationController(rootViewController: VkLoginBuilder.build())
-		navigationController.isNavigationBarHidden = true
-		
-		self.window?.rootViewController = navigationController
-		self.window?.makeKeyAndVisible()
+		self.appStartManager = AppStartManager(window: self.window)
+		self.appStartManager?.start()
 	}
 	
 	func sceneDidDisconnect(_ scene: UIScene) {
