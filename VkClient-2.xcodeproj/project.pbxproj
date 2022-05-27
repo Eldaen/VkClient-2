@@ -127,6 +127,8 @@
 		D0B328722840BA6A007E5140 /* CoreDataUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3286E2840BA6A007E5140 /* CoreDataUser+CoreDataProperties.swift */; };
 		D0B328732840BA6A007E5140 /* CoreDataGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3286F2840BA6A007E5140 /* CoreDataGroup+CoreDataClass.swift */; };
 		D0B328742840BA6A007E5140 /* CoreDataGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B328702840BA6A007E5140 /* CoreDataGroup+CoreDataProperties.swift */; };
+		D0B328762840F72A007E5140 /* MyGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B328752840F72A007E5140 /* MyGroupsInteractorTests.swift */; };
+		D0B328782840FDE9007E5140 /* MyGroupsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B328772840FDE9007E5140 /* MyGroupsPresenterTests.swift */; };
 		D0DCDB54281814500065E7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB53281814500065E7C5 /* AppDelegate.swift */; };
 		D0DCDB56281814500065E7C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB55281814500065E7C5 /* SceneDelegate.swift */; };
 		D0DCDB5E281814500065E7C5 /* VkClient_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0DCDB5C281814500065E7C5 /* VkClient_2.xcdatamodeld */; };
@@ -277,6 +279,8 @@
 		D0B3286E2840BA6A007E5140 /* CoreDataUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D0B3286F2840BA6A007E5140 /* CoreDataGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0B328702840BA6A007E5140 /* CoreDataGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0B328752840F72A007E5140 /* MyGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsInteractorTests.swift; sourceTree = "<group>"; };
+		D0B328772840FDE9007E5140 /* MyGroupsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsPresenterTests.swift; sourceTree = "<group>"; };
 		D0DCDB50281814500065E7C5 /* VkClient-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VkClient-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DCDB53281814500065E7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DCDB55281814500065E7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1087,6 +1091,8 @@
 			isa = PBXGroup;
 			children = (
 				D0DCDB6D281814510065E7C5 /* VkClient_2Tests.swift */,
+				D0B328752840F72A007E5140 /* MyGroupsInteractorTests.swift */,
+				D0B328772840FDE9007E5140 /* MyGroupsPresenterTests.swift */,
 			);
 			path = "VkClient-2Tests";
 			sourceTree = "<group>";
@@ -1472,7 +1478,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B328762840F72A007E5140 /* MyGroupsInteractorTests.swift in Sources */,
 				D0DCDB6E281814510065E7C5 /* VkClient_2Tests.swift in Sources */,
+				D0B328782840FDE9007E5140 /* MyGroupsPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
