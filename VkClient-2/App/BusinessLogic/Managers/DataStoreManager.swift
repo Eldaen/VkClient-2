@@ -120,7 +120,7 @@ final class DataStoreManager: DataManagerInput {
 	
 	func deleteGroup(with id: Int) {
 		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataGroup")
-		fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+		fetchRequest.predicate = NSPredicate(format: "id == %@", String(id))
 		
 		if let group = try? viewContext.fetch(fetchRequest) as? [CoreDataGroup] {
 			if let firstGroup = group.first {
