@@ -8,7 +8,7 @@
 import UIKit
 import CryptoKit
 
-// MARK: - ImageCacheInput protocol
+// MARK: - ImageCacheInput
 /// Протокол для класса, который будет кэшировать изображения по URL
 protocol ImageCacheInput: AnyObject {
 	
@@ -120,7 +120,7 @@ extension ImageCacheManager: ImageCacheInput {
 private extension ImageCacheManager {
 	
 	/// Загружает и возвращаетк артинку из файловой системы по имени, если нашлась
-	private func loadImageFromDiskWith(imageName: String) -> UIImage? {
+	func loadImageFromDiskWith(imageName: String) -> UIImage? {
 		
 		let imageName = SHA256.hash(data: Data(imageName.utf8)).description
 		let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
@@ -144,7 +144,7 @@ private extension ImageCacheManager {
 	}
 	
 	/// Сохраняет картинку в файловую систему и удаляет текущую, если она есть с таким названием
-	private func saveImage(imageName: String, image: UIImage) {
+	func saveImage(imageName: String, image: UIImage) {
 		guard
 			let cachesUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first,
 			let cachesDirectory = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first,
@@ -156,7 +156,11 @@ private extension ImageCacheManager {
 		let dataPath = docURL.appendingPathComponent(folderName)
 		if !FileManager.default.fileExists(atPath: dataPath.absoluteString) {
 			do {
-				try FileManager.default.createDirectory(atPath: dataPath.absoluteString, withIntermediateDirectories: true, attributes: nil)
+				try FileManager.default.createDirectory(
+					atPath: dataPath.absoluteString,
+					withIntermediateDirectories: true,
+					attributes: nil
+				)
 			} catch {
 				print(error.localizedDescription);
 			}
@@ -184,7 +188,7 @@ private extension ImageCacheManager {
 	}
 	
 	/// Удаляет устаревшие файлы
-	private func deleteExpired() {
+	func deleteExpired() {
 		guard
 			let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
 			return
@@ -209,7 +213,7 @@ private extension ImageCacheManager {
 	
 	/// Проверяет дату модификации файла по URL и сравнивает с expiryTime
 	/// - Returns: True если файл просрочен и False если с файлом всё хорошо
-	private func checkExpiry(for imageUrl: URL) -> Bool {
+	func checkExpiry(for imageUrl: URL) -> Bool {
 		guard
 			let info = try? FileManager.default.attributesOfItem(atPath: imageUrl.path),
 			let modificationDate = info[FileAttributeKey.modificationDate] as? Date

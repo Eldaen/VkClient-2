@@ -10,15 +10,30 @@ import UIKit
 /// Протокол загрузки данных новостей
 protocol NewsLoader: LoaderProtocol {
 	
-	/// Загружает список групп пользователя
-	func loadNews(startTime: Double?,
-				  startFrom: String?,
-				  completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
 	
-	///   Отправляет запрос на лайк поста
+	/// Загружает список групп пользователя
+	/// - Parameters:
+	///   - startTime: Время последней новости
+	///   - startFrom: Специальная строка, которая нужна для дозагрузки новостей инфинит скроллингом, приходит из Апи
+	///   - completion: Клоужер с ответом на запрос новостей
+	func loadNews(
+		startTime: Double?,
+		startFrom: String?,
+		completion: @escaping (Result<NewsFetchingResponse, Error>
+		) -> Void)
+	
+	/// Отправляет запрос на лайк поста
+	/// - Parameters:
+	///   - id: id поста
+	///   - owner: id источника поста
+	///   - completion: Клоужер с числовым значениям результата лайка
 	func setLike(for id: Int, owner: Int, completion: @escaping (Int) -> Void)
 	
 	/// Отправляет запрос на отмену лайка поста
+	/// - Parameters:
+	///   - id: id поста
+	///   - owner: id источника поста
+	///   - completion: Клоужер с числовым значениям результата отмены лайка
 	func removeLike(for id: Int, owner: Int, completion: @escaping (Int) -> Void)
 }
 
@@ -27,12 +42,10 @@ final class NewsService: NewsLoader {
 	
 	var networkManager: NetworkManagerProtocol
 	var cache: ImageCacheInput
-	//var persistence: PersistenceManager
 	
-	init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput/*, persistence: PersistenceManager*/) {
+	init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput) {
 		self.networkManager = networkManager
 		self.cache = cache
-		//self.persistence = persistence
 	}
 	
 	func loadNews(

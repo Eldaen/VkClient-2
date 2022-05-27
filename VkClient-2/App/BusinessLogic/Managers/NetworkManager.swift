@@ -7,9 +7,8 @@
 
 import UIKit
 
-// MARK: - NetworkManager enums
-
-/// Перечисление используемых нами методов из АПИ
+// MARK: - ApiMethods enum
+/// Перечисление используемых методов из АПИ Вконтакте
 enum ApiMethods: String {
 	case friendsGet = "/method/friends.get"
 	case usersGet = "/method/users.get"
@@ -23,6 +22,7 @@ enum ApiMethods: String {
 	case removeLike = "/method/likes.delete"
 }
 
+// MARK: - HttpMethods
 /// Возможные http методы
 enum HttpMethods: String {
 	case get = "GET"
@@ -56,6 +56,8 @@ protocol NetworkManagerProtocol {
 /// Класс, управляющий запросами в сеть
 final class NetworkManager {
 	
+	// MARK: - Properties
+	
 	private let session: URLSession = {
 		let config = URLSessionConfiguration.default
 		let session = URLSession(configuration: config)
@@ -70,12 +72,13 @@ final class NetworkManager {
 	private let host = "api.vk.com"
 }
 
-// MARK: - NetworkManagerProtocol realisation
+// MARK: - NetworkManagerProtocol
 extension NetworkManager: NetworkManagerProtocol {
-	func request<T: Decodable>(method: ApiMethods,
-							   httpMethod: HttpMethods,
-							   params: [String: String],
-							   completion: @escaping (Result<T, Error>) -> Void
+	func request<T: Decodable>(
+		method: ApiMethods,
+		httpMethod: HttpMethods,
+		params: [String: String],
+		completion: @escaping (Result<T, Error>) -> Void
 	){
 		guard let token = SessionManager.instance.token else {
 			return
