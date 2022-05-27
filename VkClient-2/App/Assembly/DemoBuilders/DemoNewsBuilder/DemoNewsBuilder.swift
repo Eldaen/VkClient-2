@@ -7,10 +7,10 @@
 
 import UIKit
 
-// MARK: - NewsBuilder
+// MARK: - DemoNewsBuilder
 final class DemoNewsBuilder {
 	
-	// Билдер модуля экрана ленты новостей
+	// Билдер модуля экрана ленты новостей в демо режиме
 	/// - Returns: Контроллер экрана ленты новостей
 	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()

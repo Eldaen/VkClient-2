@@ -24,12 +24,12 @@ final class GalleryBuilder {
 			view: viewController,
 			selectedPhoto: photoId
 		)
-
+		
 		viewController.output = presenter
 		presenter.interactor = interactor
 		presenter.view = viewController
 		interactor.output = presenter
-
+		
 		return viewController
 	}
 }
