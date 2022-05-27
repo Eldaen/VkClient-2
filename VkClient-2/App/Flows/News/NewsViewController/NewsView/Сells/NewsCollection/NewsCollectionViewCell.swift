@@ -24,6 +24,7 @@ final class NewsCollectionViewCell: UICollectionViewCell {
 	// MARK: - Methods
 	
 	/// Конфигурирует ячейку
+	/// - Parameter image: Картинка, которая устанавливает в ячейку
 	func configure(with image: UIImage) {
 		contentView.addSubview(newsImage)
 		newsImage.image = image

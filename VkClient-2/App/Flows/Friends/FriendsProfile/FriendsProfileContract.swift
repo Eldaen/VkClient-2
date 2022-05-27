@@ -61,7 +61,7 @@ protocol FriendsProfileInteractorInputProtocol: AnyObject {
 	///   - for: id друга, чей профиль открывается
 	///   - completion: Клоужер с массивом ссылок на картинки
 	func loadUserPhotos(for id: String, completion: @escaping (Result<[String], Error>) -> Void)
-
+	
 	/// Загружает изображение из сети
 	/// - Parameters:
 	///   - url: Строка с url картинки, которую нужно загрузить
@@ -79,7 +79,10 @@ protocol FriendsProfileInteractorOutputProtocol: AnyObject {
 /// Входящий протокол роутера списка друзей
 protocol FriendsProfileRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
-
+	
 	/// Переход на экран подробного просмотра фото
+	/// - Parameters:
+	///   - photo: id фото в массиве фото
+	///   - images: Массив моделей фото
 	func openGalleryFor(photo: Int, in images: [ApiImage])
 }

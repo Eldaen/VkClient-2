@@ -15,8 +15,6 @@ final class VkLoginRouter {
 
 // MARK: - VkLoginRouterInputProtocol
 extension VkLoginRouter: VkLoginRouterInputProtocol {
-
-	/// Переход на таб бар контроллер
 	func pushRealApp() {
 		viewController?.navigationController?.pushViewController(
 			TabBarController(isDemoModeEnabled: false, restartDelegate: restartDelegate),
@@ -24,7 +22,6 @@ extension VkLoginRouter: VkLoginRouterInputProtocol {
 		)
 	}
 	
-	/// Переход на таб бар контроллер со статическими данными
 	func pushDemoApp() {
 		viewController?.navigationController?.pushViewController(
 			TabBarController(isDemoModeEnabled: true, restartDelegate: restartDelegate),

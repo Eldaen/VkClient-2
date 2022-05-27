@@ -13,7 +13,6 @@ final class DemoGroupsService {
 	// MARK: - Properties
 	
 	var groups: [GroupModel] = []
-	
 	var networkManager: NetworkManagerProtocol
 	var cache: ImageCacheInput
 	
@@ -28,7 +27,7 @@ final class DemoGroupsService {
 // MARK: - GroupsLoader
 extension DemoGroupsService: GroupsLoader {
 	func loadGroups(completion: @escaping (Result<[GroupModel], Error>) -> Void) {
-
+		
 		// читаем файлик ./groups.json
 		if let filepath = Bundle.main.path(forResource: "groups", ofType: "json") {
 			do {
@@ -44,7 +43,7 @@ extension DemoGroupsService: GroupsLoader {
 	
 	func searchGroups(with query: String, completion: @escaping (Result<[GroupModel], Error>) -> Void) {
 		var filteredGroups: [GroupModel] = []
-
+		
 		// Если строка поиска пустая, то показываем все группы
 		if query == "" {
 			filteredGroups = groups

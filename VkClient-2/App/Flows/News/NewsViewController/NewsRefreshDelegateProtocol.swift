@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - NewsRefreshDelegateProtocol
 /// Протокол делегата, который должен обновлять новости, по запросу View
 @objc protocol NewsRefreshDelegateProtocol {
 	

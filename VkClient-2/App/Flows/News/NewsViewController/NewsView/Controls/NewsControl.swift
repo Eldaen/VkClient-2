@@ -26,6 +26,8 @@ class NewsControl: UIControl {
 		return recognizer
 	}()
 	
+	// MARK: - Properties
+	
 	private var controlImage: UIImageView = UIImageView()
 	private var label: UILabel = UILabel()
 	private var bgView: UIView = UIView()

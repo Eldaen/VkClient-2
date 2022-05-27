@@ -12,9 +12,9 @@ final class DemoFriendsListService {
 	
 	// MARK: - Properties
 	
+	var friends: [UserModel] = []
 	var networkManager: NetworkManagerProtocol
 	var cache: ImageCacheInput
-	var friends: [UserModel] = []
 	
 	// MARK: - Init
 	
@@ -126,7 +126,7 @@ private extension DemoFriendsListService {
 			guard let firstChar = user.name.first else {
 				continue
 			}
-
+			
 			// Если секции с таким ключом нет, то создадим её
 			guard var array = newArray[firstChar] else {
 				let newValue = [user]

@@ -11,14 +11,11 @@ import UIKit
 /// Протокол лоадера данных
 protocol LoaderProtocol {
 	
-	/// Переменная, хранящая в себе Networkmanager, он у нас один и других не будет, так что без протокола
+	/// Переменная, хранящая в себе Networkmanager,
 	var networkManager: NetworkManagerProtocol { get set }
 	
 	/// Кэш сервис
 	var cache: ImageCacheInput { get set }
-	
-	/// Сервис для работы с БД
-	//var persistence: PersistenceManager { get set }
 	
 	/// Загружает картинку и возвращает её, если получилось
 	/// - Parameters:
@@ -66,6 +63,10 @@ extension LoaderProtocol {
 		UserDefaults.standard.set("0", forKey: key)
 	}
 	
+	/// Загружает картинку из сети
+	/// - Parameters:
+	///   - url: Строка с url картинки
+	///   - completion: Клоужер с картинкой
 	func loadImage(url: String, completion: @escaping (UIImage) -> Void) {
 		guard let imageUrl = URL(string: url) else { return }
 		
@@ -91,6 +92,11 @@ extension LoaderProtocol {
 		}
 	}
 	
+	/// Достаёт из массива моделей картинок строки с URL-ам картинок нужного размера
+	/// - Parameters:
+	///   - sizeType: Тип размера, который нас интересует
+	///   - array: Массив моделей картинок
+	/// - Returns: Массив строк с url картинок
 	func sortImage(by sizeType: String, from array: [ApiImage]) -> [String] {
 		var imageLinks: [String] = []
 		

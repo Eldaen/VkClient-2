@@ -48,6 +48,10 @@ final class FriendsProfileViewController: UIViewController {
 		loadProfilePhoto()
 		output?.loadProfile()
 	}
+	
+	override func viewWillLayoutSubviews() {
+		friendsProfileView.setupSpinner()
+	}
 }
 
 // MARK: - UICollectionViewDataSource
@@ -77,12 +81,12 @@ extension FriendsProfileViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FriendsProfileViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+		
 		let frameCV = collectionView.frame
-
+		
 		let cellWidth = frameCV.width / cellsCount
 		let cellHeight = cellWidth
-
+		
 		// считаем размеры ячеек с учётом отступов, чтобы всё ровненько было
 		let spacing = ( cellsCount + 1 ) * cellsOffset / cellsCount
 		return CGSize(width: cellWidth - spacing, height: cellHeight - ( cellsOffset * 2) )
@@ -116,8 +120,6 @@ extension FriendsProfileViewController: FriendsProfileViewInputProtocol {
 
 // MARK: - FriendsProfileViewController
 private extension FriendsProfileViewController {
-	
-	// Конфигурирует Нав Бар
 	func configureNavigation() {
 		self.title = "Профиль"
 	}

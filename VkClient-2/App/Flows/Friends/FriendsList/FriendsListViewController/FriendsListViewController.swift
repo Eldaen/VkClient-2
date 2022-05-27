@@ -139,13 +139,10 @@ extension FriendsListViewController: FriendsListViewInputProtocol {
 
 // MARK: - Private methods
 private extension FriendsListViewController {
-	
-	// Конфигурируем Нав Бар
 	func configureNavigation() {
 		self.title = "Мои Друзья"
 	}
 	
-	// Конфигурируем ячейку
 	func setupTableView() {
 		friendsListView.tableView.register(registerClass: FriendsListCell.self)
 		friendsListView.tableView.dataSource = self

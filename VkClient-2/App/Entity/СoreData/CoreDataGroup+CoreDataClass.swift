@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+/// Сore Data модель группы
 public class CoreDataGroup: NSManagedObject {
 
 }

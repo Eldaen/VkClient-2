@@ -137,21 +137,17 @@ final class FriendsProfileView: UIView {
 
 // MARK: - Private methods
 private extension FriendsProfileView {
-	
-	/// Конфигурирует вью
 	func configureUI() {
 		addSubviews()
 		setupCollectionView()
 		setupConstraints()
 	}
 	
-	/// Конфигурирует таблицу
 	func setupCollectionView() {
 		collectionView.backgroundColor = .white
 		self.addSubview(collectionView)
 	}
 	
-	/// Добавляет сабвью на основную вью
 	func addSubviews() {
 		self.backgroundColor = .white
 		self.addSubview(userAvatar)
@@ -170,25 +166,24 @@ private extension FriendsProfileView {
 		self.addSubview(collectionView)
 	}
 	
-	/// Задаёт констрейнты
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			userAvatar.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 15),
 			userAvatar.widthAnchor.constraint(equalToConstant: 100),
 			userAvatar.heightAnchor.constraint(equalTo: userAvatar.widthAnchor, multiplier: 1.0),
 			userAvatar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-
+			
 			friendName.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 20),
 			friendName.centerXAnchor.constraint(equalTo: userAvatar.centerXAnchor),
 			
 			leftStack.heightAnchor.constraint(equalToConstant: 50),
 			rightStack.heightAnchor.constraint(equalToConstant: 50),
-
+			
 			horizontalStack.topAnchor.constraint(equalTo: friendName.bottomAnchor, constant: 20),
 			horizontalStack.heightAnchor.constraint(equalToConstant: 50),
 			horizontalStack.widthAnchor.constraint(equalToConstant: 160),
 			horizontalStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-
+			
 			collectionView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: 16),
 			collectionView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor, constant: -16),
 			collectionView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),

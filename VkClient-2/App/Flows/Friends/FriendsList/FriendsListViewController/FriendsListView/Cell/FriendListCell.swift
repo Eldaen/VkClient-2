@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// Ячейка группы для контроллера FriendsListViewController
+/// Ячейка друга для контроллера FriendsListViewController
 final class FriendsListCell: UITableViewCell {
 	
 	// MARK: - Subviews
@@ -39,6 +39,8 @@ final class FriendsListCell: UITableViewCell {
 		animate()
 	}
 	
+	/// Установить картинку на аватар пользователя
+	/// - Parameter image: Картинка для автарки
 	func setImage(with image: UIImage) {
 		friendImage.image = image
 	}

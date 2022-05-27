@@ -106,6 +106,7 @@ extension SearchGroupsViewController: UITableViewDelegate {
 	}
 }
 
+// MARK: - UISearchBarDelegate
 extension SearchGroupsViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		searchBar.showsCancelButton = true
@@ -124,8 +125,6 @@ extension SearchGroupsViewController: UISearchBarDelegate {
 
 // MARK: - Private methods
 private extension SearchGroupsViewController {
-	
-	/// Конфигурирует ячейку
 	func setupTableView() {
 		searchGroupsView.tableView.register(registerClass: SearchGroupsCell.self)
 		searchGroupsView.tableView.dataSource = self

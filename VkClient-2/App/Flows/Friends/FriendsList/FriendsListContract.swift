@@ -69,6 +69,7 @@ protocol FriendsListViewOutputProtocol: AnyObject {
 protocol FriendsListInteractorInputProtocol: AnyObject {
 	
 	/// Загружает список друзей пользователя
+	/// - Parameter completion: Клоужер с результатом загрузки, либо массив секций друзей, либо ошибка
 	func fetchFriends(_ completion: @escaping (Result<[FriendsSection], Error>) -> Void)
 
 	/// Загружает изображение из сети
@@ -94,5 +95,6 @@ protocol FriendsListRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
 
 	/// Переход на экран профиля друга
+	/// - Parameter friend: Модель друга, чей профиль нужно открыть
 	func openProfile(for friend: UserModel)
 }

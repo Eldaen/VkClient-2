@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - TabBarController
 final class TabBarController: UITabBarController {
-
+	
 	// MARK: - Properties
 	
 	/// Флаг демо режима

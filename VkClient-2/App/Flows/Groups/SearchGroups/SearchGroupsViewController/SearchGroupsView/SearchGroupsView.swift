@@ -53,21 +53,18 @@ final class SearchGroupsView: UIView {
 // MARK: - Private methods
 private extension SearchGroupsView {
 	
-	/// Конфигурирует UI
 	func configureUI () {
 		addSubviews()
 		setupConstraints()
 		setupTableView()
 	}
 	
-	/// Добавляет сабвью на основную вью
 	func addSubviews() {
 		self.addSubview(tableView)
 		self.addSubview(spinner)
 		tableView.tableHeaderView = searchBar
 	}
 	
-	/// Задаёт констрейнты таблице
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: self.topAnchor),

@@ -16,10 +16,6 @@ protocol GalleryViewInputProtocol: AnyObject {
 	
 	/// Массив UIImageView с фотографиями
 	var photoViews: [UIImageView] { get set }
-	
-	/// Показывает ошибку загрузки картинок
-	/// - Parameter error: Ошибка загрузки
-	func showImageLoadingErrorText(_ text: String)
 }
 
 // MARK: View Output (Presenter -> View)

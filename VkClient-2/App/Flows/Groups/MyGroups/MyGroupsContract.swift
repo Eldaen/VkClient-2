@@ -77,6 +77,7 @@ protocol MyGroupsViewOutputProtocol: AnyObject {
 protocol MyGroupsInteractorInputProtocol: AnyObject {
 	
 	/// Загружает список групп пользователя
+	/// - Parameter completion: Клоужер с массивом моделей групп или ошибкой
 	func fetchGroups(_ completion: @escaping (Result<[GroupModel], Error>) -> Void)
 	
 	/// Загружает изображение из сети
@@ -113,7 +114,7 @@ protocol MyGroupsInteractorOutputProtocol: AnyObject {
 /// Входящий протокол роутера списка групп пользователя
 protocol MyGroupsRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
-
+	
 	/// Переход на экран поиска групп
 	func navigateToSearchGroups()
 }
