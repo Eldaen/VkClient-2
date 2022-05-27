@@ -15,7 +15,8 @@ final class GalleryBuilder {
 	static func build(photoId: Int, imageModels: [ApiImage]) -> UIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
-		let service = UserService(networkManager: networkManager, cache: cache)
+		let persistenceManager = DataStoreManager()
+		let service = UserService(networkManager: networkManager, cache: cache, persistence: persistenceManager)
 		let viewController = GalleryViewController()
 		let interactor = GalleryInteractor(friendsService: service, images: imageModels)
 		let presenter = GalleryPresenter(

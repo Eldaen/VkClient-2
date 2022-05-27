@@ -14,8 +14,9 @@ final class MyGroupsBuilder {
 	/// - Returns: Контроллер экрана групп пользователя
 	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()
+		let persistenceManager = DataStoreManager()
 		let cache = ImageCacheManager()
-		let service = GroupsService(networkManager: networkManager, cache: cache)
+		let service = GroupsService(networkManager: networkManager, cache: cache, persistence: persistenceManager)
 		let viewController = MyGroupsViewController()
 		let interactor = MyGroupsInteractor(groupsService: service)
 		let router = MyGroupsRouter()

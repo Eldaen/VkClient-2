@@ -15,7 +15,8 @@ final class FriendsProfileBuilder {
 	static func build(userModel: UserModel) -> UIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
-		let service = UserService(networkManager: networkManager, cache: cache)
+		let persistenceManager = DataStoreManager()
+		let service = UserService(networkManager: networkManager, cache: cache, persistence: persistenceManager)
 		let viewController = FriendsProfileViewController()
 		let interactor = FriendsProfileInteractor(friendsService: service)
 		let router = FriendsProfileRouter()
