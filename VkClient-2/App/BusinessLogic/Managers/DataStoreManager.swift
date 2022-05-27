@@ -26,6 +26,17 @@ protocol DataManagerInput: AnyObject {
 	/// Удаляет из базы группу с указанным ID
 	/// - Parameter id: ID группы
 	func deleteGroup(with id: Int)
+	
+	/// Cохраняет модели друзей
+	/// - Parameter friends: Массив моделей, которые нужно сохранить
+	func saveFriends(_ friends: [UserModel])
+	
+	/// Загружает всех друзей
+	/// - Returns: Массив друзей, которые были в БД или nil
+	func getFriends() -> [UserModel]?
+	
+	/// Удаляет всех друзей из базы данных
+	func deleteAllFriends()
 }
 
 // MARK: - DataStoreManager
@@ -46,7 +57,7 @@ final class DataStoreManager: DataManagerInput {
 	lazy var viewContext = persistentContainer.viewContext
 	lazy var backgroundContext: NSManagedObjectContext = persistentContainer.newBackgroundContext()
 	
-	// MARK: - CRUD
+	// MARK - Methods
 	
 	func saveContext () {
 		let context = persistentContainer.viewContext
@@ -59,6 +70,8 @@ final class DataStoreManager: DataManagerInput {
 			}
 		}
 	}
+	
+	// MARK: - Groups CRUD
 	
 	func saveGroups(_ groups: [GroupModel]) {
 		for group in groups {
@@ -112,6 +125,51 @@ final class DataStoreManager: DataManagerInput {
 		if let group = try? viewContext.fetch(fetchRequest) as? [CoreDataGroup] {
 			if let firstGroup = group.first {
 				viewContext.delete(firstGroup)
+			}
+		}
+	}
+	
+	// MARK: - Users CRUD
+	
+	func saveFriends(_ friends: [UserModel]) {
+		for friend in friends {
+			let coreDataUser = CoreDataUser(context: viewContext)
+			coreDataUser.id = Int32(friend.id)
+			coreDataUser.name = friend.name
+			coreDataUser.image = friend.image
+			
+			do {
+				try viewContext.save()
+			} catch let error {
+				print(error)
+			}
+		}
+	}
+	
+	func getFriends() -> [UserModel]? {
+		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataUser")
+		if let friends = try? viewContext.fetch(fetchRequest) as? [CoreDataUser],
+		   !friends.isEmpty {
+			var result = [UserModel]()
+			for friend in friends {
+				let newFriend = UserModel(
+					name: friend.name ?? "",
+					image: friend.image ?? "",
+					id: Int(friend.id)
+				)
+				result.append(newFriend)
+			}
+			return result
+		} else {
+			return nil
+		}
+	}
+	
+	func deleteAllFriends() {
+		let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataUser")
+		if let friends = try? viewContext.fetch(fetchRequest) as? [CoreDataUser] {
+			for friend in friends {
+				viewContext.delete(friend)
 			}
 		}
 	}
