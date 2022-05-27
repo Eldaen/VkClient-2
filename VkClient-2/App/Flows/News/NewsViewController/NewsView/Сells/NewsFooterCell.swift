@@ -21,11 +21,11 @@ protocol NewsFooterCellProtocol {
 }
 
 // MARK: - NewsFooterCell
-/// Ячейка для отображения новостей пользователя в контроллере NewsController
+/// Ячейка для отображения футера новости в NewsController
 final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 	
 	// MARK: - Subviews
-
+	
 	private let footerView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +84,7 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 	let spacerHeight: CGFloat = 5
 	
 	// MARK: - Methods
-
+	
 	func configure (with model: NewsTableViewCellModelProtocol) {
 		likesControl.setLikesResponder(responder: self)
 		likesControl.hasMyLike = model.likesModel?.userLikes == 1 ? true : false
@@ -103,9 +103,7 @@ final class NewsFooterCell: UITableViewCell, NewsFooterCellProtocol {
 
 // MARK: - Private methods
 private extension NewsFooterCell {
-	
 	func setupConstraints() {
-		
 		NSLayoutConstraint.activate([
 			footerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			footerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),

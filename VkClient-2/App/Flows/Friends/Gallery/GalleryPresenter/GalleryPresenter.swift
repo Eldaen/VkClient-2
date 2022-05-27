@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - GalleryPresenter
 final class GalleryPresenter {
-
+	
 	// MARK: - Properties
 	
 	var interactor: GalleryInteractorInputProtocol
@@ -31,7 +31,6 @@ final class GalleryPresenter {
 
 // MARK: - GalleryViewOutputProtocol
 extension GalleryPresenter: GalleryViewOutputProtocol {
-
 	func fetchPhotos(array: [Int]) {
 		guard let view = view else { return }
 		for index in array {

@@ -59,7 +59,6 @@ final class VkLoginView: UIView {
 
 // MARK: - Private
 private extension VkLoginView {
-	
 	func setupWebView() {
 		self.addSubview(webView)
 		demoButton.addTarget(self, action: #selector(demoOn), for: .touchUpInside)

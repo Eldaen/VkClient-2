@@ -65,7 +65,8 @@ protocol SearchGroupsViewOutputProtocol: AnyObject {
 /// Входящий протокол интерактора списка найденных групп
 protocol SearchGroupsInteractorInputProtocol: AnyObject {
 	
-	/// Загружает список групп пользователя
+	/// Загружает найденные группы
+	/// - Parameter completion: Клоужер с массивом моделей групп или ошибка
 	func fetchGroups(_ completion: @escaping (Result<[GroupModel], Error>) -> Void)
 	
 	/// Вступает в выбранную группу
@@ -88,6 +89,7 @@ protocol SearchGroupsInteractorInputProtocol: AnyObject {
 // MARK: Interactor Output (Interactor -> Presenter)
 /// Исходящий протокол интерактора списка найденных групп
 protocol SearchGroupsInteractorOutputProtocol: AnyObject {
+	
 	/// Показывает ошибку выхода из группы
 	/// - Parameter error: Ошибка загрузки
 	func showGroupJoiningError(_ error: Error)
@@ -97,7 +99,7 @@ protocol SearchGroupsInteractorOutputProtocol: AnyObject {
 /// Входящий протокол роутера списка найденных групп
 protocol SearchGroupsRouterInputProtocol: AnyObject {
 	var viewController: UIViewController? { get set }
-
+	
 	/// Переход на экран поиска групп
 	func navigateToMyGroups()
 }

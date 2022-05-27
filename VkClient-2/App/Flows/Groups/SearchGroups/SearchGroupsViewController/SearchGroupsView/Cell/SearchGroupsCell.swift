@@ -71,7 +71,6 @@ final class SearchGroupsCell: UITableViewCell {
 			self.groupName.alpha = 1
 		})
 	}
-	
 }
 
 // MARK: - Private methods

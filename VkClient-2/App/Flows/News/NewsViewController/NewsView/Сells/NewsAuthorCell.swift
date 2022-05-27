@@ -22,11 +22,11 @@ protocol NewsAuthorCellProtocol {
 }
 
 // MARK: - NewsAuthorCell
-/// Ячейка для отображения новостей пользователя в контроллере NewsViewController
+/// Ячейка для отображения автора новости в NewsController
 final class NewsAuthorCell: UITableViewCell, NewsAuthorCellProtocol {
 	
 	// MARK: - Subviews
-
+	
 	private let userImage: UIImageView = {
 		let image = UIImageView()
 		image.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +50,7 @@ final class NewsAuthorCell: UITableViewCell, NewsAuthorCellProtocol {
 	}()
 	
 	// MARK: - Methods
-
+	
 	func configure (with model: NewsTableViewCellModelProtocol) {
 		setupCell()
 		setupConstraints()
@@ -69,9 +69,7 @@ final class NewsAuthorCell: UITableViewCell, NewsAuthorCellProtocol {
 
 // MARK: - Private methods
 private extension NewsAuthorCell {
-	
 	func setupConstraints() {
-		
 		NSLayoutConstraint.activate([
 			userImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			userImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

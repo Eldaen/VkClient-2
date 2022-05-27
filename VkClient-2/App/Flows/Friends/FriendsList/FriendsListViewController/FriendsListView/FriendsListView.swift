@@ -60,8 +60,6 @@ final class FriendsListView: UIView {
 
 // MARK: - Private methods
 private extension FriendsListView {
-	
-	/// Конфигурирует вью
 	func configureUI() {
 		addSubviews()
 		setupTableView()
@@ -69,7 +67,6 @@ private extension FriendsListView {
 		setupConstraints()
 	}
 	
-	/// Конфигурирует таблицу
 	func setupTableView() {
 		tableView.rowHeight = 70
 		tableView.showsVerticalScrollIndicator = false
@@ -77,14 +74,12 @@ private extension FriendsListView {
 		tableView.sectionIndexColor = .black
 	}
 	
-	/// Добавляет сабвью на основную вью
 	func addSubviews() {
 		self.addSubview(tableView)
 		self.addSubview(spinner)
 		tableView.tableHeaderView = searchBar
 	}
 	
-	/// Задаёт констрейнты таблице
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: self.topAnchor),

@@ -36,7 +36,7 @@ final class VkLoginViewController: UIViewController {
 	}
 }
 
-// MARK: - Extension WKNavigationDelegate
+// MARK: - WKNavigationDelegate
 extension VkLoginViewController: WKNavigationDelegate {
 	
 	/// Перехватывает ответы сервера при переходе, можно отменить при необходимости.
@@ -86,15 +86,12 @@ extension VkLoginViewController: DemoModeDelegate {
 	}
 }
 
-// MARK: - Private
+// MARK: - Private methods
 private extension VkLoginViewController {
-	
-	/// Настраивает WebView
 	func setupWebView() {
 		self.vkLoginView.webView.navigationDelegate = self
 	}
 	
-	/// Настраивает контроллер
 	func setupController() {
 		navigationController?.isNavigationBarHidden = true
 		output?.setupWKView(with: vkLoginView)

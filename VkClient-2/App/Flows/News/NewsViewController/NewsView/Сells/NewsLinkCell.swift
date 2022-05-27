@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - NewsLinkCellProtocol
-/// Протокол ячейки автора новости для NewsController
+/// Протокол ячейки со ссылкой для NewsController
 protocol NewsLinkCellProtocol {
 	
 	/// Конфигурирует ячейку
@@ -18,11 +18,11 @@ protocol NewsLinkCellProtocol {
 }
 
 // MARK: - NewsLinkCell
-/// Ячейка для отображения новостей пользователя в контроллере NewsController
+/// Ячейка для отображения ссылки в новости в NewsController
 final class NewsLinkCell: UITableViewCell, NewsLinkCellProtocol {
 	
 	// MARK: - Subviews
-
+	
 	private let linkTitle: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
