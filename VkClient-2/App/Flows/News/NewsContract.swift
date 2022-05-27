@@ -105,11 +105,20 @@ protocol NewsInteractorInputProtocol: AnyObject {
 	///   - completion: Клоужер с кол-вом лайков после установки
 	func setLike(post: Int, owner: Int, completion: @escaping (Int) -> Void)
 	
-	/// Загружает список групп пользователя
+	/// Загружает новости
+	/// - Parameter completion: Клоужер с результатом загрузки новостей или с ошибкой
 	func fetchNews(_ completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
 	
 	/// Загружает свежие новости
-	func fetchFreshNews(startTime: Double?, startFrom: String?, completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void)
+	/// - Parameters:
+	///   - startTime: Время последней новости
+	///   - startFrom: Специальная строка для для дозагрузки новостей при инфинит скроллинг, приходит из АПИ
+	///   - completion: Клоужер с результатом загрузки новостей или с ошибкой
+	func fetchFreshNews(
+		startTime: Double?,
+		startFrom: String?,
+		completion: @escaping (Result<NewsFetchingResponse, Error>) -> Void
+	)
 	
 	/// Загружает изображение из сети
 	/// - Parameters:

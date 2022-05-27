@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+/// CoreData модель пользователя
 public class CoreDataUser: NSManagedObject {
 
 }

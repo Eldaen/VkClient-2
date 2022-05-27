@@ -18,7 +18,7 @@ protocol NewsTextCellProtocol {
 }
 
 // MARK: - NewsTextCell
-/// Ячейка для отображения новостей пользователя в контроллере NewsController
+/// Ячейка для отображения текста новости в NewsController
 final class NewsTextCell: UITableViewCell, NewsTextCellProtocol {
 	
 	// MARK: - Subviews
@@ -78,7 +78,6 @@ final class NewsTextCell: UITableViewCell, NewsTextCellProtocol {
 
 // MARK: - Private methods
 private extension NewsTextCell {
-	
 	func setupConstraints() {
 		let bottomAnchor = postText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
 		bottomAnchor.priority = .init(rawValue: 999)

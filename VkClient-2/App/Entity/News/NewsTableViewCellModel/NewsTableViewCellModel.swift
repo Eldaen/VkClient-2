@@ -7,6 +7,7 @@
 
 import UIKit.UIImage
 
+/// Модель новости для отображения
 struct NewsTableViewCellModel: NewsTableViewCellModelProtocol {
 	var source: NewsSourceProtocol
 	var likesModel: LikesModel?

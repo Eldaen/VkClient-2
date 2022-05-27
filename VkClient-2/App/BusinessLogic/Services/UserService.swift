@@ -12,12 +12,17 @@ import UIKit.UIImage
 protocol UserLoader: LoaderProtocol {
 	
 	/// Загружает список друзей
+	/// - Parameter completion: Клоужер с массивом Секций друзей или ошибкой
 	func loadFriends(completion: @escaping (Result<[FriendsSection], Error>) -> Void)
 	
 	/// Загружает все фото пользователя
+	/// - Parameters:
+	///   - id: id пользователя, чьи картинки загружаем
+	///   - completion: Клоужер с массивом картинок или ошибкой
 	func loadUserPhotos(for id: String, completion: @escaping (Result<[ApiImage], Error>) -> Void)
 	
 	/// Запрашивает кол-во друзей пользователя
+	/// - Parameter completion: Клоужер с количеством друзей
 	func getFriendsCount(completion: @escaping (Int) -> Void)
 }
 
@@ -92,7 +97,6 @@ final class UserService: UserLoader {
 		}
 	}
 	
-	/// Запрашивает кол-во друзей пользователя
 	func getFriendsCount(completion: @escaping (Int) -> Void) {
 		networkManager.request(method: .friendsGet,
 							   httpMethod: .get,
@@ -106,7 +110,6 @@ final class UserService: UserLoader {
 		}
 	}
 	
-	/// Загружает все фото пользователя
 	func loadUserPhotos(for id: String, completion: @escaping (Result<[ApiImage], Error>) -> Void) {
 		let params = [
 			"owner_id" : id,
@@ -131,7 +134,7 @@ final class UserService: UserLoader {
 private extension UserService {
 	
 	/// Раскидывает друзей по ключам, в зависимости от первой буквы имени
-	private func sortFriends(_ array: [UserModel]) -> [Character: [UserModel]] {
+	func sortFriends(_ array: [UserModel]) -> [Character: [UserModel]] {
 		
 		var newArray: [Character: [UserModel]] = [:]
 		for user in array {
@@ -154,7 +157,7 @@ private extension UserService {
 		return newArray
 	}
 	
-	private func formFriendsSections(_ array: [Character: [UserModel]]) -> [FriendsSection] {
+	func formFriendsSections(_ array: [Character: [UserModel]]) -> [FriendsSection] {
 		var sectionsArray: [FriendsSection] = []
 		for (key, array) in array {
 			sectionsArray.append(FriendsSection(key: key, data: array))
@@ -166,7 +169,7 @@ private extension UserService {
 		return sectionsArray
 	}
 	
-	private func formFriendsArray(from array: [UserModel]?) -> [FriendsSection] {
+	func formFriendsArray(from array: [UserModel]?) -> [FriendsSection] {
 		guard let array = array else {
 			return []
 		}

@@ -10,13 +10,6 @@ import UIKit
 /// Вью для контроллера отображения галереи фотографий пользователя
 final class GalleryView: UIView {
 	
-	// MARK: - Properties
-	
-	// Создаём три переменные, которые будут отвечать за то, что мы видим на экране и с чем взаимодействуем
-	public var leftImageView: UIImageView!
-	public var middleImageView: UIImageView!
-	public var rightImageView: UIImageView!
-	
 	// MARK: - Subviews
 	
 	public let mainView: UIView = {
@@ -31,6 +24,13 @@ final class GalleryView: UIView {
 		progressView.tintColor = .black
 		return progressView
 	}()
+	
+	// MARK: - Properties
+	
+	// Создаём три переменные, которые будут отвечать за то, что мы видим на экране и с чем взаимодействуем
+	public var leftImageView: UIImageView!
+	public var middleImageView: UIImageView!
+	public var rightImageView: UIImageView!
 	
 	// MARK: - Init
 	

@@ -9,6 +9,8 @@ import UIKit
 
 // MARK: - RestartDelegate
 protocol RestartDelegate: AnyObject {
+	
+	/// Перезапускает приложение и сбрасывает текущую сессию авторизации
 	func restart()
 }
 

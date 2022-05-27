@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - FriendsListBuilder
+// MARK: - DemoFriendsListBuilder
 final class DemoFriendsListBuilder {
 	
 	/// Билдер модуля экрана списка друзей в демо режиме

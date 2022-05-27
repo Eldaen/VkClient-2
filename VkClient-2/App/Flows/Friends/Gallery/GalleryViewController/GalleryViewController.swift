@@ -66,9 +66,6 @@ final class GalleryViewController: UIViewController {
 // MARK: - GalleryViewInputProtocol
 extension GalleryViewController: GalleryViewInputProtocol {
 	
-	func showImageLoadingErrorText(_ text: String) {
-		
-	}
 }
 
 // MARK: - Private methods

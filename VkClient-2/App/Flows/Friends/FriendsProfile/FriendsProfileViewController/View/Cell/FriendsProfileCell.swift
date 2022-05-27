@@ -33,7 +33,7 @@ final class FriendsProfileCell: UICollectionViewCell {
 
 // MARK: - Private methods
 private extension FriendsProfileCell {
-	private func setupConstraints() {
+	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			photoView.topAnchor.constraint(equalTo: contentView.topAnchor),
 			photoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),

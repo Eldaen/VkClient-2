@@ -23,7 +23,7 @@ protocol GroupsLoader: LoaderProtocol {
 	
 	/// Запрос на вступление в группу по id
 	/// - Parameters:
-	///   - id: id гуппы, в которую нужно вступить
+	///   - id: id группы, в которую нужно вступить
 	///   - completion: Клоужер с результатом запроса, код ответа или ошибка
 	func joinGroup(id: Int, completion: @escaping (Result<Int, Error>) -> Void)
 	

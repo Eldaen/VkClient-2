@@ -22,7 +22,7 @@ protocol NewCollectionCellProtocol {
 }
 
 // MARK: - NewsCollectionCell
-/// Ячейка для отображения новостей пользователя в контроллере NewsController
+/// Ячейка для отображения коллекции фото в новости
 final class NewsCollectionCell: UITableViewCell, NewCollectionCellProtocol {
 	
 	// MARK: - Subviews
@@ -100,7 +100,6 @@ extension NewsCollectionCell: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Private methods
 private extension NewsCollectionCell {
-	
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -115,7 +114,6 @@ private extension NewsCollectionCell {
 		top.priority = .init(rawValue: 999)
 	}
 	
-	/// Конфигурируем нашу collectionView и добавляем в основную view
 	func setupCollectionView() {
 		collectionView.register(cell: NewsCollectionViewCell.self)
 		collectionView.backgroundColor = .white
@@ -125,7 +123,6 @@ private extension NewsCollectionCell {
 		contentView.addSubview(collectionView)
 	}
 	
-	/// обновляет данные ячейки
 	func updateCellData(with model: NewsTableViewCellModelProtocol) {
 		collection = model.collection
 		self.collectionView.reloadData()
@@ -138,24 +135,24 @@ private extension NewsCollectionCell {
 		let aspectRatio = image.size.height / ( image.size.width == 0.0 ? 1 : image.size.width )
 		
 		let itemSize = NSCollectionLayoutSize(
-		  widthDimension: .fractionalWidth(1.0),
-		  heightDimension: .fractionalHeight(1.0))
+			widthDimension: .fractionalWidth(1.0),
+			heightDimension: .fractionalHeight(1.0))
 		
 		let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
 		
 		let groupSize = NSCollectionLayoutSize(
 			widthDimension: .fractionalWidth(isMultiple ? 0.95 : 1.0),
-		  heightDimension: .fractionalWidth(aspectRatio))
+			heightDimension: .fractionalWidth(aspectRatio))
 		
 		let group = NSCollectionLayoutGroup.horizontal(
-		  layoutSize: groupSize,
-		  subitem: fullPhotoItem,
-		  count: 1)
+			layoutSize: groupSize,
+			subitem: fullPhotoItem,
+			count: 1)
 		group.contentInsets = NSDirectionalEdgeInsets(
-		  top: 5,
-		  leading: 5,
-		  bottom: 5,
-		  trailing: 5)
+			top: 5,
+			leading: 5,
+			bottom: 5,
+			trailing: 5)
 		
 		let section = NSCollectionLayoutSection(group: group)
 		section.orthogonalScrollingBehavior = .continuous
