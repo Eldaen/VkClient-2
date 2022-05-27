@@ -14,8 +14,9 @@ final class SearchGroupsBuilder {
 	/// - Returns: Контроллер экрана поиска групп
 	static func build(parentalControllerLink: MyGroupsViewInputProtocol) -> UIViewController {
 		let networkManager = NetworkManager()
+		let persistenceManager = DataStoreManager()
 		let cache = ImageCacheManager()
-		let service = GroupsService(networkManager: networkManager, cache: cache)
+		let service = GroupsService(networkManager: networkManager, cache: cache, persistence: persistenceManager)
 		let viewController = SearchGroupsViewController()
 		let interactor = SearchGroupsInteractor(groupsService: service)
 		let router = SearchGroupsRouter()

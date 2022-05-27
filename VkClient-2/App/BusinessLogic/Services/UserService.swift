@@ -29,7 +29,7 @@ final class UserService: UserLoader {
 	
 	internal var networkManager: NetworkManagerProtocol
 	internal var cache: ImageCacheInput
-	//internal var persistence: PersistenceManager
+	internal var persistence: DataManagerInput
 	
 	/// Ключ для сохранения данных о просрочке в Userdefaults
 	let cacheKey = "usersExpiry"
@@ -38,10 +38,10 @@ final class UserService: UserLoader {
 	
 	// MARK: - Init
 	
-	required init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput/*, persistence: PersistenceManager*/) {
+	required init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput, persistence: DataManagerInput) {
 		self.networkManager = networkManager
 		self.cache = cache
-		//self.persistence = persistence
+		self.persistence = persistence
 	}
 	
 	// MARK: - Methods
@@ -53,19 +53,13 @@ final class UserService: UserLoader {
 			"fields" : "photo_100",
 		]
 		
-//		if checkExpiry(key: cacheKey) {
-//			var friends: [UserModel] = []
-//
-//			persistence.read(UserModel.self) { result in
-//				friends = Array(result)
-//			}
-//
-//			if !friends.isEmpty {
-//				let sections = formFriendsArray(from: friends)
-//				completion(sections)
-//				return
-//			}
-//		}
+		if checkExpiry(key: cacheKey) {
+			if let friends = persistence.getFriends(), !friends.isEmpty {
+				let sections = formFriendsArray(from: friends)
+				completion(.success(sections))
+				return
+			}
+		}
 		
 		networkManager.request(method: .friendsGet,
 							   httpMethod: .get,
@@ -73,7 +67,8 @@ final class UserService: UserLoader {
 			switch result {
 			case .success(let friendsResponse):
 				let friends = friendsResponse.response.items
-				//self?.persistence.create(friends) { _ in }
+				self?.persistence.deleteAllFriends()
+				self?.persistence.saveFriends(friends)
 				
 				var sections = [FriendsSection]()
 				DispatchQueue.global().async {

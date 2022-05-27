@@ -42,17 +42,17 @@ final class GroupsService: GroupsLoader {
 	
 	internal var networkManager: NetworkManagerProtocol
 	internal var cache: ImageCacheInput
-	//private var persistence: PersistenceManager
+	private var persistence: DataManagerInput
 	
 	/// Ключ для сохранения данных о просрочке в Userdefaults
 	let cacheKey = "groupsExpiry"
 	
 	// MARK: - Init
 	
-	init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput/*, persistence: PersistenceManager*/) {
+	init(networkManager: NetworkManagerProtocol, cache: ImageCacheInput, persistence: DataManagerInput) {
 		self.networkManager = networkManager
 		self.cache = cache
-		//self.persistence = persistence
+		self.persistence = persistence
 	}
 	
 	// MARK: - Methods
@@ -64,18 +64,12 @@ final class GroupsService: GroupsLoader {
 			"extended" : "1",
 		]
 		
-//		if checkExpiry(key: cacheKey) {
-//			var groups: [GroupModel] = []
-//
-//			persistence.read(GroupModel.self) { result in
-//				groups = Array(result)
-//			}
-//
-//			if !groups.isEmpty {
-//				completion(groups)
-//				return
-//			}
-//		}
+		if checkExpiry(key: cacheKey) {
+			if let groups = persistence.getGroups(), !groups.isEmpty {
+				completion(.success(groups))
+				return
+			}
+		}
 		
 		networkManager.request(method: .groupsGet,
 							   httpMethod: .get,
@@ -83,8 +77,8 @@ final class GroupsService: GroupsLoader {
 			switch result {
 			case .success(let groupsResponse):
 				let groups = groupsResponse.response.items
-				//self?.persistence.delete(GroupModel.self) { _ in }
-				//self?.persistence.create(items) { _ in }
+				self?.persistence.deleteAllGroups()
+				self?.persistence.saveGroups(groups)
 				
 				// Ставим дату просрочки данных
 				if let cacheKey = self?.cacheKey {
@@ -154,7 +148,7 @@ final class GroupsService: GroupsLoader {
 							   params: params) { [weak self] (result: Result<ApiBoolResponse, Error>) in
 			switch result {
 			case .success(let response):
-				//self?.persistence.delete(GroupModel.self, keyValue: "\(id)") { _ in }
+				self?.persistence.deleteGroup(with: id)
 				
 				// Нужно перекачать данные групп, сбросим кэш
 				if let cacheKey = self?.cacheKey {

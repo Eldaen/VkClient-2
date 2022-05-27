@@ -15,7 +15,8 @@ final class FriendsListBuilder {
 	static func build() -> MyCustomUIViewController {
 		let networkManager = NetworkManager()
 		let cache = ImageCacheManager()
-		let service = UserService(networkManager: networkManager, cache: cache)
+		let persistenceManager = DataStoreManager()
+		let service = UserService(networkManager: networkManager, cache: cache, persistence: persistenceManager)
 		let viewController = FriendsListViewController()
 		let interactor = FriendsListInteractor(friendsService: service)
 		let router = FriendsListRouter()
